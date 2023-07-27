@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <property name="log.path" value="/tmp/flink/tdq-rt/app.log" />
+
+  <!-- console logger -->
+  <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <Pattern>%date{ISO8601} [%.-15t] %-5level %logger{40} - %msg%n</Pattern>
+    </encoder>
+  </appender>
+
+  <!-- file logger -->
+  <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${log.path}</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${log.path}/app-%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>30</maxHistory>
+      <totalSizeCap>1GB</totalSizeCap>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%.-15t] %-5level %logger{40} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <logger name="com.ebay.dap.tdq" level="INFO"/>
+
+  <root level="INFO">
+    <appender-ref ref="console"/>
+    <appender-ref ref="file" />
+  </root>
+
+</configuration>

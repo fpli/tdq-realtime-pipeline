@@ -1,0 +1,37 @@
+flink:
+  app:
+#    name: Sojourner Local Test
+#    checkpoint:
+#      data-dir: /tmp/flink/checkpoints/my-local-flink-job/
+#    parallelism:
+#      default: 1
+#      source: 10
+#    watermark:
+#      max-out-of-orderness-in-min: 3
+#      idle-source-timeout-in-min: 10
+    source:
+      kafka:
+        group-id: yxiao6-local-test
+        env: stage
+        stream: behavior.totalv2
+        dc: slc
+        topic:
+          - behavior.totalv2.sojevent-nonbot
+        from-timestamp: 0
+    sink:
+      kafka:
+        env: stage
+        stream: behavior.totalv2
+        dc: slc
+        default-topic: behavior.totalv2.test
+
+rheos:
+  client:
+    auth-type: TRUST_FABRIC
+#    iaf:
+#      id: "urn:ebay-marketplace-consumerid:68a97ac2-013b-4915-9ed7-d6ae2ff01618"
+#      secret: 6218c197-200e-49d7-b404-2a4dbf7595ef
+#      env: staging
+    tf:
+      app-id: yxiao6-local-flink-app
+      env: local

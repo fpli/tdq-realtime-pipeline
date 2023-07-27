@@ -1,0 +1,18 @@
+-
+  stream: single-dc-stream
+  auth-protocol: SASL_PLAINTEXT
+  brokers:
+    slc:
+      - broker1.vip.ebay.com
+      - broker2.vip.ebay.com
+
+-
+  stream: multiple-dc-stream
+  auth-protocol: SASL_PLAINTEXT
+  brokers:
+    slc:
+      - broker1.slc.vip.ebay.com
+      - broker2.slc.vip.ebay.com
+    lvs:
+      - broker1.lvs.vip.ebay.com
+      - broker2.lvs.vip.ebay.com
