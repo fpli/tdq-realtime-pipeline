@@ -1,8 +1,10 @@
 package com.ebay.dap.tdq.flink.common;
 
 import com.ebay.dap.tdq.common.constant.DataCenter;
+import com.ebay.dap.tdq.common.constant.Property;
 import com.ebay.dap.tdq.common.env.EnvironmentUtils;
 import com.ebay.dap.tdq.flink.connector.kafka.rheos.RheosStreamsConfig;
+import com.ebay.dap.tdq.flink.connector.pronto.pojo.ProntoEnv;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import io.ebay.rheos.kafka.security.RheosLogin;
@@ -17,6 +19,7 @@ import org.apache.flink.connector.kafka.source.KafkaSourceOptions;
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer;
 import org.apache.flink.contrib.streaming.state.EmbeddedRocksDBStateBackend;
 import org.apache.flink.contrib.streaming.state.PredefinedOptions;
+import org.apache.flink.runtime.state.hashmap.HashMapStateBackend;
 import org.apache.flink.streaming.api.CheckpointingMode;
 import org.apache.flink.streaming.api.environment.CheckpointConfig;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -145,10 +148,11 @@ public class FlinkEnv {
         conf.setMaxConcurrentCheckpoints(getIntegerOrDefault(FLINK_APP_CHECKPOINT_MAX_CONCURRENT, 1));
         conf.setTolerableCheckpointFailureNumber(getIntegerOrDefault(FLINK_APP_CHECKPOINT_TOLERATE_FAILURE_COUNT, Integer.MAX_VALUE));
 
-        EmbeddedRocksDBStateBackend rocksDBStateBackend = new EmbeddedRocksDBStateBackend();
-        rocksDBStateBackend.setPredefinedOptions(PredefinedOptions.FLASH_SSD_OPTIMIZED);
-
-        env.setStateBackend(rocksDBStateBackend);
+        if (env.getStateBackend() == null) {
+            EmbeddedRocksDBStateBackend rocksDBStateBackend = new EmbeddedRocksDBStateBackend();
+            rocksDBStateBackend.setPredefinedOptions(PredefinedOptions.FLASH_SSD_OPTIMIZED);
+            env.setStateBackend(rocksDBStateBackend);
+        }
 
         // set initialized to true
         initialized = true;
@@ -160,7 +164,7 @@ public class FlinkEnv {
     }
 
     public StreamExecutionEnvironment local() {
-        // default tm count set to cpu core
+        // default TM count set to cpu cores
         int cores = Runtime.getRuntime().availableProcessors();
         return this.local(cores);
     }
@@ -176,6 +180,9 @@ public class FlinkEnv {
         configuration.setInteger(RestOptions.PORT, port);
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(configuration);
+
+        env.setStateBackend(new HashMapStateBackend());
+
         return this.init(env);
     }
 
@@ -449,6 +456,7 @@ public class FlinkEnv {
                         this.getString(RHEOS_CLIENT_IAF_SECRET),
                         this.getString(RHEOS_CLIENT_IAF_ENV));
 
+            // Rheos Doc: https://pages.github.corp.ebay.com/Near-Real-Time/rheos-documentation/docs/streaming/TF-Sample-Code/#flink-job-client-sample
             case "TRUST_FABRIC":
                 String clientEnv = getStringOrNull(RHEOS_CLIENT_TF_ENV);
                 if (clientEnv != null && clientEnv.equalsIgnoreCase("local")) {
@@ -506,5 +514,22 @@ public class FlinkEnv {
 
     public List<String> getKafkaSourceTopics() {
         return getList(FLINK_APP_SOURCE_KAFKA_TOPIC);
+    }
+
+    public ProntoEnv getProntoEnv() {
+        String scheme = this.getString(Property.PRONTO_SCHEME);
+        String host = this.getString(Property.PRONTO_HOST);
+        Integer port = this.getInteger(Property.PRONTO_PORT);
+        String username = this.getString(Property.PRONTO_USERNAME);
+        String password = this.getString(Property.PRONTO_PASSWORD);
+
+        ProntoEnv prontoEnv = new ProntoEnv();
+        prontoEnv.setScheme(scheme);
+        prontoEnv.setHost(host);
+        prontoEnv.setPort(port);
+        prontoEnv.setUsername(username);
+        prontoEnv.setPassword(password);
+
+        return prontoEnv;
     }
 }

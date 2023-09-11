@@ -1,4 +1,4 @@
-package com.ebay.dap.tdq.flink.function;
+package com.ebay.dap.tdq.integration.function;
 
 import com.ebay.dap.tdq.common.model.avro.RheosHeader;
 import lombok.extern.slf4j.Slf4j;

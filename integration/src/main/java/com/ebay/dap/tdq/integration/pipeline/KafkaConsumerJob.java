@@ -3,7 +3,7 @@ package com.ebay.dap.tdq.integration.pipeline;
 import com.ebay.dap.tdq.common.model.avro.RheosHeader;
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
 import com.ebay.dap.tdq.flink.connector.kafka.schema.RheosHeaderDeserializationSchema;
-import com.ebay.dap.tdq.flink.function.SimpleLogFunction;
+import com.ebay.dap.tdq.integration.function.SimpleLogFunction;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.flink.streaming.api.datastream.DataStream;

@@ -12,6 +12,7 @@ cd ${working_dir}/..
 
 API_KEY=9ce5764c30224ce59bb5eb4c95afaf02
 API_SECRET=K2h42hFcxWpNV33EgTluY7oekgrBmTl26u6HMWrTVnQgzaj6Vld4QGFUAiN8RUsz
+RHEOS_NAMESPACE=tdq
 
 if [[ -e "${MODULE}/pom.xml" ]]; then
   pushd ${MODULE}
@@ -36,7 +37,7 @@ if [[ -e "${MODULE}/pom.xml" ]]; then
     mvn job-uploader:upload \
       -Dusername=${API_KEY} \
       -Dpassword=${API_SECRET} \
-      -Dnamespace=sojourner-ubd \
+      -Dnamespace=${RHEOS_NAMESPACE} \
       -DjobJarName=${JAR_NAME} \
       -DjobJarTag=${JAR_TAG}
   else

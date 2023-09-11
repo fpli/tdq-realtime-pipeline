@@ -1,0 +1,13 @@
+flink:
+  app:
+    name: Flink Pronto Sink Test
+    sink:
+      es:
+        index: my-index
+
+pronto:
+  scheme: https
+  host: estdq-datalvs.vip.ebay.com
+  port: 443
+  username: 94259ed8d74742c585a7b86faf3d0001
+  password: 7s3AG1ZqOwjz9X59UbPNtcJcb1a0OvMYqDSvGigS2ArjctmBy9YkYIGHxLWcCdky

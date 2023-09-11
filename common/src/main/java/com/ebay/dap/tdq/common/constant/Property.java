@@ -76,18 +76,18 @@ public class Property {
     public static final String FLINK_APP_PARALLELISM_SINK = "flink.app.parallelism.sink";
 
 
-    // flink - message filter
-    public static final String MAX_MESSAGE_BYTES = "flink.app.message-filter.max-message-bytes";
-    public static final String SUB_URL_QUERY_STRING_LENGTH = "flink.app.message-filter.sub-url-query-string-length";
-    public static final String TRUNCATE_URL_QUERY_STRING = "flink.app.message-filter.truncate-url-query-string";
-    public static final String ALLOW_DROP = "flink.app.sink.kafka.allow-drop";
-
-
     // rest client
     public static final String REST_BASE_URL = "rest-client.base-url";
     public static final String REST_USERNAME = "rest-client.username";
     public static final String REST_CONFIG_PULL_INTERVAL = "rest-client.config.pull-interval";
     public static final String REST_CONFIG_ENV = "rest-client.config.env";
     public static final String REST_CONFIG_PROFILE = "rest-client.config.profile";
+
+    // pronto
+    public static final String PRONTO_SCHEME = "pronto.scheme";
+    public static final String PRONTO_HOST = "pronto.host";
+    public static final String PRONTO_PORT = "pronto.port";
+    public static final String PRONTO_USERNAME = "pronto.username";
+    public static final String PRONTO_PASSWORD = "pronto.password";
 
 }
