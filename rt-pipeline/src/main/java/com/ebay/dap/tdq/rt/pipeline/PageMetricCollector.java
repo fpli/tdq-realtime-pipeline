@@ -37,6 +37,13 @@ public class PageMetricCollector {
 
     public static void main(String[] args) throws Exception {
 
+        final String sourceOpName = "Kafka - behavior.totalv3";
+        final String sourceOpUid = "kafka_source";
+        final String windowOpName = "Tumbling Window - Hourly Page Metric Agg";
+        final String windowOpUid = "metric_agg";
+        final String sinkOpName = "Pronto";
+        final String sinkOpUid = "pronto_sink";
+
         FlinkEnv flinkEnv = new FlinkEnv(args);
 
         StreamExecutionEnvironment executionEnvironment = flinkEnv.init();
@@ -58,16 +65,16 @@ public class PageMetricCollector {
                                                                                .withIdleness(Duration.ofMinutes(idleTimeout));
 
 
-        DataStream<SimpleSojEvent> sourceDataStream = executionEnvironment.fromSource(kafkaSource, watermarkStrategy, "Kafka - behavior.totalv3")
-                                                                          .uid("kafka_source")
+        DataStream<SimpleSojEvent> sourceDataStream = executionEnvironment.fromSource(kafkaSource, watermarkStrategy, sourceOpName)
+                                                                          .uid(sourceOpUid)
                                                                           .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
 
         DataStream<PageMetric> windowStream = sourceDataStream.keyBy(SimpleSojEvent::getPageId)
                                                               .window(TumblingEventTimeWindows.of(Time.hours(1)))
                                                               .aggregate(new MetricAggFunction(), new MetricProcessWindowFunction())
-                                                              .name("Tumbling Window - Hourly Page Metric Agg")
-                                                              .uid("metric_agg")
+                                                              .name(windowOpName)
+                                                              .uid(windowOpUid)
                                                               .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
         ProntoEnv prontoEnv = flinkEnv.getProntoEnv();
@@ -77,8 +84,7 @@ public class PageMetricCollector {
 
         // use an ElasticsearchSink.Builder to create an ElasticsearchSink
         ElasticsearchSink.Builder<PageMetric> esSinkBuilder = new ElasticsearchSink.Builder<>(
-                httpHosts,
-                new PageMetricProntoSinkFunction("my-index")
+                httpHosts, new PageMetricProntoSinkFunction("my-index")
         );
 
         esSinkBuilder.setRestClientFactory(restClientBuilder -> {
@@ -98,8 +104,8 @@ public class PageMetricCollector {
         esSinkBuilder.setBulkFlushBackoffDelay(3000);
 
         windowStream.addSink(esSinkBuilder.build())
-                    .name("Pronto")
-                    .uid("pronto_sink")
+                    .name(sinkOpName)
+                    .uid(sinkOpUid)
                     .setParallelism(1);
 
         // submit flink job

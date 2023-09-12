@@ -44,7 +44,7 @@ public class PageMetricProntoSinkFunction implements ElasticsearchSinkFunction<P
         String id = generateDocId(element);
 
         Instant now = Instant.now();
-        data.put("send_time", now.toString());
+        data.put("create_time", now.toString());
 
         return Requests.indexRequest()
                        .index(indexPrefix)

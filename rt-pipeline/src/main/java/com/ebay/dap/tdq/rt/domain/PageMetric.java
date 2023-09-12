@@ -11,7 +11,7 @@ public class PageMetric {
 
     private String dt;
 
-    private String hr;
+    private Integer hr;
 
     public PageMetric(Long eventCount) {
         this.eventCount = eventCount;

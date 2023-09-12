@@ -23,7 +23,7 @@ public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetri
 
         PageMetric next = elements.iterator().next();
         next.setDt(eventTime.format(DateTimeFormatter.ISO_DATE));
-        next.setHr(String.valueOf(eventTime.getHour()));
+        next.setHr(eventTime.getHour());
         out.collect(next);
     }
 }
