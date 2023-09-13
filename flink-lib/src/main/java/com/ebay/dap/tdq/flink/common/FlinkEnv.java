@@ -1,7 +1,6 @@
 package com.ebay.dap.tdq.flink.common;
 
 import com.ebay.dap.tdq.common.constant.DataCenter;
-import com.ebay.dap.tdq.common.constant.Property;
 import com.ebay.dap.tdq.common.env.EnvironmentUtils;
 import com.ebay.dap.tdq.flink.connector.kafka.rheos.RheosStreamsConfig;
 import com.ebay.dap.tdq.flink.connector.pronto.pojo.ProntoEnv;
@@ -68,6 +67,11 @@ import static com.ebay.dap.tdq.common.constant.Property.KAFKA_PRODUCER_LINGER_MS
 import static com.ebay.dap.tdq.common.constant.Property.KAFKA_PRODUCER_MAX_REQUEST_SIZE;
 import static com.ebay.dap.tdq.common.constant.Property.KAFKA_PRODUCER_REQUEST_RETRIES;
 import static com.ebay.dap.tdq.common.constant.Property.KAFKA_PRODUCER_REQUEST_TIMEOUT_MS;
+import static com.ebay.dap.tdq.common.constant.Property.PRONTO_HOST;
+import static com.ebay.dap.tdq.common.constant.Property.PRONTO_PASSWORD;
+import static com.ebay.dap.tdq.common.constant.Property.PRONTO_PORT;
+import static com.ebay.dap.tdq.common.constant.Property.PRONTO_SCHEME;
+import static com.ebay.dap.tdq.common.constant.Property.PRONTO_USERNAME;
 import static com.ebay.dap.tdq.common.constant.Property.RHEOS_CLIENT_AUTH_TYPE;
 import static com.ebay.dap.tdq.common.constant.Property.RHEOS_CLIENT_IAF_ENV;
 import static com.ebay.dap.tdq.common.constant.Property.RHEOS_CLIENT_IAF_ID;
@@ -174,10 +178,10 @@ public class FlinkEnv {
         return this.local(slots, 9090);
     }
 
-    public StreamExecutionEnvironment local(int slots, int port) {
+    public StreamExecutionEnvironment local(int slots, int webUiPort) {
         final Configuration configuration = new Configuration();
         configuration.setInteger(TaskManagerOptions.NUM_TASK_SLOTS, slots);
-        configuration.setInteger(RestOptions.PORT, port);
+        configuration.setInteger(RestOptions.PORT, webUiPort);
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(configuration);
 
@@ -224,9 +228,9 @@ public class FlinkEnv {
     }
 
     public Integer getInteger(String key) {
-        String value = EnvironmentUtils.get(key);
-        CONFIG.put(key, value);
-        return Integer.valueOf(value);
+        Integer value = EnvironmentUtils.getInteger(key);
+        CONFIG.put(key, String.valueOf(value));
+        return value;
     }
 
     public Integer getIntegerOrDefault(String key, Integer defaultValue) {
@@ -517,11 +521,11 @@ public class FlinkEnv {
     }
 
     public ProntoEnv getProntoEnv() {
-        String scheme = this.getString(Property.PRONTO_SCHEME);
-        String host = this.getString(Property.PRONTO_HOST);
-        Integer port = this.getInteger(Property.PRONTO_PORT);
-        String username = this.getString(Property.PRONTO_USERNAME);
-        String password = this.getString(Property.PRONTO_PASSWORD);
+        String scheme = getString(PRONTO_SCHEME);
+        String host = getString(PRONTO_HOST);
+        Integer port = getInteger(PRONTO_PORT);
+        String username = getString(PRONTO_USERNAME);
+        String password = getString(PRONTO_PASSWORD);
 
         ProntoEnv prontoEnv = new ProntoEnv();
         prontoEnv.setScheme(scheme);
