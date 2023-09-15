@@ -13,6 +13,7 @@ import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,6 +51,7 @@ public class SimpleSojEventDeserializationSchema implements KafkaRecordDeseriali
         simpleSojEvent.setEventTimestamp((Long) event.get("eventTimestamp"));
         simpleSojEvent.setGuid(event.get("guid") == null ? null : event.get("guid").toString());
         simpleSojEvent.setRlogId(event.get("rlogid") == null ? null : event.get("rlogid").toString());
+        simpleSojEvent.setProcessTime(Instant.now().toEpochMilli());
 
         out.collect(simpleSojEvent);
     }

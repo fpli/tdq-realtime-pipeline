@@ -1,4 +1,4 @@
-package com.ebay.dap.tdq.flink.connector.pronto.pojo;
+package com.ebay.dap.tdq.flink.connector.pronto;
 
 import lombok.Data;
 

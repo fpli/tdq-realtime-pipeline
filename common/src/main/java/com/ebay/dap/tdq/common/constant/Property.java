@@ -66,8 +66,12 @@ public class Property {
     public static final String FLINK_APP_SINK_KAFKA_STREAM = "flink.app.sink.kafka.stream";
     public static final String FLINK_APP_SINK_KAFKA_DC = "flink.app.sink.kafka.dc";
 
-    // flink hdfs sink
+    // flink sink hdfs
     public static final String FLINK_APP_SINK_HDFS_PATH = "flink.app.sink.hdfs.path";
+
+    // flink sink pronto
+    public static final String FLINK_APP_SINK_PRONTO_INDEX = "flink.app.sink.pronto.index";
+    public static final String FLINK_APP_SINK_PRONTO_INDEX_PREFIX = "flink.app.sink.pronto.index-prefix";
 
 
     // flink - parallelism

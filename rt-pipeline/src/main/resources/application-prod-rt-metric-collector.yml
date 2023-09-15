@@ -7,8 +7,8 @@ flink:
       default: 100
       source: 200
     watermark:
-      max-out-of-orderness-in-min: 1
-      idle-source-timeout-in-min: 10
+      max-out-of-orderness-in-min: 5
+      idle-source-timeout-in-min: 15
     source:
       kafka:
         group-id: tdq-prod-rt-metric-collector
@@ -18,6 +18,11 @@ flink:
         topic:
           - behavior.totalv3.sojevent-nonbot-rno
         from-timestamp: latest
+    sink:
+      pronto:
+        index-prefix: sandbox.rt.metric
+      hdfs:
+        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/
 
 rheos:
   registry-url: https://rheos-services.stratus.ebay.com

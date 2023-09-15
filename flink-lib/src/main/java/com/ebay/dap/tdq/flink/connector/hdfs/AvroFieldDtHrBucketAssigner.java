@@ -6,9 +6,9 @@ import org.apache.flink.core.io.SimpleVersionedSerializer;
 import org.apache.flink.streaming.api.functions.sink.filesystem.BucketAssigner;
 import org.apache.flink.streaming.api.functions.sink.filesystem.bucketassigners.SimpleVersionedStringSerializer;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
+
+import static com.ebay.dap.tdq.common.util.DateTimeUtils.tsToLocalDateTime;
 
 /**
  * Use element's timestamp field to generate bucketId
@@ -28,7 +28,7 @@ public class AvroFieldDtHrBucketAssigner<T extends SpecificRecord> implements Bu
 
         long val = Long.parseLong(String.valueOf(element.get(ts.pos())));
 
-        LocalDateTime time = LocalDateTime.ofInstant(Instant.ofEpochMilli(val), ZoneId.of("GMT-7"));
+        LocalDateTime time = tsToLocalDateTime(val);
 
         return "dt=" + time.toLocalDate().toString() + "/hr=" + time.getHour();
     }

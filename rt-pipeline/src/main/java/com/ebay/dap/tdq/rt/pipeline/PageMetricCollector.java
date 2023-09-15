@@ -1,22 +1,28 @@
 package com.ebay.dap.tdq.rt.pipeline;
 
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
-import com.ebay.dap.tdq.flink.connector.pronto.pojo.ProntoEnv;
+import com.ebay.dap.tdq.flink.connector.hdfs.ParquetAvroWritersWithCompression;
+import com.ebay.dap.tdq.flink.connector.pronto.ProntoEnv;
 import com.ebay.dap.tdq.rt.domain.PageMetric;
 import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
 import com.ebay.dap.tdq.rt.function.MetricAggFunction;
 import com.ebay.dap.tdq.rt.function.MetricProcessWindowFunction;
 import com.ebay.dap.tdq.rt.function.PageMetricProntoSinkFunction;
 import com.ebay.dap.tdq.rt.function.SimpleSojEventDeserializationSchema;
+import com.ebay.dap.tdq.rt.sink.LateSimpleSojEventBucketAssigner;
 import com.ebay.dap.tdq.rt.watermark.SimpleSojEventTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
+import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.connector.kafka.source.KafkaSource;
-import org.apache.flink.streaming.api.datastream.DataStream;
+import org.apache.flink.core.fs.Path;
+import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.streaming.connectors.elasticsearch.ElasticsearchSinkBase;
 import org.apache.flink.streaming.connectors.elasticsearch7.ElasticsearchSink;
+import org.apache.flink.util.OutputTag;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.UsernamePasswordCredentials;
@@ -29,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_PARALLELISM_SOURCE;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_HDFS_PATH;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN;
 import static com.ebay.dap.tdq.common.constant.Property.RHEOS_REGISTRY_URL;
@@ -43,6 +50,8 @@ public class PageMetricCollector {
         final String windowOpUid = "metric_agg";
         final String sinkOpName = "Pronto";
         final String sinkOpUid = "pronto_sink";
+        final String lateSinkOpName = "Hercules";
+        final String lateSinkOpUid = "hdfs_sink";
 
         FlinkEnv flinkEnv = new FlinkEnv(args);
 
@@ -65,17 +74,21 @@ public class PageMetricCollector {
                                                                                .withIdleness(Duration.ofMinutes(idleTimeout));
 
 
-        DataStream<SimpleSojEvent> sourceDataStream = executionEnvironment.fromSource(kafkaSource, watermarkStrategy, sourceOpName)
-                                                                          .uid(sourceOpUid)
+        SingleOutputStreamOperator<SimpleSojEvent> sourceStream = executionEnvironment.fromSource(kafkaSource, watermarkStrategy, sourceOpName)
+                                                                                      .uid(sourceOpUid)
+                                                                                      .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+
+
+        OutputTag<SimpleSojEvent> lateEventOutputTag = new OutputTag<>("late-simple-sojevent", TypeInformation.of(SimpleSojEvent.class));
+
+
+        SingleOutputStreamOperator<PageMetric> windowStream = sourceStream.keyBy(SimpleSojEvent::getPageId)
+                                                                          .window(TumblingEventTimeWindows.of(Time.hours(1)))
+                                                                          .sideOutputLateData(lateEventOutputTag)
+                                                                          .aggregate(new MetricAggFunction(), new MetricProcessWindowFunction())
+                                                                          .name(windowOpName)
+                                                                          .uid(windowOpUid)
                                                                           .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
-
-
-        DataStream<PageMetric> windowStream = sourceDataStream.keyBy(SimpleSojEvent::getPageId)
-                                                              .window(TumblingEventTimeWindows.of(Time.hours(1)))
-                                                              .aggregate(new MetricAggFunction(), new MetricProcessWindowFunction())
-                                                              .name(windowOpName)
-                                                              .uid(windowOpUid)
-                                                              .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
         ProntoEnv prontoEnv = flinkEnv.getProntoEnv();
         List<HttpHost> httpHosts = Collections.singletonList(new HttpHost(
@@ -107,6 +120,18 @@ public class PageMetricCollector {
                     .name(sinkOpName)
                     .uid(sinkOpUid)
                     .setParallelism(1);
+
+        StreamingFileSink<SimpleSojEvent> hdfsSink = StreamingFileSink
+                .forBulkFormat(new Path(flinkEnv.getString(FLINK_APP_SINK_HDFS_PATH)),
+                        ParquetAvroWritersWithCompression.forReflectRecord(SimpleSojEvent.class))
+                .withBucketAssigner(new LateSimpleSojEventBucketAssigner())
+                .build();
+
+        windowStream.getSideOutput(lateEventOutputTag)
+                    .addSink(hdfsSink)
+                    .name(lateSinkOpName)
+                    .uid(lateSinkOpUid)
+                    .setParallelism(50);
 
         // submit flink job
         flinkEnv.execute(executionEnvironment);

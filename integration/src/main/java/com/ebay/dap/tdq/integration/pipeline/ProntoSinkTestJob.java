@@ -2,7 +2,7 @@ package com.ebay.dap.tdq.integration.pipeline;
 
 import com.ebay.dap.tdq.common.model.avro.RheosHeader;
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
-import com.ebay.dap.tdq.flink.connector.pronto.pojo.ProntoEnv;
+import com.ebay.dap.tdq.flink.connector.pronto.ProntoEnv;
 import com.ebay.dap.tdq.integration.function.LocalSourceFunction;
 import com.ebay.dap.tdq.integration.function.SimpleLogFunction;
 import com.fasterxml.jackson.core.JsonProcessingException;

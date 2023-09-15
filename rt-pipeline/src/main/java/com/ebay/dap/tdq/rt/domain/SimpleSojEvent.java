@@ -13,4 +13,6 @@ public class SimpleSojEvent {
 
     private Long eventTimestamp;
 
+    private Long processTime;
+
 }

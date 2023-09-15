@@ -1,12 +1,11 @@
 package com.ebay.dap.tdq.flink.connector.hdfs;
 
+import com.ebay.dap.tdq.common.util.DateTimeUtils;
 import org.apache.flink.core.io.SimpleVersionedSerializer;
 import org.apache.flink.streaming.api.functions.sink.filesystem.BucketAssigner;
 import org.apache.flink.streaming.api.functions.sink.filesystem.bucketassigners.SimpleVersionedStringSerializer;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 public class WatermarkDtHrBucketAssigner<T> implements BucketAssigner<T, String> {
 
@@ -18,7 +17,7 @@ public class WatermarkDtHrBucketAssigner<T> implements BucketAssigner<T, String>
         }
 
         long wm = context.currentWatermark();
-        LocalDateTime time = LocalDateTime.ofInstant(Instant.ofEpochMilli(wm), ZoneId.of("GMT-7"));
+        LocalDateTime time = DateTimeUtils.tsToLocalDateTime(wm);
 
         return "dt=" + time.toLocalDate().toString() + "/hr=" + time.getHour();
     }

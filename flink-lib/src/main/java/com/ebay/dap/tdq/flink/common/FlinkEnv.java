@@ -3,7 +3,7 @@ package com.ebay.dap.tdq.flink.common;
 import com.ebay.dap.tdq.common.constant.DataCenter;
 import com.ebay.dap.tdq.common.env.EnvironmentUtils;
 import com.ebay.dap.tdq.flink.connector.kafka.rheos.RheosStreamsConfig;
-import com.ebay.dap.tdq.flink.connector.pronto.pojo.ProntoEnv;
+import com.ebay.dap.tdq.flink.connector.pronto.ProntoEnv;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import io.ebay.rheos.kafka.security.RheosLogin;
