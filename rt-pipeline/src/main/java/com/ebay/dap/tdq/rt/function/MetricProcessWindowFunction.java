@@ -15,12 +15,13 @@ public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetri
 
     @Override
     public void process(Integer integer, ProcessWindowFunction<PageMetric, PageMetric, Integer, TimeWindow>.Context context, Iterable<PageMetric> elements, Collector<PageMetric> out) throws Exception {
-
         LocalDateTime eventTime = DateTimeUtils.tsToLocalDateTime(context.window().getStart());
 
         PageMetric next = elements.iterator().next();
         next.setDt(eventTime.format(DateTimeFormatter.ISO_DATE));
         next.setHr(eventTime.getHour());
+        // use window start time as metric time
+        next.setMetricTime(context.window().getStart());
         out.collect(next);
     }
 }

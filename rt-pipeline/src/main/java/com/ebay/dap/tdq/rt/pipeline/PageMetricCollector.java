@@ -44,14 +44,17 @@ public class PageMetricCollector {
 
     public static void main(String[] args) throws Exception {
 
-        final String sourceOpName = "Kafka - behavior.totalv3";
+        // DO NOT change uid once they are used in prod, otherwise flink might not able to resume from savepoint
         final String sourceOpUid = "kafka_source";
-        final String windowOpName = "Tumbling Window - Hourly Page Metric Agg";
         final String windowOpUid = "metric_agg";
-        final String sinkOpName = "Pronto";
         final String sinkOpUid = "pronto_sink";
-        final String lateSinkOpName = "Hercules";
         final String lateSinkOpUid = "hdfs_sink";
+
+        // operator names
+        final String sourceOpName = "Kafka - behavior.totalv3";
+        final String windowOpName = "Tumbling Window - Hourly Page Metric Agg";
+        final String sinkOpName = "Pronto";
+        final String lateSinkOpName = "Hercules - Late Event";
 
         FlinkEnv flinkEnv = new FlinkEnv(args);
 

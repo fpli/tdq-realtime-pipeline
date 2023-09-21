@@ -7,7 +7,7 @@ flink:
       default: 100
       source: 200
     watermark:
-      max-out-of-orderness-in-min: 5
+      max-out-of-orderness-in-min: 15
       idle-source-timeout-in-min: 15
     source:
       kafka:
