@@ -3,4 +3,4 @@ flink:
     name: Flink HDFS Sink Test
     sink:
       hdfs:
-        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test
+        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/

@@ -1,0 +1,28 @@
+flink:
+  app:
+    name: TDQ - RT Metric Collector - Local
+    checkpoint:
+      data-dir: /tmp/flink/checkpoints/tdq-rt-metric-collector/
+    parallelism:
+      default: 1
+      source: 1
+    watermark:
+      max-out-of-orderness-in-min: 1
+      idle-source-timeout-in-min: 10
+    source:
+      kafka:
+        group-id: tdq-rt-metric-collector-test
+        env: stage
+        stream: behavior.totalv2
+        dc: slc
+        topic:
+          - behavior.totalv2.sojevent-nonbot
+        from-timestamp: latest
+
+rheos:
+  registry-url: https://rheos-services.qa.ebay.com
+  client:
+    auth-type: TRUST_FABRIC
+    tf:
+      app-id: yxiao6-local-flink-app
+      env: local
