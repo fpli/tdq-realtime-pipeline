@@ -360,6 +360,26 @@
 <!--                <scope>test</scope>-->
 <!--            </dependency>-->
             <!--  Test Dependencies:end  -->
+            <!-- Sherlock Dependencies -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-api-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
+
+            <!-- OpenTelemetry SDK -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-sdk-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
+
+            <!-- OpenTelemetry Logs -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-exporter-otlp-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

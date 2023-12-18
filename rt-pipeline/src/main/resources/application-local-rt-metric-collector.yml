@@ -26,3 +26,10 @@ rheos:
     tf:
       app-id: yxiao6-local-flink-app
       env: local
+
+sherlock:
+  application-id: urn:ebay-marketplace-consumerid:6275bd7f-9a18-45e6-b929-f8a73bbce12a
+  endpoint: http://ingress.sherlock-service.tess.io/api/signals/v3/events
+  namespace: sojourner-app
+  schema: tdqmetrics
+  name: tdqmetrics

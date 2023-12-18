@@ -94,4 +94,11 @@ public class Property {
     public static final String PRONTO_USERNAME = "pronto.username";
     public static final String PRONTO_PASSWORD = "pronto.password";
 
+    // sherlock
+    public static final String SHERLOCK_APPLICATION_ID = "sherlock.application-id";
+    public static final String SHERLOCK_ENDPOINT = "sherlock.endpoint";
+    public static final String SHERLOCK_NAMESPACE = "sherlock.namespace";
+    public static final String SHERLOCK_SCHEMA = "sherlock.schema";
+    public static final String SHERLOCK_NAME = "sherlock.name";
+
 }
