@@ -1,6 +1,6 @@
 package com.ebay.dap.tdq.integration.function;
 
-import com.ebay.dap.tdq.common.model.avro.RheosHeader;
+import com.ebay.dap.tdq.common.avro.RheosHeader;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 

@@ -17,13 +17,20 @@ public class DateTimeUtils {
 
 
     /**
-     * convert timestamp to LocalDateTime, with eBay server time zone
+     * convert timestamp to LocalDateTime, in eBay server's time zone, which is UTC-7
      *
      * @param ts
      * @return
      */
     public static LocalDateTime tsToLocalDateTime(long ts) {
         return LocalDateTime.ofInstant(Instant.ofEpochMilli(ts), eBayServerZoneId());
+    }
+
+    /**
+     * convert Instant to LocalDateTime, in eBay server's time zone, which is UTC-7
+     */
+    public static LocalDateTime instantToLocalDateTime(Instant instant) {
+        return LocalDateTime.ofInstant(instant, eBayServerZoneId());
     }
 
 }

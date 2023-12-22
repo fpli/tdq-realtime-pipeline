@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "SojSession",
-  "namespace": "com.ebay.dap.tdq.common.model.avro",
+  "namespace": "com.ebay.dap.tdq.common.avro",
   "fields": [
     {
       "name": "rheosHeader",

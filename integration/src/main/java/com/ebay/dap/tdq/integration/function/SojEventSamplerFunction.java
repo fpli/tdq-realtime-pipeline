@@ -1,6 +1,6 @@
 package com.ebay.dap.tdq.integration.function;
 
-import com.ebay.dap.tdq.common.model.avro.SojEvent;
+import com.ebay.dap.tdq.common.avro.SojEvent;
 import org.apache.flink.api.common.functions.FilterFunction;
 
 public class SojEventSamplerFunction implements FilterFunction<SojEvent> {

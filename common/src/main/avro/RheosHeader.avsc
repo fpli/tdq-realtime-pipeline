@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "RheosHeader",
-  "namespace": "com.ebay.dap.tdq.common.model.avro",
+  "namespace": "com.ebay.dap.tdq.common.avro",
   "doc": "This is the common avro schema that every message stored in shared data stream must comply.",
   "fields": [
     {

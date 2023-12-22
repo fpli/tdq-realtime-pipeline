@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.ebay.dap.tdq.common.model.avro;
+package com.ebay.dap.tdq.common.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -14,8 +14,8 @@ import org.apache.avro.message.SchemaStore;
 
 @org.apache.avro.specific.AvroGenerated
 public class SojSession extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5271579737852636013L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SojSession\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"rheosHeader\",\"type\":{\"type\":\"record\",\"name\":\"RheosHeader\",\"fields\":[{\"name\":\"eventCreateTimestamp\",\"type\":\"long\"},{\"name\":\"eventSentTimestamp\",\"type\":\"long\"},{\"name\":\"schemaId\",\"type\":\"int\"},{\"name\":\"eventId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"producerId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]},\"doc\":\"Rheos header\"},{\"name\":\"guid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession guid\"},{\"name\":\"sessionReferrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession sessionReferrer\"},{\"name\":\"siteFlags\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession siteFlags\"},{\"name\":\"attrFlags\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession attrFlags\"},{\"name\":\"version\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession version\"},{\"name\":\"botFlags\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession botFlags\"},{\"name\":\"ipv4\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession ip for  jetstream\"},{\"name\":\"userAgent\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession userAgent\"},{\"name\":\"findingFlags\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession findingFlags\"},{\"name\":\"startPageId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession startPageId\"},{\"name\":\"endPageId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession endPageId\"},{\"name\":\"botFlag\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession botFlag\"},{\"name\":\"durationSec\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession durationSec\"},{\"name\":\"userId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession firstUserId\"},{\"name\":\"eventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession eventCnt\"},{\"name\":\"trafficSrcId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession trafficSrcId\"},{\"name\":\"viCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession viCoreCnt\"},{\"name\":\"bidCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession bidCoreCnt\"},{\"name\":\"binCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession binCoreCnt\"},{\"name\":\"watchCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession watchCoreCnt\"},{\"name\":\"homepageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession homepageCnt\"},{\"name\":\"siteId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"fron ubisession firstSiteId\"},{\"name\":\"firstSiteId\",\"type\":[\"null\",\"int\"],\"doc\":\"fron ubisession firstSiteId\"},{\"name\":\"cguid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"fron ubisession firstCguid\"},{\"name\":\"cobrand\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession cobrand\"},{\"name\":\"startTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession startTimestamp\"},{\"name\":\"firstMappedUserId\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession firstMappedUserId\"},{\"name\":\"appId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession firstAppId\"},{\"name\":\"absDuration\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absDuration\"},{\"name\":\"grCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession grCnt\"},{\"name\":\"gr1Cnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession gr1Cnt\"},{\"name\":\"myebayCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession myebayCnt\"},{\"name\":\"absStartTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absStartTimestamp\"},{\"name\":\"signinPageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession signinPageCnt\"},{\"name\":\"nonIframeRdtEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession nonIframeRdtEventCnt\"},{\"name\":\"botFlagList\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"int\"}],\"default\":null},{\"name\":\"absEndTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absEndTimestamp\"},{\"name\":\"endTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession endTimestamp\"},{\"name\":\"sojDataDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sojDataDt\"},{\"name\":\"sessionId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession sessionId\"},{\"name\":\"sessionSkey\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionSkey\"},{\"name\":\"sessionStartDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionStartDt\"},{\"name\":\"firstSessionStartDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession firstSessionStartDt\"},{\"name\":\"sessionEndDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionEndDt\"},{\"name\":\"absEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession absEventCnt\"},{\"name\":\"singleClickSessionFlag\",\"type\":[\"null\",\"boolean\"],\"doc\":\"from ubisession singleClickSessionFlag\"},{\"name\":\"asqCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession asqCnt\"},{\"name\":\"atcCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession atcCnt\"},{\"name\":\"atlCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession atlCnt\"},{\"name\":\"boCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession boCnt\"},{\"name\":\"srpCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession srpCnt\"},{\"name\":\"servEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession servEventCnt\"},{\"name\":\"searchViewPageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession searchViewPageCnt\"},{\"name\":\"browserFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession browserFamily\"},{\"name\":\"browserVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession browserVersion\"},{\"name\":\"city\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession city\"},{\"name\":\"region\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession region\"},{\"name\":\"country\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession country\"},{\"name\":\"continent\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession continent\"},{\"name\":\"deviceClass\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession deviceClass\"},{\"name\":\"deviceFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession deviceFamily\"},{\"name\":\"endResourceId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession endResourceId\"},{\"name\":\"startResourceId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession startResourceId\"},{\"name\":\"isReturningVisitor\",\"type\":[\"null\",\"boolean\"],\"doc\":\"from ubisession isReturningVisitor\"},{\"name\":\"lineSpeed\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession lineSpeed\"},{\"name\":\"osFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession osFamily\"},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession osVersion\"},{\"name\":\"pulsarEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession pulsarEventCnt\"},{\"name\":\"sojEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession sojEventCnt\"},{\"name\":\"streamId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession streamId\"},{\"name\":\"viewEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession viewct\"},{\"name\":\"referer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"map from rf\"},{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"doc\":\"map from p\"},{\"name\":\"buserId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession buserId\"},{\"name\":\"oldsessionskey\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionSkey\"},{\"name\":\"isOpen\",\"type\":[\"null\",\"boolean\"],\"doc\":\"to identify open or end\"}]}");
+  private static final long serialVersionUID = -4725636657502306939L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SojSession\",\"namespace\":\"com.ebay.dap.tdq.common.avro\",\"fields\":[{\"name\":\"rheosHeader\",\"type\":{\"type\":\"record\",\"name\":\"RheosHeader\",\"fields\":[{\"name\":\"eventCreateTimestamp\",\"type\":\"long\"},{\"name\":\"eventSentTimestamp\",\"type\":\"long\"},{\"name\":\"schemaId\",\"type\":\"int\"},{\"name\":\"eventId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"producerId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]},\"doc\":\"Rheos header\"},{\"name\":\"guid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession guid\"},{\"name\":\"sessionReferrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession sessionReferrer\"},{\"name\":\"siteFlags\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession siteFlags\"},{\"name\":\"attrFlags\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession attrFlags\"},{\"name\":\"version\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession version\"},{\"name\":\"botFlags\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession botFlags\"},{\"name\":\"ipv4\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession ip for  jetstream\"},{\"name\":\"userAgent\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession userAgent\"},{\"name\":\"findingFlags\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession findingFlags\"},{\"name\":\"startPageId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession startPageId\"},{\"name\":\"endPageId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession endPageId\"},{\"name\":\"botFlag\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession botFlag\"},{\"name\":\"durationSec\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession durationSec\"},{\"name\":\"userId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession firstUserId\"},{\"name\":\"eventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession eventCnt\"},{\"name\":\"trafficSrcId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession trafficSrcId\"},{\"name\":\"viCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession viCoreCnt\"},{\"name\":\"bidCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession bidCoreCnt\"},{\"name\":\"binCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession binCoreCnt\"},{\"name\":\"watchCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession watchCoreCnt\"},{\"name\":\"homepageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession homepageCnt\"},{\"name\":\"siteId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"fron ubisession firstSiteId\"},{\"name\":\"firstSiteId\",\"type\":[\"null\",\"int\"],\"doc\":\"fron ubisession firstSiteId\"},{\"name\":\"cguid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"fron ubisession firstCguid\"},{\"name\":\"cobrand\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession cobrand\"},{\"name\":\"startTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession startTimestamp\"},{\"name\":\"firstMappedUserId\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession firstMappedUserId\"},{\"name\":\"appId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession firstAppId\"},{\"name\":\"absDuration\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absDuration\"},{\"name\":\"grCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession grCnt\"},{\"name\":\"gr1Cnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession gr1Cnt\"},{\"name\":\"myebayCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession myebayCnt\"},{\"name\":\"absStartTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absStartTimestamp\"},{\"name\":\"signinPageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession signinPageCnt\"},{\"name\":\"nonIframeRdtEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession nonIframeRdtEventCnt\"},{\"name\":\"botFlagList\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"int\"}],\"default\":null},{\"name\":\"absEndTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession absEndTimestamp\"},{\"name\":\"endTimestamp\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession endTimestamp\"},{\"name\":\"sojDataDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sojDataDt\"},{\"name\":\"sessionId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession sessionId\"},{\"name\":\"sessionSkey\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionSkey\"},{\"name\":\"sessionStartDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionStartDt\"},{\"name\":\"firstSessionStartDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession firstSessionStartDt\"},{\"name\":\"sessionEndDt\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionEndDt\"},{\"name\":\"absEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession absEventCnt\"},{\"name\":\"singleClickSessionFlag\",\"type\":[\"null\",\"boolean\"],\"doc\":\"from ubisession singleClickSessionFlag\"},{\"name\":\"asqCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession asqCnt\"},{\"name\":\"atcCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession atcCnt\"},{\"name\":\"atlCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession atlCnt\"},{\"name\":\"boCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession boCnt\"},{\"name\":\"srpCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession srpCnt\"},{\"name\":\"servEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession servEventCnt\"},{\"name\":\"searchViewPageCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession searchViewPageCnt\"},{\"name\":\"browserFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession browserFamily\"},{\"name\":\"browserVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession browserVersion\"},{\"name\":\"city\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession city\"},{\"name\":\"region\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession region\"},{\"name\":\"country\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession country\"},{\"name\":\"continent\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession continent\"},{\"name\":\"deviceClass\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession deviceClass\"},{\"name\":\"deviceFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession deviceFamily\"},{\"name\":\"endResourceId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession endResourceId\"},{\"name\":\"startResourceId\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession startResourceId\"},{\"name\":\"isReturningVisitor\",\"type\":[\"null\",\"boolean\"],\"doc\":\"from ubisession isReturningVisitor\"},{\"name\":\"lineSpeed\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession lineSpeed\"},{\"name\":\"osFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession osFamily\"},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession osVersion\"},{\"name\":\"pulsarEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession pulsarEventCnt\"},{\"name\":\"sojEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession sojEventCnt\"},{\"name\":\"streamId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession streamId\"},{\"name\":\"viewEventCnt\",\"type\":[\"null\",\"int\"],\"doc\":\"from ubisession viewct\"},{\"name\":\"referer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"map from rf\"},{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"doc\":\"map from p\"},{\"name\":\"buserId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"from ubisession buserId\"},{\"name\":\"oldsessionskey\",\"type\":[\"null\",\"long\"],\"doc\":\"from ubisession sessionSkey\"},{\"name\":\"isOpen\",\"type\":[\"null\",\"boolean\"],\"doc\":\"to identify open or end\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -72,7 +72,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
   }
 
   /** Rheos header */
-   private com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader;
+   private com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader;
   /** from ubisession guid */
    private java.lang.String guid;
   /** from ubisession sessionReferrer */
@@ -312,7 +312,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * @param oldsessionskey from ubisession sessionSkey
    * @param isOpen to identify open or end
    */
-  public SojSession(com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader, java.lang.String guid, java.lang.String sessionReferrer, java.lang.Long siteFlags, java.lang.Integer attrFlags, java.lang.Integer version, java.lang.Integer botFlags, java.lang.String ipv4, java.lang.String userAgent, java.lang.Long findingFlags, java.lang.Integer startPageId, java.lang.Integer endPageId, java.lang.Integer botFlag, java.lang.Integer durationSec, java.lang.String userId, java.lang.Integer eventCnt, java.lang.Integer trafficSrcId, java.lang.Integer viCnt, java.lang.Integer bidCnt, java.lang.Integer binCnt, java.lang.Integer watchCnt, java.lang.Integer homepageCnt, java.lang.String siteId, java.lang.Integer firstSiteId, java.lang.String cguid, java.lang.Integer cobrand, java.lang.Long startTimestamp, java.lang.Long firstMappedUserId, java.lang.Integer appId, java.lang.Long absDuration, java.lang.Integer grCnt, java.lang.Integer gr1Cnt, java.lang.Integer myebayCnt, java.lang.Long absStartTimestamp, java.lang.Integer signinPageCnt, java.lang.Integer nonIframeRdtEventCnt, java.util.List<java.lang.Integer> botFlagList, java.lang.Long absEndTimestamp, java.lang.Long endTimestamp, java.lang.Long sojDataDt, java.lang.String sessionId, java.lang.Long sessionSkey, java.lang.Long sessionStartDt, java.lang.Long firstSessionStartDt, java.lang.Long sessionEndDt, java.lang.Integer absEventCnt, java.lang.Boolean singleClickSessionFlag, java.lang.Integer asqCnt, java.lang.Integer atcCnt, java.lang.Integer atlCnt, java.lang.Integer boCnt, java.lang.Integer srpCnt, java.lang.Integer servEventCnt, java.lang.Integer searchViewPageCnt, java.lang.String browserFamily, java.lang.String browserVersion, java.lang.String city, java.lang.String region, java.lang.String country, java.lang.String continent, java.lang.String deviceClass, java.lang.String deviceFamily, java.lang.Integer endResourceId, java.lang.Integer startResourceId, java.lang.Boolean isReturningVisitor, java.lang.String lineSpeed, java.lang.String osFamily, java.lang.String osVersion, java.lang.Integer pulsarEventCnt, java.lang.Integer sojEventCnt, java.lang.String streamId, java.lang.Integer viewEventCnt, java.lang.String referer, java.lang.Integer pageId, java.lang.String buserId, java.lang.Long oldsessionskey, java.lang.Boolean isOpen) {
+  public SojSession(com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader, java.lang.String guid, java.lang.String sessionReferrer, java.lang.Long siteFlags, java.lang.Integer attrFlags, java.lang.Integer version, java.lang.Integer botFlags, java.lang.String ipv4, java.lang.String userAgent, java.lang.Long findingFlags, java.lang.Integer startPageId, java.lang.Integer endPageId, java.lang.Integer botFlag, java.lang.Integer durationSec, java.lang.String userId, java.lang.Integer eventCnt, java.lang.Integer trafficSrcId, java.lang.Integer viCnt, java.lang.Integer bidCnt, java.lang.Integer binCnt, java.lang.Integer watchCnt, java.lang.Integer homepageCnt, java.lang.String siteId, java.lang.Integer firstSiteId, java.lang.String cguid, java.lang.Integer cobrand, java.lang.Long startTimestamp, java.lang.Long firstMappedUserId, java.lang.Integer appId, java.lang.Long absDuration, java.lang.Integer grCnt, java.lang.Integer gr1Cnt, java.lang.Integer myebayCnt, java.lang.Long absStartTimestamp, java.lang.Integer signinPageCnt, java.lang.Integer nonIframeRdtEventCnt, java.util.List<java.lang.Integer> botFlagList, java.lang.Long absEndTimestamp, java.lang.Long endTimestamp, java.lang.Long sojDataDt, java.lang.String sessionId, java.lang.Long sessionSkey, java.lang.Long sessionStartDt, java.lang.Long firstSessionStartDt, java.lang.Long sessionEndDt, java.lang.Integer absEventCnt, java.lang.Boolean singleClickSessionFlag, java.lang.Integer asqCnt, java.lang.Integer atcCnt, java.lang.Integer atlCnt, java.lang.Integer boCnt, java.lang.Integer srpCnt, java.lang.Integer servEventCnt, java.lang.Integer searchViewPageCnt, java.lang.String browserFamily, java.lang.String browserVersion, java.lang.String city, java.lang.String region, java.lang.String country, java.lang.String continent, java.lang.String deviceClass, java.lang.String deviceFamily, java.lang.Integer endResourceId, java.lang.Integer startResourceId, java.lang.Boolean isReturningVisitor, java.lang.String lineSpeed, java.lang.String osFamily, java.lang.String osVersion, java.lang.Integer pulsarEventCnt, java.lang.Integer sojEventCnt, java.lang.String streamId, java.lang.Integer viewEventCnt, java.lang.String referer, java.lang.Integer pageId, java.lang.String buserId, java.lang.Long oldsessionskey, java.lang.Boolean isOpen) {
     this.rheosHeader = rheosHeader;
     this.guid = guid;
     this.sessionReferrer = sessionReferrer;
@@ -482,7 +482,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: rheosHeader = (com.ebay.dap.tdq.common.model.avro.RheosHeader)value$; break;
+    case 0: rheosHeader = (com.ebay.dap.tdq.common.avro.RheosHeader)value$; break;
     case 1: guid = value$ != null ? value$.toString() : null; break;
     case 2: sessionReferrer = value$ != null ? value$.toString() : null; break;
     case 3: siteFlags = (java.lang.Long)value$; break;
@@ -567,7 +567,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * Gets the value of the 'rheosHeader' field.
    * @return Rheos header
    */
-  public com.ebay.dap.tdq.common.model.avro.RheosHeader getRheosHeader() {
+  public com.ebay.dap.tdq.common.avro.RheosHeader getRheosHeader() {
     return rheosHeader;
   }
 
@@ -577,7 +577,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * Rheos header
    * @param value the value to set.
    */
-  public void setRheosHeader(com.ebay.dap.tdq.common.model.avro.RheosHeader value) {
+  public void setRheosHeader(com.ebay.dap.tdq.common.avro.RheosHeader value) {
     this.rheosHeader = value;
   }
 
@@ -1952,8 +1952,8 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * Creates a new SojSession RecordBuilder.
    * @return A new SojSession RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.model.avro.SojSession.Builder newBuilder() {
-    return new com.ebay.dap.tdq.common.model.avro.SojSession.Builder();
+  public static com.ebay.dap.tdq.common.avro.SojSession.Builder newBuilder() {
+    return new com.ebay.dap.tdq.common.avro.SojSession.Builder();
   }
 
   /**
@@ -1961,11 +1961,11 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * @param other The existing builder to copy.
    * @return A new SojSession RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.model.avro.SojSession.Builder newBuilder(com.ebay.dap.tdq.common.model.avro.SojSession.Builder other) {
+  public static com.ebay.dap.tdq.common.avro.SojSession.Builder newBuilder(com.ebay.dap.tdq.common.avro.SojSession.Builder other) {
     if (other == null) {
-      return new com.ebay.dap.tdq.common.model.avro.SojSession.Builder();
+      return new com.ebay.dap.tdq.common.avro.SojSession.Builder();
     } else {
-      return new com.ebay.dap.tdq.common.model.avro.SojSession.Builder(other);
+      return new com.ebay.dap.tdq.common.avro.SojSession.Builder(other);
     }
   }
 
@@ -1974,11 +1974,11 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
    * @param other The existing instance to copy.
    * @return A new SojSession RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.model.avro.SojSession.Builder newBuilder(com.ebay.dap.tdq.common.model.avro.SojSession other) {
+  public static com.ebay.dap.tdq.common.avro.SojSession.Builder newBuilder(com.ebay.dap.tdq.common.avro.SojSession other) {
     if (other == null) {
-      return new com.ebay.dap.tdq.common.model.avro.SojSession.Builder();
+      return new com.ebay.dap.tdq.common.avro.SojSession.Builder();
     } else {
-      return new com.ebay.dap.tdq.common.model.avro.SojSession.Builder(other);
+      return new com.ebay.dap.tdq.common.avro.SojSession.Builder(other);
     }
   }
 
@@ -1990,8 +1990,8 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
     implements org.apache.avro.data.RecordBuilder<SojSession> {
 
     /** Rheos header */
-    private com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader;
-    private com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder rheosHeaderBuilder;
+    private com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader;
+    private com.ebay.dap.tdq.common.avro.RheosHeader.Builder rheosHeaderBuilder;
     /** from ubisession guid */
     private java.lang.String guid;
     /** from ubisession sessionReferrer */
@@ -2153,14 +2153,14 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.ebay.dap.tdq.common.model.avro.SojSession.Builder other) {
+    private Builder(com.ebay.dap.tdq.common.avro.SojSession.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.rheosHeader)) {
         this.rheosHeader = data().deepCopy(fields()[0].schema(), other.rheosHeader);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (other.hasRheosHeaderBuilder()) {
-        this.rheosHeaderBuilder = com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder(other.getRheosHeaderBuilder());
+        this.rheosHeaderBuilder = com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder(other.getRheosHeaderBuilder());
       }
       if (isValidValue(fields()[1], other.guid)) {
         this.guid = data().deepCopy(fields()[1].schema(), other.guid);
@@ -2472,7 +2472,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
      * Creates a Builder by copying an existing SojSession instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.ebay.dap.tdq.common.model.avro.SojSession other) {
+    private Builder(com.ebay.dap.tdq.common.avro.SojSession other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.rheosHeader)) {
         this.rheosHeader = data().deepCopy(fields()[0].schema(), other.rheosHeader);
@@ -2790,7 +2790,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * Rheos header
       * @return The value.
       */
-    public com.ebay.dap.tdq.common.model.avro.RheosHeader getRheosHeader() {
+    public com.ebay.dap.tdq.common.avro.RheosHeader getRheosHeader() {
       return rheosHeader;
     }
 
@@ -2801,7 +2801,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'rheosHeader'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setRheosHeader(com.ebay.dap.tdq.common.model.avro.RheosHeader value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setRheosHeader(com.ebay.dap.tdq.common.avro.RheosHeader value) {
       validate(fields()[0], value);
       this.rheosHeaderBuilder = null;
       this.rheosHeader = value;
@@ -2823,12 +2823,12 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
      * Rheos header
      * @return This builder.
      */
-    public com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder getRheosHeaderBuilder() {
+    public com.ebay.dap.tdq.common.avro.RheosHeader.Builder getRheosHeaderBuilder() {
       if (rheosHeaderBuilder == null) {
         if (hasRheosHeader()) {
-          setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder(rheosHeader));
+          setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder(rheosHeader));
         } else {
-          setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder());
+          setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder());
         }
       }
       return rheosHeaderBuilder;
@@ -2841,7 +2841,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
      * @return This builder.
      */
 
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.Builder value) {
       clearRheosHeader();
       rheosHeaderBuilder = value;
       return this;
@@ -2861,7 +2861,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * Rheos header
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearRheosHeader() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearRheosHeader() {
       rheosHeader = null;
       rheosHeaderBuilder = null;
       fieldSetFlags()[0] = false;
@@ -2884,7 +2884,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'guid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setGuid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setGuid(java.lang.String value) {
       validate(fields()[1], value);
       this.guid = value;
       fieldSetFlags()[1] = true;
@@ -2906,7 +2906,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession guid
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearGuid() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearGuid() {
       guid = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -2928,7 +2928,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sessionReferrer'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSessionReferrer(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSessionReferrer(java.lang.String value) {
       validate(fields()[2], value);
       this.sessionReferrer = value;
       fieldSetFlags()[2] = true;
@@ -2950,7 +2950,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionReferrer
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSessionReferrer() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSessionReferrer() {
       sessionReferrer = null;
       fieldSetFlags()[2] = false;
       return this;
@@ -2972,7 +2972,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'siteFlags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSiteFlags(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSiteFlags(java.lang.Long value) {
       validate(fields()[3], value);
       this.siteFlags = value;
       fieldSetFlags()[3] = true;
@@ -2994,7 +2994,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession siteFlags
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSiteFlags() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSiteFlags() {
       siteFlags = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -3016,7 +3016,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'attrFlags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAttrFlags(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAttrFlags(java.lang.Integer value) {
       validate(fields()[4], value);
       this.attrFlags = value;
       fieldSetFlags()[4] = true;
@@ -3038,7 +3038,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession attrFlags
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAttrFlags() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAttrFlags() {
       attrFlags = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -3060,7 +3060,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'version'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setVersion(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setVersion(java.lang.Integer value) {
       validate(fields()[5], value);
       this.version = value;
       fieldSetFlags()[5] = true;
@@ -3082,7 +3082,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession version
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearVersion() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearVersion() {
       version = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -3104,7 +3104,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'botFlags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBotFlags(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBotFlags(java.lang.Integer value) {
       validate(fields()[6], value);
       this.botFlags = value;
       fieldSetFlags()[6] = true;
@@ -3126,7 +3126,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession botFlags
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBotFlags() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBotFlags() {
       botFlags = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -3148,7 +3148,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'ipv4'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setIpv4(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setIpv4(java.lang.String value) {
       validate(fields()[7], value);
       this.ipv4 = value;
       fieldSetFlags()[7] = true;
@@ -3170,7 +3170,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession ip for  jetstream
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearIpv4() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearIpv4() {
       ipv4 = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -3192,7 +3192,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'userAgent'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setUserAgent(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setUserAgent(java.lang.String value) {
       validate(fields()[8], value);
       this.userAgent = value;
       fieldSetFlags()[8] = true;
@@ -3214,7 +3214,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession userAgent
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearUserAgent() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearUserAgent() {
       userAgent = null;
       fieldSetFlags()[8] = false;
       return this;
@@ -3236,7 +3236,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'findingFlags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setFindingFlags(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setFindingFlags(java.lang.Long value) {
       validate(fields()[9], value);
       this.findingFlags = value;
       fieldSetFlags()[9] = true;
@@ -3258,7 +3258,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession findingFlags
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearFindingFlags() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearFindingFlags() {
       findingFlags = null;
       fieldSetFlags()[9] = false;
       return this;
@@ -3280,7 +3280,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'startPageId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setStartPageId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setStartPageId(java.lang.Integer value) {
       validate(fields()[10], value);
       this.startPageId = value;
       fieldSetFlags()[10] = true;
@@ -3302,7 +3302,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession startPageId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearStartPageId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearStartPageId() {
       startPageId = null;
       fieldSetFlags()[10] = false;
       return this;
@@ -3324,7 +3324,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'endPageId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setEndPageId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setEndPageId(java.lang.Integer value) {
       validate(fields()[11], value);
       this.endPageId = value;
       fieldSetFlags()[11] = true;
@@ -3346,7 +3346,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession endPageId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearEndPageId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearEndPageId() {
       endPageId = null;
       fieldSetFlags()[11] = false;
       return this;
@@ -3368,7 +3368,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'botFlag'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBotFlag(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBotFlag(java.lang.Integer value) {
       validate(fields()[12], value);
       this.botFlag = value;
       fieldSetFlags()[12] = true;
@@ -3390,7 +3390,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession botFlag
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBotFlag() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBotFlag() {
       botFlag = null;
       fieldSetFlags()[12] = false;
       return this;
@@ -3412,7 +3412,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'durationSec'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setDurationSec(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setDurationSec(java.lang.Integer value) {
       validate(fields()[13], value);
       this.durationSec = value;
       fieldSetFlags()[13] = true;
@@ -3434,7 +3434,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession durationSec
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearDurationSec() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearDurationSec() {
       durationSec = null;
       fieldSetFlags()[13] = false;
       return this;
@@ -3456,7 +3456,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setUserId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setUserId(java.lang.String value) {
       validate(fields()[14], value);
       this.userId = value;
       fieldSetFlags()[14] = true;
@@ -3478,7 +3478,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession firstUserId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearUserId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[14] = false;
       return this;
@@ -3500,7 +3500,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'eventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setEventCnt(java.lang.Integer value) {
       validate(fields()[15], value);
       this.eventCnt = value;
       fieldSetFlags()[15] = true;
@@ -3522,7 +3522,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession eventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearEventCnt() {
       eventCnt = null;
       fieldSetFlags()[15] = false;
       return this;
@@ -3544,7 +3544,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'trafficSrcId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setTrafficSrcId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setTrafficSrcId(java.lang.Integer value) {
       validate(fields()[16], value);
       this.trafficSrcId = value;
       fieldSetFlags()[16] = true;
@@ -3566,7 +3566,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession trafficSrcId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearTrafficSrcId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearTrafficSrcId() {
       trafficSrcId = null;
       fieldSetFlags()[16] = false;
       return this;
@@ -3588,7 +3588,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'viCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setViCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setViCnt(java.lang.Integer value) {
       validate(fields()[17], value);
       this.viCnt = value;
       fieldSetFlags()[17] = true;
@@ -3610,7 +3610,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession viCoreCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearViCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearViCnt() {
       viCnt = null;
       fieldSetFlags()[17] = false;
       return this;
@@ -3632,7 +3632,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'bidCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBidCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBidCnt(java.lang.Integer value) {
       validate(fields()[18], value);
       this.bidCnt = value;
       fieldSetFlags()[18] = true;
@@ -3654,7 +3654,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession bidCoreCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBidCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBidCnt() {
       bidCnt = null;
       fieldSetFlags()[18] = false;
       return this;
@@ -3676,7 +3676,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'binCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBinCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBinCnt(java.lang.Integer value) {
       validate(fields()[19], value);
       this.binCnt = value;
       fieldSetFlags()[19] = true;
@@ -3698,7 +3698,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession binCoreCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBinCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBinCnt() {
       binCnt = null;
       fieldSetFlags()[19] = false;
       return this;
@@ -3720,7 +3720,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'watchCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setWatchCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setWatchCnt(java.lang.Integer value) {
       validate(fields()[20], value);
       this.watchCnt = value;
       fieldSetFlags()[20] = true;
@@ -3742,7 +3742,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession watchCoreCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearWatchCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearWatchCnt() {
       watchCnt = null;
       fieldSetFlags()[20] = false;
       return this;
@@ -3764,7 +3764,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'homepageCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setHomepageCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setHomepageCnt(java.lang.Integer value) {
       validate(fields()[21], value);
       this.homepageCnt = value;
       fieldSetFlags()[21] = true;
@@ -3786,7 +3786,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession homepageCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearHomepageCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearHomepageCnt() {
       homepageCnt = null;
       fieldSetFlags()[21] = false;
       return this;
@@ -3808,7 +3808,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'siteId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSiteId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSiteId(java.lang.String value) {
       validate(fields()[22], value);
       this.siteId = value;
       fieldSetFlags()[22] = true;
@@ -3830,7 +3830,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * fron ubisession firstSiteId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSiteId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSiteId() {
       siteId = null;
       fieldSetFlags()[22] = false;
       return this;
@@ -3852,7 +3852,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'firstSiteId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setFirstSiteId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setFirstSiteId(java.lang.Integer value) {
       validate(fields()[23], value);
       this.firstSiteId = value;
       fieldSetFlags()[23] = true;
@@ -3874,7 +3874,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * fron ubisession firstSiteId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearFirstSiteId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearFirstSiteId() {
       firstSiteId = null;
       fieldSetFlags()[23] = false;
       return this;
@@ -3896,7 +3896,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'cguid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setCguid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setCguid(java.lang.String value) {
       validate(fields()[24], value);
       this.cguid = value;
       fieldSetFlags()[24] = true;
@@ -3918,7 +3918,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * fron ubisession firstCguid
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearCguid() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearCguid() {
       cguid = null;
       fieldSetFlags()[24] = false;
       return this;
@@ -3940,7 +3940,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'cobrand'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setCobrand(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setCobrand(java.lang.Integer value) {
       validate(fields()[25], value);
       this.cobrand = value;
       fieldSetFlags()[25] = true;
@@ -3962,7 +3962,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession cobrand
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearCobrand() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearCobrand() {
       cobrand = null;
       fieldSetFlags()[25] = false;
       return this;
@@ -3984,7 +3984,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'startTimestamp'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setStartTimestamp(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setStartTimestamp(java.lang.Long value) {
       validate(fields()[26], value);
       this.startTimestamp = value;
       fieldSetFlags()[26] = true;
@@ -4006,7 +4006,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession startTimestamp
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearStartTimestamp() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearStartTimestamp() {
       startTimestamp = null;
       fieldSetFlags()[26] = false;
       return this;
@@ -4028,7 +4028,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'firstMappedUserId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setFirstMappedUserId(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setFirstMappedUserId(java.lang.Long value) {
       validate(fields()[27], value);
       this.firstMappedUserId = value;
       fieldSetFlags()[27] = true;
@@ -4050,7 +4050,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession firstMappedUserId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearFirstMappedUserId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearFirstMappedUserId() {
       firstMappedUserId = null;
       fieldSetFlags()[27] = false;
       return this;
@@ -4072,7 +4072,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'appId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAppId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAppId(java.lang.Integer value) {
       validate(fields()[28], value);
       this.appId = value;
       fieldSetFlags()[28] = true;
@@ -4094,7 +4094,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession firstAppId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAppId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAppId() {
       appId = null;
       fieldSetFlags()[28] = false;
       return this;
@@ -4116,7 +4116,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'absDuration'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAbsDuration(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAbsDuration(java.lang.Long value) {
       validate(fields()[29], value);
       this.absDuration = value;
       fieldSetFlags()[29] = true;
@@ -4138,7 +4138,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession absDuration
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAbsDuration() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAbsDuration() {
       absDuration = null;
       fieldSetFlags()[29] = false;
       return this;
@@ -4160,7 +4160,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'grCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setGrCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setGrCnt(java.lang.Integer value) {
       validate(fields()[30], value);
       this.grCnt = value;
       fieldSetFlags()[30] = true;
@@ -4182,7 +4182,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession grCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearGrCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearGrCnt() {
       grCnt = null;
       fieldSetFlags()[30] = false;
       return this;
@@ -4204,7 +4204,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'gr1Cnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setGr1Cnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setGr1Cnt(java.lang.Integer value) {
       validate(fields()[31], value);
       this.gr1Cnt = value;
       fieldSetFlags()[31] = true;
@@ -4226,7 +4226,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession gr1Cnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearGr1Cnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearGr1Cnt() {
       gr1Cnt = null;
       fieldSetFlags()[31] = false;
       return this;
@@ -4248,7 +4248,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'myebayCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setMyebayCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setMyebayCnt(java.lang.Integer value) {
       validate(fields()[32], value);
       this.myebayCnt = value;
       fieldSetFlags()[32] = true;
@@ -4270,7 +4270,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession myebayCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearMyebayCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearMyebayCnt() {
       myebayCnt = null;
       fieldSetFlags()[32] = false;
       return this;
@@ -4292,7 +4292,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'absStartTimestamp'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAbsStartTimestamp(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAbsStartTimestamp(java.lang.Long value) {
       validate(fields()[33], value);
       this.absStartTimestamp = value;
       fieldSetFlags()[33] = true;
@@ -4314,7 +4314,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession absStartTimestamp
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAbsStartTimestamp() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAbsStartTimestamp() {
       absStartTimestamp = null;
       fieldSetFlags()[33] = false;
       return this;
@@ -4336,7 +4336,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'signinPageCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSigninPageCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSigninPageCnt(java.lang.Integer value) {
       validate(fields()[34], value);
       this.signinPageCnt = value;
       fieldSetFlags()[34] = true;
@@ -4358,7 +4358,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession signinPageCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSigninPageCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSigninPageCnt() {
       signinPageCnt = null;
       fieldSetFlags()[34] = false;
       return this;
@@ -4380,7 +4380,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'nonIframeRdtEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setNonIframeRdtEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setNonIframeRdtEventCnt(java.lang.Integer value) {
       validate(fields()[35], value);
       this.nonIframeRdtEventCnt = value;
       fieldSetFlags()[35] = true;
@@ -4402,7 +4402,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession nonIframeRdtEventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearNonIframeRdtEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearNonIframeRdtEventCnt() {
       nonIframeRdtEventCnt = null;
       fieldSetFlags()[35] = false;
       return this;
@@ -4422,7 +4422,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'botFlagList'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBotFlagList(java.util.List<java.lang.Integer> value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBotFlagList(java.util.List<java.lang.Integer> value) {
       validate(fields()[36], value);
       this.botFlagList = value;
       fieldSetFlags()[36] = true;
@@ -4442,7 +4442,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * Clears the value of the 'botFlagList' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBotFlagList() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBotFlagList() {
       botFlagList = null;
       fieldSetFlags()[36] = false;
       return this;
@@ -4464,7 +4464,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'absEndTimestamp'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAbsEndTimestamp(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAbsEndTimestamp(java.lang.Long value) {
       validate(fields()[37], value);
       this.absEndTimestamp = value;
       fieldSetFlags()[37] = true;
@@ -4486,7 +4486,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession absEndTimestamp
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAbsEndTimestamp() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAbsEndTimestamp() {
       absEndTimestamp = null;
       fieldSetFlags()[37] = false;
       return this;
@@ -4508,7 +4508,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'endTimestamp'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setEndTimestamp(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setEndTimestamp(java.lang.Long value) {
       validate(fields()[38], value);
       this.endTimestamp = value;
       fieldSetFlags()[38] = true;
@@ -4530,7 +4530,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession endTimestamp
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearEndTimestamp() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearEndTimestamp() {
       endTimestamp = null;
       fieldSetFlags()[38] = false;
       return this;
@@ -4552,7 +4552,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sojDataDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSojDataDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSojDataDt(java.lang.Long value) {
       validate(fields()[39], value);
       this.sojDataDt = value;
       fieldSetFlags()[39] = true;
@@ -4574,7 +4574,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sojDataDt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSojDataDt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSojDataDt() {
       sojDataDt = null;
       fieldSetFlags()[39] = false;
       return this;
@@ -4596,7 +4596,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sessionId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSessionId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSessionId(java.lang.String value) {
       validate(fields()[40], value);
       this.sessionId = value;
       fieldSetFlags()[40] = true;
@@ -4618,7 +4618,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSessionId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSessionId() {
       sessionId = null;
       fieldSetFlags()[40] = false;
       return this;
@@ -4640,7 +4640,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sessionSkey'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSessionSkey(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSessionSkey(java.lang.Long value) {
       validate(fields()[41], value);
       this.sessionSkey = value;
       fieldSetFlags()[41] = true;
@@ -4662,7 +4662,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionSkey
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSessionSkey() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSessionSkey() {
       sessionSkey = null;
       fieldSetFlags()[41] = false;
       return this;
@@ -4684,7 +4684,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sessionStartDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSessionStartDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSessionStartDt(java.lang.Long value) {
       validate(fields()[42], value);
       this.sessionStartDt = value;
       fieldSetFlags()[42] = true;
@@ -4706,7 +4706,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionStartDt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSessionStartDt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSessionStartDt() {
       sessionStartDt = null;
       fieldSetFlags()[42] = false;
       return this;
@@ -4728,7 +4728,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'firstSessionStartDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setFirstSessionStartDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setFirstSessionStartDt(java.lang.Long value) {
       validate(fields()[43], value);
       this.firstSessionStartDt = value;
       fieldSetFlags()[43] = true;
@@ -4750,7 +4750,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession firstSessionStartDt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearFirstSessionStartDt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearFirstSessionStartDt() {
       firstSessionStartDt = null;
       fieldSetFlags()[43] = false;
       return this;
@@ -4772,7 +4772,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sessionEndDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSessionEndDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSessionEndDt(java.lang.Long value) {
       validate(fields()[44], value);
       this.sessionEndDt = value;
       fieldSetFlags()[44] = true;
@@ -4794,7 +4794,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionEndDt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSessionEndDt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSessionEndDt() {
       sessionEndDt = null;
       fieldSetFlags()[44] = false;
       return this;
@@ -4816,7 +4816,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'absEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAbsEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAbsEventCnt(java.lang.Integer value) {
       validate(fields()[45], value);
       this.absEventCnt = value;
       fieldSetFlags()[45] = true;
@@ -4838,7 +4838,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession absEventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAbsEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAbsEventCnt() {
       absEventCnt = null;
       fieldSetFlags()[45] = false;
       return this;
@@ -4860,7 +4860,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'singleClickSessionFlag'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSingleClickSessionFlag(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSingleClickSessionFlag(java.lang.Boolean value) {
       validate(fields()[46], value);
       this.singleClickSessionFlag = value;
       fieldSetFlags()[46] = true;
@@ -4882,7 +4882,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession singleClickSessionFlag
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSingleClickSessionFlag() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSingleClickSessionFlag() {
       singleClickSessionFlag = null;
       fieldSetFlags()[46] = false;
       return this;
@@ -4904,7 +4904,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'asqCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAsqCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAsqCnt(java.lang.Integer value) {
       validate(fields()[47], value);
       this.asqCnt = value;
       fieldSetFlags()[47] = true;
@@ -4926,7 +4926,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession asqCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAsqCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAsqCnt() {
       asqCnt = null;
       fieldSetFlags()[47] = false;
       return this;
@@ -4948,7 +4948,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'atcCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAtcCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAtcCnt(java.lang.Integer value) {
       validate(fields()[48], value);
       this.atcCnt = value;
       fieldSetFlags()[48] = true;
@@ -4970,7 +4970,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession atcCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAtcCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAtcCnt() {
       atcCnt = null;
       fieldSetFlags()[48] = false;
       return this;
@@ -4992,7 +4992,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'atlCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setAtlCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setAtlCnt(java.lang.Integer value) {
       validate(fields()[49], value);
       this.atlCnt = value;
       fieldSetFlags()[49] = true;
@@ -5014,7 +5014,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession atlCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearAtlCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearAtlCnt() {
       atlCnt = null;
       fieldSetFlags()[49] = false;
       return this;
@@ -5036,7 +5036,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'boCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBoCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBoCnt(java.lang.Integer value) {
       validate(fields()[50], value);
       this.boCnt = value;
       fieldSetFlags()[50] = true;
@@ -5058,7 +5058,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession boCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBoCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBoCnt() {
       boCnt = null;
       fieldSetFlags()[50] = false;
       return this;
@@ -5080,7 +5080,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'srpCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSrpCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSrpCnt(java.lang.Integer value) {
       validate(fields()[51], value);
       this.srpCnt = value;
       fieldSetFlags()[51] = true;
@@ -5102,7 +5102,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession srpCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSrpCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSrpCnt() {
       srpCnt = null;
       fieldSetFlags()[51] = false;
       return this;
@@ -5124,7 +5124,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'servEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setServEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setServEventCnt(java.lang.Integer value) {
       validate(fields()[52], value);
       this.servEventCnt = value;
       fieldSetFlags()[52] = true;
@@ -5146,7 +5146,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession servEventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearServEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearServEventCnt() {
       servEventCnt = null;
       fieldSetFlags()[52] = false;
       return this;
@@ -5168,7 +5168,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'searchViewPageCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSearchViewPageCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSearchViewPageCnt(java.lang.Integer value) {
       validate(fields()[53], value);
       this.searchViewPageCnt = value;
       fieldSetFlags()[53] = true;
@@ -5190,7 +5190,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession searchViewPageCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSearchViewPageCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSearchViewPageCnt() {
       searchViewPageCnt = null;
       fieldSetFlags()[53] = false;
       return this;
@@ -5212,7 +5212,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'browserFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBrowserFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBrowserFamily(java.lang.String value) {
       validate(fields()[54], value);
       this.browserFamily = value;
       fieldSetFlags()[54] = true;
@@ -5234,7 +5234,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession browserFamily
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBrowserFamily() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBrowserFamily() {
       browserFamily = null;
       fieldSetFlags()[54] = false;
       return this;
@@ -5256,7 +5256,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'browserVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBrowserVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBrowserVersion(java.lang.String value) {
       validate(fields()[55], value);
       this.browserVersion = value;
       fieldSetFlags()[55] = true;
@@ -5278,7 +5278,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession browserVersion
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBrowserVersion() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBrowserVersion() {
       browserVersion = null;
       fieldSetFlags()[55] = false;
       return this;
@@ -5300,7 +5300,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'city'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setCity(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setCity(java.lang.String value) {
       validate(fields()[56], value);
       this.city = value;
       fieldSetFlags()[56] = true;
@@ -5322,7 +5322,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession city
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearCity() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearCity() {
       city = null;
       fieldSetFlags()[56] = false;
       return this;
@@ -5344,7 +5344,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'region'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setRegion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setRegion(java.lang.String value) {
       validate(fields()[57], value);
       this.region = value;
       fieldSetFlags()[57] = true;
@@ -5366,7 +5366,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession region
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearRegion() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearRegion() {
       region = null;
       fieldSetFlags()[57] = false;
       return this;
@@ -5388,7 +5388,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'country'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setCountry(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setCountry(java.lang.String value) {
       validate(fields()[58], value);
       this.country = value;
       fieldSetFlags()[58] = true;
@@ -5410,7 +5410,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession country
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearCountry() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearCountry() {
       country = null;
       fieldSetFlags()[58] = false;
       return this;
@@ -5432,7 +5432,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'continent'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setContinent(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setContinent(java.lang.String value) {
       validate(fields()[59], value);
       this.continent = value;
       fieldSetFlags()[59] = true;
@@ -5454,7 +5454,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession continent
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearContinent() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearContinent() {
       continent = null;
       fieldSetFlags()[59] = false;
       return this;
@@ -5476,7 +5476,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'deviceClass'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setDeviceClass(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setDeviceClass(java.lang.String value) {
       validate(fields()[60], value);
       this.deviceClass = value;
       fieldSetFlags()[60] = true;
@@ -5498,7 +5498,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession deviceClass
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearDeviceClass() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearDeviceClass() {
       deviceClass = null;
       fieldSetFlags()[60] = false;
       return this;
@@ -5520,7 +5520,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'deviceFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setDeviceFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setDeviceFamily(java.lang.String value) {
       validate(fields()[61], value);
       this.deviceFamily = value;
       fieldSetFlags()[61] = true;
@@ -5542,7 +5542,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession deviceFamily
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearDeviceFamily() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearDeviceFamily() {
       deviceFamily = null;
       fieldSetFlags()[61] = false;
       return this;
@@ -5564,7 +5564,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'endResourceId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setEndResourceId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setEndResourceId(java.lang.Integer value) {
       validate(fields()[62], value);
       this.endResourceId = value;
       fieldSetFlags()[62] = true;
@@ -5586,7 +5586,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession endResourceId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearEndResourceId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearEndResourceId() {
       endResourceId = null;
       fieldSetFlags()[62] = false;
       return this;
@@ -5608,7 +5608,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'startResourceId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setStartResourceId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setStartResourceId(java.lang.Integer value) {
       validate(fields()[63], value);
       this.startResourceId = value;
       fieldSetFlags()[63] = true;
@@ -5630,7 +5630,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession startResourceId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearStartResourceId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearStartResourceId() {
       startResourceId = null;
       fieldSetFlags()[63] = false;
       return this;
@@ -5652,7 +5652,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'isReturningVisitor'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setIsReturningVisitor(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setIsReturningVisitor(java.lang.Boolean value) {
       validate(fields()[64], value);
       this.isReturningVisitor = value;
       fieldSetFlags()[64] = true;
@@ -5674,7 +5674,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession isReturningVisitor
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearIsReturningVisitor() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearIsReturningVisitor() {
       isReturningVisitor = null;
       fieldSetFlags()[64] = false;
       return this;
@@ -5696,7 +5696,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'lineSpeed'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setLineSpeed(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setLineSpeed(java.lang.String value) {
       validate(fields()[65], value);
       this.lineSpeed = value;
       fieldSetFlags()[65] = true;
@@ -5718,7 +5718,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession lineSpeed
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearLineSpeed() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearLineSpeed() {
       lineSpeed = null;
       fieldSetFlags()[65] = false;
       return this;
@@ -5740,7 +5740,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'osFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setOsFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setOsFamily(java.lang.String value) {
       validate(fields()[66], value);
       this.osFamily = value;
       fieldSetFlags()[66] = true;
@@ -5762,7 +5762,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession osFamily
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearOsFamily() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearOsFamily() {
       osFamily = null;
       fieldSetFlags()[66] = false;
       return this;
@@ -5784,7 +5784,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'osVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setOsVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setOsVersion(java.lang.String value) {
       validate(fields()[67], value);
       this.osVersion = value;
       fieldSetFlags()[67] = true;
@@ -5806,7 +5806,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession osVersion
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearOsVersion() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearOsVersion() {
       osVersion = null;
       fieldSetFlags()[67] = false;
       return this;
@@ -5828,7 +5828,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'pulsarEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setPulsarEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setPulsarEventCnt(java.lang.Integer value) {
       validate(fields()[68], value);
       this.pulsarEventCnt = value;
       fieldSetFlags()[68] = true;
@@ -5850,7 +5850,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession pulsarEventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearPulsarEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearPulsarEventCnt() {
       pulsarEventCnt = null;
       fieldSetFlags()[68] = false;
       return this;
@@ -5872,7 +5872,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'sojEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setSojEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setSojEventCnt(java.lang.Integer value) {
       validate(fields()[69], value);
       this.sojEventCnt = value;
       fieldSetFlags()[69] = true;
@@ -5894,7 +5894,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sojEventCnt
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearSojEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearSojEventCnt() {
       sojEventCnt = null;
       fieldSetFlags()[69] = false;
       return this;
@@ -5916,7 +5916,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'streamId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setStreamId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setStreamId(java.lang.String value) {
       validate(fields()[70], value);
       this.streamId = value;
       fieldSetFlags()[70] = true;
@@ -5938,7 +5938,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession streamId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearStreamId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearStreamId() {
       streamId = null;
       fieldSetFlags()[70] = false;
       return this;
@@ -5960,7 +5960,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'viewEventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setViewEventCnt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setViewEventCnt(java.lang.Integer value) {
       validate(fields()[71], value);
       this.viewEventCnt = value;
       fieldSetFlags()[71] = true;
@@ -5982,7 +5982,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession viewct
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearViewEventCnt() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearViewEventCnt() {
       viewEventCnt = null;
       fieldSetFlags()[71] = false;
       return this;
@@ -6004,7 +6004,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'referer'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setReferer(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setReferer(java.lang.String value) {
       validate(fields()[72], value);
       this.referer = value;
       fieldSetFlags()[72] = true;
@@ -6026,7 +6026,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * map from rf
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearReferer() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearReferer() {
       referer = null;
       fieldSetFlags()[72] = false;
       return this;
@@ -6048,7 +6048,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'pageId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setPageId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setPageId(java.lang.Integer value) {
       validate(fields()[73], value);
       this.pageId = value;
       fieldSetFlags()[73] = true;
@@ -6070,7 +6070,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * map from p
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearPageId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearPageId() {
       pageId = null;
       fieldSetFlags()[73] = false;
       return this;
@@ -6092,7 +6092,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'buserId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setBuserId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setBuserId(java.lang.String value) {
       validate(fields()[74], value);
       this.buserId = value;
       fieldSetFlags()[74] = true;
@@ -6114,7 +6114,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession buserId
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearBuserId() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearBuserId() {
       buserId = null;
       fieldSetFlags()[74] = false;
       return this;
@@ -6136,7 +6136,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'oldsessionskey'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setOldsessionskey(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setOldsessionskey(java.lang.Long value) {
       validate(fields()[75], value);
       this.oldsessionskey = value;
       fieldSetFlags()[75] = true;
@@ -6158,7 +6158,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * from ubisession sessionSkey
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearOldsessionskey() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearOldsessionskey() {
       oldsessionskey = null;
       fieldSetFlags()[75] = false;
       return this;
@@ -6180,7 +6180,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * @param value The value of 'isOpen'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder setIsOpen(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder setIsOpen(java.lang.Boolean value) {
       validate(fields()[76], value);
       this.isOpen = value;
       fieldSetFlags()[76] = true;
@@ -6202,7 +6202,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
       * to identify open or end
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.model.avro.SojSession.Builder clearIsOpen() {
+    public com.ebay.dap.tdq.common.avro.SojSession.Builder clearIsOpen() {
       isOpen = null;
       fieldSetFlags()[76] = false;
       return this;
@@ -6221,7 +6221,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
             throw e;
           }
         } else {
-          record.rheosHeader = fieldSetFlags()[0] ? this.rheosHeader : (com.ebay.dap.tdq.common.model.avro.RheosHeader) defaultValue(fields()[0]);
+          record.rheosHeader = fieldSetFlags()[0] ? this.rheosHeader : (com.ebay.dap.tdq.common.avro.RheosHeader) defaultValue(fields()[0]);
         }
         record.guid = fieldSetFlags()[1] ? this.guid : (java.lang.String) defaultValue(fields()[1]);
         record.sessionReferrer = fieldSetFlags()[2] ? this.sessionReferrer : (java.lang.String) defaultValue(fields()[2]);
@@ -6960,7 +6960,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
       if (this.rheosHeader == null) {
-        this.rheosHeader = new com.ebay.dap.tdq.common.model.avro.RheosHeader();
+        this.rheosHeader = new com.ebay.dap.tdq.common.avro.RheosHeader();
       }
       this.rheosHeader.customDecode(in);
 
@@ -7514,7 +7514,7 @@ public class SojSession extends org.apache.avro.specific.SpecificRecordBase impl
         switch (fieldOrder[i].pos()) {
         case 0:
           if (this.rheosHeader == null) {
-            this.rheosHeader = new com.ebay.dap.tdq.common.model.avro.RheosHeader();
+            this.rheosHeader = new com.ebay.dap.tdq.common.avro.RheosHeader();
           }
           this.rheosHeader.customDecode(in);
           break;

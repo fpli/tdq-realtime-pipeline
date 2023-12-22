@@ -11,7 +11,7 @@ flink:
       idle-source-timeout-in-min: 15
     source:
       kafka:
-        group-id: tdq-prod-rt-metric-collector
+        group-id: tdq-page-metric-prod
         env: prod
         stream: behavior.totalv3
         dc: rno
@@ -19,10 +19,8 @@ flink:
           - behavior.totalv3.sojevent-nonbot-rno
         from-timestamp: latest
     sink:
-      pronto:
-        index-prefix: sandbox.rt.metric
       hdfs:
-        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/
+        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/rt_page_metric/late_event/
 
 rheos:
   registry-url: https://rheos-services.stratus.ebay.com

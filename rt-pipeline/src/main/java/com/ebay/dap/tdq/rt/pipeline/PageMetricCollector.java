@@ -93,6 +93,7 @@ public class PageMetricCollector {
                                                                           .uid(windowOpUid)
                                                                           .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
+        // sink to pronto
         ProntoEnv prontoEnv = flinkEnv.getProntoEnv();
         List<HttpHost> httpHosts = Collections.singletonList(new HttpHost(
                 prontoEnv.getHost(), prontoEnv.getPort(), prontoEnv.getScheme()
@@ -100,7 +101,7 @@ public class PageMetricCollector {
 
         // use an ElasticsearchSink.Builder to create an ElasticsearchSink
         ElasticsearchSink.Builder<PageMetric> esSinkBuilder = new ElasticsearchSink.Builder<>(
-                httpHosts, new PageMetricProntoSinkFunction("my-index")
+                httpHosts, new PageMetricProntoSinkFunction("prod.metric.rt.page")
         );
 
         esSinkBuilder.setRestClientFactory(restClientBuilder -> {
@@ -124,6 +125,7 @@ public class PageMetricCollector {
                     .uid(sinkOpUid)
                     .setParallelism(1);
 
+        // sink late event to hdfs
         StreamingFileSink<SimpleSojEvent> hdfsSink = StreamingFileSink
                 .forBulkFormat(new Path(flinkEnv.getString(FLINK_APP_SINK_HDFS_PATH)),
                         ParquetAvroWritersWithCompression.forReflectRecord(SimpleSojEvent.class))
