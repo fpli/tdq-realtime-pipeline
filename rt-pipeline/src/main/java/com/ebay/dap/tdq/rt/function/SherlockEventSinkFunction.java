@@ -24,7 +24,7 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     private String namespace;
     private String schema;
     private String label;
-    private boolean lateEventFlag;
+    private String lateEventFlag;
 
     /**
      *
@@ -35,7 +35,7 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
      * @param label     use to segment event within same schema, like prod, pre-prod, etc.
      * @param lateEventFlag use to identify late event
      */
-    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label,boolean lateEventFlag) {
+    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label,String lateEventFlag) {
         this.endpoint = endpoint;
         this.applicationId = applicationId;
         this.namespace = namespace;
@@ -80,7 +80,6 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
         attributesBuilder.put("label", label);
         attributesBuilder.put("lateEventFlag", lateEventFlag);
         logRecordBuilder.setAllAttributes(attributesBuilder.build());
-        System.out.println("~~~~~~Metrics Send~~~~~~");
         logRecordBuilder.emit();
     }
 

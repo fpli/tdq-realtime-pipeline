@@ -51,8 +51,8 @@ public class PageMetricCollector {
         final String lateSinkOpName = "Late Event";
         final String lateMapOpName = "Late Event Map";
         final String sherlockSinkOpName = "Sherlock";
-        final boolean lateEventFlag = true;
-        final boolean nonLateEventFlag = false;
+        final String lateEventFlag = "late";
+        final String nonLateEventFlag = "nonLate";
 
         FlinkEnv flinkEnv = new FlinkEnv(args);
 
