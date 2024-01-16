@@ -1,8 +1,8 @@
 flink:
   app:
-    name: TDQ - RT Metric Collector - Prod
+    name: TDQ - RT Metric Collector - Pre-Prod
     checkpoint:
-      data-dir: /tmp/flink/checkpoints/tdq-rt-metric-collector/
+      data-dir: /tmp/flink/checkpoints/tdq-rt-metric-collector-pp/
     parallelism:
       default: 100
       source: 200
@@ -11,7 +11,7 @@ flink:
       idle-source-timeout-in-min: 10
     source:
       kafka:
-        group-id: tdq-prod-rt-metric-collector-sherlock
+        group-id: tdq-pre-prod-rt-metric-collector-sherlock
         env: prod
         stream: behavior.totalv3
         dc: rno
@@ -37,8 +37,8 @@ pronto:
   password: 7s3AG1ZqOwjz9X59UbPNtcJcb1a0OvMYqDSvGigS2ArjctmBy9YkYIGHxLWcCdky
 
 sherlock:
-  application-id: urn:ebay-marketplace-consumerid:6275bd7f-9a18-45e6-b929-f8a73bbce12a
+  application-id: urn:ebay-marketplace-consumerid:e141be0c-bb21-48c3-9106-61f482413a9b
   endpoint: http://ingress.sherlock-service.tess.io/api/signals/v3/events
-  namespace: sojourner-app
+  namespace: tdq
   schema: tdqmetrics
-  label: prod
+  label: pre-prod

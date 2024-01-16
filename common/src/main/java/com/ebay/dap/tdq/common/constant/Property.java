@@ -99,6 +99,6 @@ public class Property {
     public static final String SHERLOCK_ENDPOINT = "sherlock.endpoint";
     public static final String SHERLOCK_NAMESPACE = "sherlock.namespace";
     public static final String SHERLOCK_SCHEMA = "sherlock.schema";
-    public static final String SHERLOCK_NAME = "sherlock.name";
+    public static final String SHERLOCK_LABEL = "sherlock.label";
 
 }

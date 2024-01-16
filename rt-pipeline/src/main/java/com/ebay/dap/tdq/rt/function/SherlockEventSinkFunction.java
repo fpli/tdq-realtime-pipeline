@@ -23,14 +23,25 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     private String applicationId;
     private String namespace;
     private String schema;
-    private String name;
+    private String label;
+    private boolean lateEventFlag;
 
-    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String name) {
+    /**
+     *
+     * @param endpoint sherlock endpoint
+     * @param applicationId the application id, schema is created in this application
+     * @param namespace the namespace of the schema
+     * @param schema    the schema name
+     * @param label     use to segment event within same schema, like prod, pre-prod, etc.
+     * @param lateEventFlag use to identify late event
+     */
+    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label,boolean lateEventFlag) {
         this.endpoint = endpoint;
         this.applicationId = applicationId;
         this.namespace = namespace;
         this.schema = schema;
-        this.name = name;
+        this.label = label;
+        this.lateEventFlag = lateEventFlag;
     }
 
     private LogRecordProcessor logRecordProcessor;
@@ -51,7 +62,6 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
         sdkLoggerProviderBuilder.setResource(Resource.create(Attributes.builder()
                 .put("_namespace_", namespace)
                 .put("_schema_", schema)
-                .put("__name__", name)
                 .build()));
         provider = sdkLoggerProviderBuilder.addLogRecordProcessor(logRecordProcessor).build();
     }
@@ -63,12 +73,14 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
         logRecordBuilder.setEpoch(Instant.ofEpochMilli(value.getMetricTime()));
         logRecordBuilder.setBody("");
         AttributesBuilder attributesBuilder = Attributes.builder();
-        // TODO change attribute name here, it should be a subset of the schema.
-        // Is this field required as we have set in `setEpoch` method
+        // attribute name is the schema field name
         attributesBuilder.put("metricTime", value.getMetricTime());
         attributesBuilder.put("pageId", value.getPageId());
         attributesBuilder.put("eventCount", value.getEventCount());
+        attributesBuilder.put("label", label);
+        attributesBuilder.put("lateEventFlag", lateEventFlag);
         logRecordBuilder.setAllAttributes(attributesBuilder.build());
+        System.out.println("~~~~~~Metrics Send~~~~~~");
         logRecordBuilder.emit();
     }
 
