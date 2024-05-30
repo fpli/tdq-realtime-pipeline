@@ -1,6 +1,6 @@
 package com.ebay.dap.tdq.integration.function;
 
-import com.ebay.dap.tdq.common.avro.SojEvent;
+import com.ebay.dap.tdq.common.model.avro.SojEvent;
 import io.ebay.rheos.kafka.client.StreamConnectorConfig;
 import io.ebay.rheos.schema.avro.GenericRecordDomainDataDecoder;
 import io.ebay.rheos.schema.event.RheosEvent;

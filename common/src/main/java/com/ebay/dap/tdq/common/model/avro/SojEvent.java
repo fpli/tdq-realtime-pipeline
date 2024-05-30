@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package com.ebay.dap.tdq.common.avro;
+package com.ebay.dap.tdq.common.model.avro;
 
 import org.apache.avro.generic.GenericArray;
 import org.apache.avro.specific.SpecificData;
@@ -15,8 +15,8 @@ import org.apache.avro.message.SchemaStore;
 /**  tags not included but in UbiEvent: current_impr_id, source_impr_id, staticPageType, reservedForFuture, eventAttr, oldSessionSkey, seqNum, sessionStartDt, sojDataDt, version */
 @org.apache.avro.specific.AvroGenerated
 public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -8205005878490343616L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SojEvent\",\"namespace\":\"com.ebay.dap.tdq.common.avro\",\"doc\":\" tags not included but in UbiEvent: current_impr_id, source_impr_id, staticPageType, reservedForFuture, eventAttr, oldSessionSkey, seqNum, sessionStartDt, sojDataDt, version\",\"fields\":[{\"name\":\"rheosHeader\",\"type\":{\"type\":\"record\",\"name\":\"RheosHeader\",\"fields\":[{\"name\":\"eventCreateTimestamp\",\"type\":\"long\"},{\"name\":\"eventSentTimestamp\",\"type\":\"long\"},{\"name\":\"schemaId\",\"type\":\"int\"},{\"name\":\"eventId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"producerId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]},\"doc\":\"Rheos header\"},{\"name\":\"guid\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventTimestamp\",\"type\":\"long\",\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from timestamp, publish time\"},{\"name\":\"eventCaptureTime\",\"type\":[\"null\",\"long\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=mobile specific, map from mtsts, used for mobile case\"},{\"name\":\"requestCorrelationId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=request correlation id, map from tag rq\"},{\"name\":\"cguid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=correlation guid, map from tag n\"},{\"name\":\"sid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Sojourner key for source id\"},{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag p\"},{\"name\":\"pageName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"pageFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag pgf\"},{\"name\":\"eventFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from efam of pulsar event, event family\"},{\"name\":\"eventAction\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from eactn of pulsar event, event action\"},{\"name\":\"userId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag u/bu\"},{\"name\":\"clickId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Click Id, map from tag c\"},{\"name\":\"siteId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Site ID, map from tag t\"},{\"name\":\"sessionId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag snid\"},{\"name\":\"seqNum\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag snsq\"},{\"name\":\"ciid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"siid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"rdt\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=1 indicates that the command redirected to another URL\"},{\"name\":\"regu\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=indicating that this is a registered user, map from tag regU\"},{\"name\":\"iframe\",\"type\":[\"null\",\"boolean\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag _ifrm\"},{\"name\":\"refererHash\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag r\"},{\"name\":\"sqr\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=search keyword, map from tag sQr\"},{\"name\":\"itemId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag itm/item\"},{\"name\":\"flags\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag flgs\"},{\"name\":\"urlQueryString\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag Referer\"},{\"name\":\"webServer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=web server, map from Server\"},{\"name\":\"cookies\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag ck/C\"},{\"name\":\"bot\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag bott\"},{\"name\":\"clientIP\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"remoteIP\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag RemoteIP\"},{\"name\":\"agentInfo\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag Agent\"},{\"name\":\"appId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=application ID, map from tag app\"},{\"name\":\"appVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=application version, map from mav\"},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=operation system version, map from osv\"},{\"name\":\"trafficSource\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from trffc_src\"},{\"name\":\"cobrand\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from cbrnd\"},{\"name\":\"deviceFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_d\"},{\"name\":\"deviceType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_dc\"},{\"name\":\"browserVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_bv\"},{\"name\":\"browserFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_bf\"},{\"name\":\"osFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_os\"},{\"name\":\"enrichedOsVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_osv\"},{\"name\":\"applicationPayload\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"rlogid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"CAL request log id\",\"default\":null,\"avro.java.string\":\"String\"},{\"name\":\"clientData\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"doc\":\"Includes ForwardFor, ContentLength, Script, Server, Encoding, TMachine, TStamp, TName, TStatus, TDuration, TPayload\"},{\"name\":\"ingestTime\",\"type\":[\"null\",\"long\"]},{\"name\":\"sessionSkey\",\"type\":[\"null\",\"long\"]},{\"name\":\"sessionStartDt\",\"type\":[\"null\",\"long\"]},{\"name\":\"sojDataDt\",\"type\":[\"null\",\"long\"]},{\"name\":\"version\",\"type\":[\"null\",\"int\"]},{\"name\":\"staticPageType\",\"ty","pe\":[\"null\",\"int\"]},{\"name\":\"reservedForFuture\",\"type\":[\"null\",\"int\"]},{\"name\":\"eventAttr\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"currentImprId\",\"type\":[\"null\",\"long\"]},{\"name\":\"sourceImprId\",\"type\":[\"null\",\"long\"]},{\"name\":\"oldSessionSkey\",\"type\":[\"null\",\"long\"]},{\"name\":\"partialValidPage\",\"type\":[\"null\",\"boolean\"]},{\"name\":\"botFlags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"int\"}],\"default\":null},{\"name\":\"icfBinary\",\"type\":[\"null\",\"long\"]},{\"name\":\"eventCnt\",\"type\":[\"null\",\"long\"]},{\"name\":\"referrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"forwardedFor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"rv\",\"type\":[\"null\",\"boolean\"]},{\"name\":\"sojHeader\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"bytes\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
+  private static final long serialVersionUID = -6405109199146593902L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"SojEvent\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\" tags not included but in UbiEvent: current_impr_id, source_impr_id, staticPageType, reservedForFuture, eventAttr, oldSessionSkey, seqNum, sessionStartDt, sojDataDt, version\",\"fields\":[{\"name\":\"rheosHeader\",\"type\":{\"type\":\"record\",\"name\":\"RheosHeader\",\"fields\":[{\"name\":\"eventCreateTimestamp\",\"type\":\"long\"},{\"name\":\"eventSentTimestamp\",\"type\":\"long\"},{\"name\":\"schemaId\",\"type\":\"int\"},{\"name\":\"eventId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"producerId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]},\"doc\":\"Rheos header\"},{\"name\":\"guid\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"eventTimestamp\",\"type\":\"long\",\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from timestamp, publish time\"},{\"name\":\"eventCaptureTime\",\"type\":[\"null\",\"long\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=mobile specific, map from mtsts, used for mobile case\"},{\"name\":\"requestCorrelationId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=request correlation id, map from tag rq\"},{\"name\":\"cguid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=correlation guid, map from tag n\"},{\"name\":\"sid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Sojourner key for source id\"},{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag p\"},{\"name\":\"pageName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"pageFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag pgf\"},{\"name\":\"eventFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from efam of pulsar event, event family\"},{\"name\":\"eventAction\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from eactn of pulsar event, event action\"},{\"name\":\"userId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag u/bu\"},{\"name\":\"clickId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Click Id, map from tag c\"},{\"name\":\"siteId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=Site ID, map from tag t\"},{\"name\":\"sessionId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag snid\"},{\"name\":\"seqNum\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag snsq\"},{\"name\":\"ciid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"siid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"rdt\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=1 indicates that the command redirected to another URL\"},{\"name\":\"regu\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=indicating that this is a registered user, map from tag regU\"},{\"name\":\"iframe\",\"type\":[\"null\",\"boolean\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag _ifrm\"},{\"name\":\"refererHash\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag r\"},{\"name\":\"sqr\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=search keyword, map from tag sQr\"},{\"name\":\"itemId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag itm/item\"},{\"name\":\"flags\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag flgs\"},{\"name\":\"urlQueryString\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag Referer\"},{\"name\":\"webServer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=web server, map from Server\"},{\"name\":\"cookies\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag ck/C\"},{\"name\":\"bot\",\"type\":[\"null\",\"int\"],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag bott\"},{\"name\":\"clientIP\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"remoteIP\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag RemoteIP\"},{\"name\":\"agentInfo\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from tag Agent\"},{\"name\":\"appId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=application ID, map from tag app\"},{\"name\":\"appVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=application version, map from mav\"},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=operation system version, map from osv\"},{\"name\":\"trafficSource\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from trffc_src\"},{\"name\":\"cobrand\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from cbrnd\"},{\"name\":\"deviceFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_d\"},{\"name\":\"deviceType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_dc\"},{\"name\":\"browserVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_bv\"},{\"name\":\"browserFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_bf\"},{\"name\":\"osFamily\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_os\"},{\"name\":\"enrichedOsVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"dataClassification=Internal|isEncrypted=false|description=map from dd_osv\"},{\"name\":\"applicationPayload\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"rlogid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"CAL request log id\",\"default\":null,\"avro.java.string\":\"String\"},{\"name\":\"clientData\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"doc\":\"Includes ForwardFor, ContentLength, Script, Server, Encoding, TMachine, TStamp, TName, TStatus, TDuration, TPayload\"},{\"name\":\"ingestTime\",\"type\":[\"null\",\"long\"]},{\"name\":\"sessionSkey\",\"type\":[\"null\",\"long\"]},{\"name\":\"sessionStartDt\",\"type\":[\"null\",\"long\"]},{\"name\":\"sojDataDt\",\"type\":[\"null\",\"long\"]},{\"name\":\"version\",\"type\":[\"null\",\"int\"]},{\"name\":\"staticPageTyp","e\",\"type\":[\"null\",\"int\"]},{\"name\":\"reservedForFuture\",\"type\":[\"null\",\"int\"]},{\"name\":\"eventAttr\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"currentImprId\",\"type\":[\"null\",\"long\"]},{\"name\":\"sourceImprId\",\"type\":[\"null\",\"long\"]},{\"name\":\"oldSessionSkey\",\"type\":[\"null\",\"long\"]},{\"name\":\"partialValidPage\",\"type\":[\"null\",\"boolean\"]},{\"name\":\"botFlags\",\"type\":[\"null\",{\"type\":\"array\",\"items\":\"int\"}],\"default\":null},{\"name\":\"icfBinary\",\"type\":[\"null\",\"long\"]},{\"name\":\"eventCnt\",\"type\":[\"null\",\"long\"]},{\"name\":\"referrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"forwardedFor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"rv\",\"type\":[\"null\",\"boolean\"]},{\"name\":\"sojHeader\",\"type\":[\"null\",{\"type\":\"map\",\"values\":\"bytes\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -73,7 +73,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
   }
 
   /** Rheos header */
-   private com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader;
+   private com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader;
    private java.lang.String guid;
   /** dataClassification=Internal|isEncrypted=false|description=map from timestamp, publish time */
    private long eventTimestamp;
@@ -256,7 +256,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * @param rv The new value for rv
    * @param sojHeader The new value for sojHeader
    */
-  public SojEvent(com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader, java.lang.String guid, java.lang.Long eventTimestamp, java.lang.Long eventCaptureTime, java.lang.String requestCorrelationId, java.lang.String cguid, java.lang.String sid, java.lang.Integer pageId, java.lang.String pageName, java.lang.String pageFamily, java.lang.String eventFamily, java.lang.String eventAction, java.lang.String userId, java.lang.String clickId, java.lang.String siteId, java.lang.String sessionId, java.lang.String seqNum, java.lang.String ciid, java.lang.String siid, java.lang.Integer rdt, java.lang.Integer regu, java.lang.Boolean iframe, java.lang.String refererHash, java.lang.String sqr, java.lang.String itemId, java.lang.String flags, java.lang.String urlQueryString, java.lang.String webServer, java.lang.String cookies, java.lang.Integer bot, java.lang.String clientIP, java.lang.String remoteIP, java.lang.String agentInfo, java.lang.String appId, java.lang.String appVersion, java.lang.String osVersion, java.lang.String trafficSource, java.lang.String cobrand, java.lang.String deviceFamily, java.lang.String deviceType, java.lang.String browserVersion, java.lang.String browserFamily, java.lang.String osFamily, java.lang.String enrichedOsVersion, java.util.Map<java.lang.String,java.lang.String> applicationPayload, java.lang.String rlogid, java.util.Map<java.lang.String,java.lang.String> clientData, java.lang.Long ingestTime, java.lang.Long sessionSkey, java.lang.Long sessionStartDt, java.lang.Long sojDataDt, java.lang.Integer version, java.lang.Integer staticPageType, java.lang.Integer reservedForFuture, java.lang.String eventAttr, java.lang.Long currentImprId, java.lang.Long sourceImprId, java.lang.Long oldSessionSkey, java.lang.Boolean partialValidPage, java.util.List<java.lang.Integer> botFlags, java.lang.Long icfBinary, java.lang.Long eventCnt, java.lang.String referrer, java.lang.String forwardedFor, java.lang.Boolean rv, java.util.Map<java.lang.String,java.nio.ByteBuffer> sojHeader) {
+  public SojEvent(com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader, java.lang.String guid, java.lang.Long eventTimestamp, java.lang.Long eventCaptureTime, java.lang.String requestCorrelationId, java.lang.String cguid, java.lang.String sid, java.lang.Integer pageId, java.lang.String pageName, java.lang.String pageFamily, java.lang.String eventFamily, java.lang.String eventAction, java.lang.String userId, java.lang.String clickId, java.lang.String siteId, java.lang.String sessionId, java.lang.String seqNum, java.lang.String ciid, java.lang.String siid, java.lang.Integer rdt, java.lang.Integer regu, java.lang.Boolean iframe, java.lang.String refererHash, java.lang.String sqr, java.lang.String itemId, java.lang.String flags, java.lang.String urlQueryString, java.lang.String webServer, java.lang.String cookies, java.lang.Integer bot, java.lang.String clientIP, java.lang.String remoteIP, java.lang.String agentInfo, java.lang.String appId, java.lang.String appVersion, java.lang.String osVersion, java.lang.String trafficSource, java.lang.String cobrand, java.lang.String deviceFamily, java.lang.String deviceType, java.lang.String browserVersion, java.lang.String browserFamily, java.lang.String osFamily, java.lang.String enrichedOsVersion, java.util.Map<java.lang.String,java.lang.String> applicationPayload, java.lang.String rlogid, java.util.Map<java.lang.String,java.lang.String> clientData, java.lang.Long ingestTime, java.lang.Long sessionSkey, java.lang.Long sessionStartDt, java.lang.Long sojDataDt, java.lang.Integer version, java.lang.Integer staticPageType, java.lang.Integer reservedForFuture, java.lang.String eventAttr, java.lang.Long currentImprId, java.lang.Long sourceImprId, java.lang.Long oldSessionSkey, java.lang.Boolean partialValidPage, java.util.List<java.lang.Integer> botFlags, java.lang.Long icfBinary, java.lang.Long eventCnt, java.lang.String referrer, java.lang.String forwardedFor, java.lang.Boolean rv, java.util.Map<java.lang.String,java.nio.ByteBuffer> sojHeader) {
     this.rheosHeader = rheosHeader;
     this.guid = guid;
     this.eventTimestamp = eventTimestamp;
@@ -404,7 +404,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: rheosHeader = (com.ebay.dap.tdq.common.avro.RheosHeader)value$; break;
+    case 0: rheosHeader = (com.ebay.dap.tdq.common.model.avro.RheosHeader)value$; break;
     case 1: guid = value$ != null ? value$.toString() : null; break;
     case 2: eventTimestamp = (java.lang.Long)value$; break;
     case 3: eventCaptureTime = (java.lang.Long)value$; break;
@@ -478,7 +478,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'rheosHeader' field.
    * @return Rheos header
    */
-  public com.ebay.dap.tdq.common.avro.RheosHeader getRheosHeader() {
+  public com.ebay.dap.tdq.common.model.avro.RheosHeader getRheosHeader() {
     return rheosHeader;
   }
 
@@ -488,7 +488,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * Rheos header
    * @param value the value to set.
    */
-  public void setRheosHeader(com.ebay.dap.tdq.common.avro.RheosHeader value) {
+  public void setRheosHeader(com.ebay.dap.tdq.common.model.avro.RheosHeader value) {
     this.rheosHeader = value;
   }
 
@@ -1641,8 +1641,8 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * Creates a new SojEvent RecordBuilder.
    * @return A new SojEvent RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.avro.SojEvent.Builder newBuilder() {
-    return new com.ebay.dap.tdq.common.avro.SojEvent.Builder();
+  public static com.ebay.dap.tdq.common.model.avro.SojEvent.Builder newBuilder() {
+    return new com.ebay.dap.tdq.common.model.avro.SojEvent.Builder();
   }
 
   /**
@@ -1650,11 +1650,11 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing builder to copy.
    * @return A new SojEvent RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.avro.SojEvent.Builder newBuilder(com.ebay.dap.tdq.common.avro.SojEvent.Builder other) {
+  public static com.ebay.dap.tdq.common.model.avro.SojEvent.Builder newBuilder(com.ebay.dap.tdq.common.model.avro.SojEvent.Builder other) {
     if (other == null) {
-      return new com.ebay.dap.tdq.common.avro.SojEvent.Builder();
+      return new com.ebay.dap.tdq.common.model.avro.SojEvent.Builder();
     } else {
-      return new com.ebay.dap.tdq.common.avro.SojEvent.Builder(other);
+      return new com.ebay.dap.tdq.common.model.avro.SojEvent.Builder(other);
     }
   }
 
@@ -1663,11 +1663,11 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
    * @param other The existing instance to copy.
    * @return A new SojEvent RecordBuilder
    */
-  public static com.ebay.dap.tdq.common.avro.SojEvent.Builder newBuilder(com.ebay.dap.tdq.common.avro.SojEvent other) {
+  public static com.ebay.dap.tdq.common.model.avro.SojEvent.Builder newBuilder(com.ebay.dap.tdq.common.model.avro.SojEvent other) {
     if (other == null) {
-      return new com.ebay.dap.tdq.common.avro.SojEvent.Builder();
+      return new com.ebay.dap.tdq.common.model.avro.SojEvent.Builder();
     } else {
-      return new com.ebay.dap.tdq.common.avro.SojEvent.Builder(other);
+      return new com.ebay.dap.tdq.common.model.avro.SojEvent.Builder(other);
     }
   }
 
@@ -1679,8 +1679,8 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
     implements org.apache.avro.data.RecordBuilder<SojEvent> {
 
     /** Rheos header */
-    private com.ebay.dap.tdq.common.avro.RheosHeader rheosHeader;
-    private com.ebay.dap.tdq.common.avro.RheosHeader.Builder rheosHeaderBuilder;
+    private com.ebay.dap.tdq.common.model.avro.RheosHeader rheosHeader;
+    private com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder rheosHeaderBuilder;
     private java.lang.String guid;
     /** dataClassification=Internal|isEncrypted=false|description=map from timestamp, publish time */
     private long eventTimestamp;
@@ -1796,14 +1796,14 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(com.ebay.dap.tdq.common.avro.SojEvent.Builder other) {
+    private Builder(com.ebay.dap.tdq.common.model.avro.SojEvent.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.rheosHeader)) {
         this.rheosHeader = data().deepCopy(fields()[0].schema(), other.rheosHeader);
         fieldSetFlags()[0] = other.fieldSetFlags()[0];
       }
       if (other.hasRheosHeaderBuilder()) {
-        this.rheosHeaderBuilder = com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder(other.getRheosHeaderBuilder());
+        this.rheosHeaderBuilder = com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder(other.getRheosHeaderBuilder());
       }
       if (isValidValue(fields()[1], other.guid)) {
         this.guid = data().deepCopy(fields()[1].schema(), other.guid);
@@ -2071,7 +2071,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
      * Creates a Builder by copying an existing SojEvent instance
      * @param other The existing instance to copy.
      */
-    private Builder(com.ebay.dap.tdq.common.avro.SojEvent other) {
+    private Builder(com.ebay.dap.tdq.common.model.avro.SojEvent other) {
       super(SCHEMA$);
       if (isValidValue(fields()[0], other.rheosHeader)) {
         this.rheosHeader = data().deepCopy(fields()[0].schema(), other.rheosHeader);
@@ -2345,7 +2345,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Rheos header
       * @return The value.
       */
-    public com.ebay.dap.tdq.common.avro.RheosHeader getRheosHeader() {
+    public com.ebay.dap.tdq.common.model.avro.RheosHeader getRheosHeader() {
       return rheosHeader;
     }
 
@@ -2356,7 +2356,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'rheosHeader'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRheosHeader(com.ebay.dap.tdq.common.avro.RheosHeader value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRheosHeader(com.ebay.dap.tdq.common.model.avro.RheosHeader value) {
       validate(fields()[0], value);
       this.rheosHeaderBuilder = null;
       this.rheosHeader = value;
@@ -2378,12 +2378,12 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
      * Rheos header
      * @return This builder.
      */
-    public com.ebay.dap.tdq.common.avro.RheosHeader.Builder getRheosHeaderBuilder() {
+    public com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder getRheosHeaderBuilder() {
       if (rheosHeaderBuilder == null) {
         if (hasRheosHeader()) {
-          setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder(rheosHeader));
+          setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder(rheosHeader));
         } else {
-          setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.newBuilder());
+          setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.newBuilder());
         }
       }
       return rheosHeaderBuilder;
@@ -2396,7 +2396,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
      * @return This builder.
      */
 
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRheosHeaderBuilder(com.ebay.dap.tdq.common.avro.RheosHeader.Builder value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRheosHeaderBuilder(com.ebay.dap.tdq.common.model.avro.RheosHeader.Builder value) {
       clearRheosHeader();
       rheosHeaderBuilder = value;
       return this;
@@ -2416,7 +2416,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Rheos header
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRheosHeader() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRheosHeader() {
       rheosHeader = null;
       rheosHeaderBuilder = null;
       fieldSetFlags()[0] = false;
@@ -2437,7 +2437,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'guid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setGuid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setGuid(java.lang.String value) {
       validate(fields()[1], value);
       this.guid = value;
       fieldSetFlags()[1] = true;
@@ -2457,7 +2457,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'guid' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearGuid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearGuid() {
       guid = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -2479,7 +2479,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventTimestamp'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventTimestamp(long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventTimestamp(long value) {
       validate(fields()[2], value);
       this.eventTimestamp = value;
       fieldSetFlags()[2] = true;
@@ -2501,7 +2501,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from timestamp, publish time
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventTimestamp() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventTimestamp() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -2522,7 +2522,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventCaptureTime'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventCaptureTime(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventCaptureTime(java.lang.Long value) {
       validate(fields()[3], value);
       this.eventCaptureTime = value;
       fieldSetFlags()[3] = true;
@@ -2544,7 +2544,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=mobile specific, map from mtsts, used for mobile case
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventCaptureTime() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventCaptureTime() {
       eventCaptureTime = null;
       fieldSetFlags()[3] = false;
       return this;
@@ -2566,7 +2566,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'requestCorrelationId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRequestCorrelationId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRequestCorrelationId(java.lang.String value) {
       validate(fields()[4], value);
       this.requestCorrelationId = value;
       fieldSetFlags()[4] = true;
@@ -2588,7 +2588,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=request correlation id, map from tag rq
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRequestCorrelationId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRequestCorrelationId() {
       requestCorrelationId = null;
       fieldSetFlags()[4] = false;
       return this;
@@ -2610,7 +2610,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'cguid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setCguid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setCguid(java.lang.String value) {
       validate(fields()[5], value);
       this.cguid = value;
       fieldSetFlags()[5] = true;
@@ -2632,7 +2632,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=correlation guid, map from tag n
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearCguid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearCguid() {
       cguid = null;
       fieldSetFlags()[5] = false;
       return this;
@@ -2654,7 +2654,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSid(java.lang.String value) {
       validate(fields()[6], value);
       this.sid = value;
       fieldSetFlags()[6] = true;
@@ -2676,7 +2676,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=Sojourner key for source id
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSid() {
       sid = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -2698,7 +2698,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'pageId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setPageId(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setPageId(java.lang.Integer value) {
       validate(fields()[7], value);
       this.pageId = value;
       fieldSetFlags()[7] = true;
@@ -2720,7 +2720,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag p
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearPageId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearPageId() {
       pageId = null;
       fieldSetFlags()[7] = false;
       return this;
@@ -2740,7 +2740,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'pageName'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setPageName(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setPageName(java.lang.String value) {
       validate(fields()[8], value);
       this.pageName = value;
       fieldSetFlags()[8] = true;
@@ -2760,7 +2760,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'pageName' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearPageName() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearPageName() {
       pageName = null;
       fieldSetFlags()[8] = false;
       return this;
@@ -2782,7 +2782,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'pageFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setPageFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setPageFamily(java.lang.String value) {
       validate(fields()[9], value);
       this.pageFamily = value;
       fieldSetFlags()[9] = true;
@@ -2804,7 +2804,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag pgf
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearPageFamily() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearPageFamily() {
       pageFamily = null;
       fieldSetFlags()[9] = false;
       return this;
@@ -2826,7 +2826,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventFamily(java.lang.String value) {
       validate(fields()[10], value);
       this.eventFamily = value;
       fieldSetFlags()[10] = true;
@@ -2848,7 +2848,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from efam of pulsar event, event family
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventFamily() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventFamily() {
       eventFamily = null;
       fieldSetFlags()[10] = false;
       return this;
@@ -2870,7 +2870,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventAction'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventAction(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventAction(java.lang.String value) {
       validate(fields()[11], value);
       this.eventAction = value;
       fieldSetFlags()[11] = true;
@@ -2892,7 +2892,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from eactn of pulsar event, event action
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventAction() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventAction() {
       eventAction = null;
       fieldSetFlags()[11] = false;
       return this;
@@ -2914,7 +2914,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'userId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setUserId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setUserId(java.lang.String value) {
       validate(fields()[12], value);
       this.userId = value;
       fieldSetFlags()[12] = true;
@@ -2936,7 +2936,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag u/bu
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearUserId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearUserId() {
       userId = null;
       fieldSetFlags()[12] = false;
       return this;
@@ -2958,7 +2958,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'clickId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setClickId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setClickId(java.lang.String value) {
       validate(fields()[13], value);
       this.clickId = value;
       fieldSetFlags()[13] = true;
@@ -2980,7 +2980,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=Click Id, map from tag c
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearClickId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearClickId() {
       clickId = null;
       fieldSetFlags()[13] = false;
       return this;
@@ -3002,7 +3002,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'siteId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSiteId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSiteId(java.lang.String value) {
       validate(fields()[14], value);
       this.siteId = value;
       fieldSetFlags()[14] = true;
@@ -3024,7 +3024,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=Site ID, map from tag t
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSiteId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSiteId() {
       siteId = null;
       fieldSetFlags()[14] = false;
       return this;
@@ -3046,7 +3046,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sessionId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSessionId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSessionId(java.lang.String value) {
       validate(fields()[15], value);
       this.sessionId = value;
       fieldSetFlags()[15] = true;
@@ -3068,7 +3068,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag snid
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSessionId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSessionId() {
       sessionId = null;
       fieldSetFlags()[15] = false;
       return this;
@@ -3090,7 +3090,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'seqNum'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSeqNum(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSeqNum(java.lang.String value) {
       validate(fields()[16], value);
       this.seqNum = value;
       fieldSetFlags()[16] = true;
@@ -3112,7 +3112,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag snsq
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSeqNum() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSeqNum() {
       seqNum = null;
       fieldSetFlags()[16] = false;
       return this;
@@ -3132,7 +3132,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'ciid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setCiid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setCiid(java.lang.String value) {
       validate(fields()[17], value);
       this.ciid = value;
       fieldSetFlags()[17] = true;
@@ -3152,7 +3152,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'ciid' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearCiid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearCiid() {
       ciid = null;
       fieldSetFlags()[17] = false;
       return this;
@@ -3172,7 +3172,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'siid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSiid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSiid(java.lang.String value) {
       validate(fields()[18], value);
       this.siid = value;
       fieldSetFlags()[18] = true;
@@ -3192,7 +3192,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'siid' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSiid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSiid() {
       siid = null;
       fieldSetFlags()[18] = false;
       return this;
@@ -3214,7 +3214,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'rdt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRdt(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRdt(java.lang.Integer value) {
       validate(fields()[19], value);
       this.rdt = value;
       fieldSetFlags()[19] = true;
@@ -3236,7 +3236,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=1 indicates that the command redirected to another URL
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRdt() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRdt() {
       rdt = null;
       fieldSetFlags()[19] = false;
       return this;
@@ -3258,7 +3258,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'regu'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRegu(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRegu(java.lang.Integer value) {
       validate(fields()[20], value);
       this.regu = value;
       fieldSetFlags()[20] = true;
@@ -3280,7 +3280,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=indicating that this is a registered user, map from tag regU
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRegu() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRegu() {
       regu = null;
       fieldSetFlags()[20] = false;
       return this;
@@ -3302,7 +3302,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'iframe'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setIframe(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setIframe(java.lang.Boolean value) {
       validate(fields()[21], value);
       this.iframe = value;
       fieldSetFlags()[21] = true;
@@ -3324,7 +3324,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag _ifrm
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearIframe() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearIframe() {
       iframe = null;
       fieldSetFlags()[21] = false;
       return this;
@@ -3346,7 +3346,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'refererHash'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRefererHash(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRefererHash(java.lang.String value) {
       validate(fields()[22], value);
       this.refererHash = value;
       fieldSetFlags()[22] = true;
@@ -3368,7 +3368,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag r
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRefererHash() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRefererHash() {
       refererHash = null;
       fieldSetFlags()[22] = false;
       return this;
@@ -3390,7 +3390,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sqr'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSqr(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSqr(java.lang.String value) {
       validate(fields()[23], value);
       this.sqr = value;
       fieldSetFlags()[23] = true;
@@ -3412,7 +3412,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=search keyword, map from tag sQr
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSqr() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSqr() {
       sqr = null;
       fieldSetFlags()[23] = false;
       return this;
@@ -3434,7 +3434,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'itemId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setItemId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setItemId(java.lang.String value) {
       validate(fields()[24], value);
       this.itemId = value;
       fieldSetFlags()[24] = true;
@@ -3456,7 +3456,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag itm/item
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearItemId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearItemId() {
       itemId = null;
       fieldSetFlags()[24] = false;
       return this;
@@ -3478,7 +3478,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'flags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setFlags(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setFlags(java.lang.String value) {
       validate(fields()[25], value);
       this.flags = value;
       fieldSetFlags()[25] = true;
@@ -3500,7 +3500,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag flgs
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearFlags() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearFlags() {
       flags = null;
       fieldSetFlags()[25] = false;
       return this;
@@ -3522,7 +3522,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'urlQueryString'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setUrlQueryString(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setUrlQueryString(java.lang.String value) {
       validate(fields()[26], value);
       this.urlQueryString = value;
       fieldSetFlags()[26] = true;
@@ -3544,7 +3544,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag Referer
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearUrlQueryString() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearUrlQueryString() {
       urlQueryString = null;
       fieldSetFlags()[26] = false;
       return this;
@@ -3566,7 +3566,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'webServer'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setWebServer(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setWebServer(java.lang.String value) {
       validate(fields()[27], value);
       this.webServer = value;
       fieldSetFlags()[27] = true;
@@ -3588,7 +3588,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=web server, map from Server
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearWebServer() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearWebServer() {
       webServer = null;
       fieldSetFlags()[27] = false;
       return this;
@@ -3610,7 +3610,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'cookies'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setCookies(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setCookies(java.lang.String value) {
       validate(fields()[28], value);
       this.cookies = value;
       fieldSetFlags()[28] = true;
@@ -3632,7 +3632,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag ck/C
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearCookies() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearCookies() {
       cookies = null;
       fieldSetFlags()[28] = false;
       return this;
@@ -3654,7 +3654,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'bot'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setBot(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setBot(java.lang.Integer value) {
       validate(fields()[29], value);
       this.bot = value;
       fieldSetFlags()[29] = true;
@@ -3676,7 +3676,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag bott
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearBot() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearBot() {
       bot = null;
       fieldSetFlags()[29] = false;
       return this;
@@ -3696,7 +3696,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'clientIP'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setClientIP(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setClientIP(java.lang.String value) {
       validate(fields()[30], value);
       this.clientIP = value;
       fieldSetFlags()[30] = true;
@@ -3716,7 +3716,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'clientIP' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearClientIP() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearClientIP() {
       clientIP = null;
       fieldSetFlags()[30] = false;
       return this;
@@ -3738,7 +3738,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'remoteIP'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRemoteIP(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRemoteIP(java.lang.String value) {
       validate(fields()[31], value);
       this.remoteIP = value;
       fieldSetFlags()[31] = true;
@@ -3760,7 +3760,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag RemoteIP
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRemoteIP() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRemoteIP() {
       remoteIP = null;
       fieldSetFlags()[31] = false;
       return this;
@@ -3782,7 +3782,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'agentInfo'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setAgentInfo(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setAgentInfo(java.lang.String value) {
       validate(fields()[32], value);
       this.agentInfo = value;
       fieldSetFlags()[32] = true;
@@ -3804,7 +3804,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from tag Agent
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearAgentInfo() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearAgentInfo() {
       agentInfo = null;
       fieldSetFlags()[32] = false;
       return this;
@@ -3826,7 +3826,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'appId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setAppId(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setAppId(java.lang.String value) {
       validate(fields()[33], value);
       this.appId = value;
       fieldSetFlags()[33] = true;
@@ -3848,7 +3848,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=application ID, map from tag app
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearAppId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearAppId() {
       appId = null;
       fieldSetFlags()[33] = false;
       return this;
@@ -3870,7 +3870,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'appVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setAppVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setAppVersion(java.lang.String value) {
       validate(fields()[34], value);
       this.appVersion = value;
       fieldSetFlags()[34] = true;
@@ -3892,7 +3892,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=application version, map from mav
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearAppVersion() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearAppVersion() {
       appVersion = null;
       fieldSetFlags()[34] = false;
       return this;
@@ -3914,7 +3914,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'osVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setOsVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setOsVersion(java.lang.String value) {
       validate(fields()[35], value);
       this.osVersion = value;
       fieldSetFlags()[35] = true;
@@ -3936,7 +3936,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=operation system version, map from osv
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearOsVersion() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearOsVersion() {
       osVersion = null;
       fieldSetFlags()[35] = false;
       return this;
@@ -3958,7 +3958,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'trafficSource'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setTrafficSource(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setTrafficSource(java.lang.String value) {
       validate(fields()[36], value);
       this.trafficSource = value;
       fieldSetFlags()[36] = true;
@@ -3980,7 +3980,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from trffc_src
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearTrafficSource() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearTrafficSource() {
       trafficSource = null;
       fieldSetFlags()[36] = false;
       return this;
@@ -4002,7 +4002,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'cobrand'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setCobrand(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setCobrand(java.lang.String value) {
       validate(fields()[37], value);
       this.cobrand = value;
       fieldSetFlags()[37] = true;
@@ -4024,7 +4024,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from cbrnd
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearCobrand() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearCobrand() {
       cobrand = null;
       fieldSetFlags()[37] = false;
       return this;
@@ -4046,7 +4046,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'deviceFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setDeviceFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setDeviceFamily(java.lang.String value) {
       validate(fields()[38], value);
       this.deviceFamily = value;
       fieldSetFlags()[38] = true;
@@ -4068,7 +4068,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_d
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearDeviceFamily() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearDeviceFamily() {
       deviceFamily = null;
       fieldSetFlags()[38] = false;
       return this;
@@ -4090,7 +4090,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'deviceType'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setDeviceType(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setDeviceType(java.lang.String value) {
       validate(fields()[39], value);
       this.deviceType = value;
       fieldSetFlags()[39] = true;
@@ -4112,7 +4112,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_dc
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearDeviceType() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearDeviceType() {
       deviceType = null;
       fieldSetFlags()[39] = false;
       return this;
@@ -4134,7 +4134,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'browserVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setBrowserVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setBrowserVersion(java.lang.String value) {
       validate(fields()[40], value);
       this.browserVersion = value;
       fieldSetFlags()[40] = true;
@@ -4156,7 +4156,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_bv
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearBrowserVersion() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearBrowserVersion() {
       browserVersion = null;
       fieldSetFlags()[40] = false;
       return this;
@@ -4178,7 +4178,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'browserFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setBrowserFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setBrowserFamily(java.lang.String value) {
       validate(fields()[41], value);
       this.browserFamily = value;
       fieldSetFlags()[41] = true;
@@ -4200,7 +4200,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_bf
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearBrowserFamily() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearBrowserFamily() {
       browserFamily = null;
       fieldSetFlags()[41] = false;
       return this;
@@ -4222,7 +4222,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'osFamily'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setOsFamily(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setOsFamily(java.lang.String value) {
       validate(fields()[42], value);
       this.osFamily = value;
       fieldSetFlags()[42] = true;
@@ -4244,7 +4244,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_os
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearOsFamily() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearOsFamily() {
       osFamily = null;
       fieldSetFlags()[42] = false;
       return this;
@@ -4266,7 +4266,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'enrichedOsVersion'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEnrichedOsVersion(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEnrichedOsVersion(java.lang.String value) {
       validate(fields()[43], value);
       this.enrichedOsVersion = value;
       fieldSetFlags()[43] = true;
@@ -4288,7 +4288,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * dataClassification=Internal|isEncrypted=false|description=map from dd_osv
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEnrichedOsVersion() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEnrichedOsVersion() {
       enrichedOsVersion = null;
       fieldSetFlags()[43] = false;
       return this;
@@ -4308,7 +4308,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'applicationPayload'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setApplicationPayload(java.util.Map<java.lang.String,java.lang.String> value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setApplicationPayload(java.util.Map<java.lang.String,java.lang.String> value) {
       validate(fields()[44], value);
       this.applicationPayload = value;
       fieldSetFlags()[44] = true;
@@ -4328,7 +4328,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'applicationPayload' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearApplicationPayload() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearApplicationPayload() {
       applicationPayload = null;
       fieldSetFlags()[44] = false;
       return this;
@@ -4350,7 +4350,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'rlogid'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRlogid(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRlogid(java.lang.String value) {
       validate(fields()[45], value);
       this.rlogid = value;
       fieldSetFlags()[45] = true;
@@ -4372,7 +4372,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * CAL request log id
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRlogid() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRlogid() {
       rlogid = null;
       fieldSetFlags()[45] = false;
       return this;
@@ -4394,7 +4394,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'clientData'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setClientData(java.util.Map<java.lang.String,java.lang.String> value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setClientData(java.util.Map<java.lang.String,java.lang.String> value) {
       validate(fields()[46], value);
       this.clientData = value;
       fieldSetFlags()[46] = true;
@@ -4416,7 +4416,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Includes ForwardFor, ContentLength, Script, Server, Encoding, TMachine, TStamp, TName, TStatus, TDuration, TPayload
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearClientData() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearClientData() {
       clientData = null;
       fieldSetFlags()[46] = false;
       return this;
@@ -4436,7 +4436,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'ingestTime'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setIngestTime(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setIngestTime(java.lang.Long value) {
       validate(fields()[47], value);
       this.ingestTime = value;
       fieldSetFlags()[47] = true;
@@ -4456,7 +4456,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'ingestTime' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearIngestTime() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearIngestTime() {
       ingestTime = null;
       fieldSetFlags()[47] = false;
       return this;
@@ -4476,7 +4476,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sessionSkey'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSessionSkey(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSessionSkey(java.lang.Long value) {
       validate(fields()[48], value);
       this.sessionSkey = value;
       fieldSetFlags()[48] = true;
@@ -4496,7 +4496,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'sessionSkey' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSessionSkey() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSessionSkey() {
       sessionSkey = null;
       fieldSetFlags()[48] = false;
       return this;
@@ -4516,7 +4516,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sessionStartDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSessionStartDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSessionStartDt(java.lang.Long value) {
       validate(fields()[49], value);
       this.sessionStartDt = value;
       fieldSetFlags()[49] = true;
@@ -4536,7 +4536,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'sessionStartDt' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSessionStartDt() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSessionStartDt() {
       sessionStartDt = null;
       fieldSetFlags()[49] = false;
       return this;
@@ -4556,7 +4556,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sojDataDt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSojDataDt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSojDataDt(java.lang.Long value) {
       validate(fields()[50], value);
       this.sojDataDt = value;
       fieldSetFlags()[50] = true;
@@ -4576,7 +4576,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'sojDataDt' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSojDataDt() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSojDataDt() {
       sojDataDt = null;
       fieldSetFlags()[50] = false;
       return this;
@@ -4596,7 +4596,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'version'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setVersion(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setVersion(java.lang.Integer value) {
       validate(fields()[51], value);
       this.version = value;
       fieldSetFlags()[51] = true;
@@ -4616,7 +4616,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'version' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearVersion() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearVersion() {
       version = null;
       fieldSetFlags()[51] = false;
       return this;
@@ -4636,7 +4636,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'staticPageType'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setStaticPageType(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setStaticPageType(java.lang.Integer value) {
       validate(fields()[52], value);
       this.staticPageType = value;
       fieldSetFlags()[52] = true;
@@ -4656,7 +4656,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'staticPageType' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearStaticPageType() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearStaticPageType() {
       staticPageType = null;
       fieldSetFlags()[52] = false;
       return this;
@@ -4676,7 +4676,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'reservedForFuture'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setReservedForFuture(java.lang.Integer value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setReservedForFuture(java.lang.Integer value) {
       validate(fields()[53], value);
       this.reservedForFuture = value;
       fieldSetFlags()[53] = true;
@@ -4696,7 +4696,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'reservedForFuture' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearReservedForFuture() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearReservedForFuture() {
       reservedForFuture = null;
       fieldSetFlags()[53] = false;
       return this;
@@ -4716,7 +4716,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventAttr'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventAttr(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventAttr(java.lang.String value) {
       validate(fields()[54], value);
       this.eventAttr = value;
       fieldSetFlags()[54] = true;
@@ -4736,7 +4736,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'eventAttr' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventAttr() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventAttr() {
       eventAttr = null;
       fieldSetFlags()[54] = false;
       return this;
@@ -4756,7 +4756,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'currentImprId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setCurrentImprId(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setCurrentImprId(java.lang.Long value) {
       validate(fields()[55], value);
       this.currentImprId = value;
       fieldSetFlags()[55] = true;
@@ -4776,7 +4776,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'currentImprId' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearCurrentImprId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearCurrentImprId() {
       currentImprId = null;
       fieldSetFlags()[55] = false;
       return this;
@@ -4796,7 +4796,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sourceImprId'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSourceImprId(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSourceImprId(java.lang.Long value) {
       validate(fields()[56], value);
       this.sourceImprId = value;
       fieldSetFlags()[56] = true;
@@ -4816,7 +4816,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'sourceImprId' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSourceImprId() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSourceImprId() {
       sourceImprId = null;
       fieldSetFlags()[56] = false;
       return this;
@@ -4836,7 +4836,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'oldSessionSkey'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setOldSessionSkey(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setOldSessionSkey(java.lang.Long value) {
       validate(fields()[57], value);
       this.oldSessionSkey = value;
       fieldSetFlags()[57] = true;
@@ -4856,7 +4856,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'oldSessionSkey' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearOldSessionSkey() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearOldSessionSkey() {
       oldSessionSkey = null;
       fieldSetFlags()[57] = false;
       return this;
@@ -4876,7 +4876,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'partialValidPage'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setPartialValidPage(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setPartialValidPage(java.lang.Boolean value) {
       validate(fields()[58], value);
       this.partialValidPage = value;
       fieldSetFlags()[58] = true;
@@ -4896,7 +4896,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'partialValidPage' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearPartialValidPage() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearPartialValidPage() {
       partialValidPage = null;
       fieldSetFlags()[58] = false;
       return this;
@@ -4916,7 +4916,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'botFlags'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setBotFlags(java.util.List<java.lang.Integer> value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setBotFlags(java.util.List<java.lang.Integer> value) {
       validate(fields()[59], value);
       this.botFlags = value;
       fieldSetFlags()[59] = true;
@@ -4936,7 +4936,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'botFlags' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearBotFlags() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearBotFlags() {
       botFlags = null;
       fieldSetFlags()[59] = false;
       return this;
@@ -4956,7 +4956,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'icfBinary'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setIcfBinary(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setIcfBinary(java.lang.Long value) {
       validate(fields()[60], value);
       this.icfBinary = value;
       fieldSetFlags()[60] = true;
@@ -4976,7 +4976,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'icfBinary' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearIcfBinary() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearIcfBinary() {
       icfBinary = null;
       fieldSetFlags()[60] = false;
       return this;
@@ -4996,7 +4996,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'eventCnt'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setEventCnt(java.lang.Long value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setEventCnt(java.lang.Long value) {
       validate(fields()[61], value);
       this.eventCnt = value;
       fieldSetFlags()[61] = true;
@@ -5016,7 +5016,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'eventCnt' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearEventCnt() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearEventCnt() {
       eventCnt = null;
       fieldSetFlags()[61] = false;
       return this;
@@ -5036,7 +5036,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'referrer'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setReferrer(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setReferrer(java.lang.String value) {
       validate(fields()[62], value);
       this.referrer = value;
       fieldSetFlags()[62] = true;
@@ -5056,7 +5056,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'referrer' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearReferrer() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearReferrer() {
       referrer = null;
       fieldSetFlags()[62] = false;
       return this;
@@ -5076,7 +5076,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'forwardedFor'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setForwardedFor(java.lang.String value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setForwardedFor(java.lang.String value) {
       validate(fields()[63], value);
       this.forwardedFor = value;
       fieldSetFlags()[63] = true;
@@ -5096,7 +5096,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'forwardedFor' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearForwardedFor() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearForwardedFor() {
       forwardedFor = null;
       fieldSetFlags()[63] = false;
       return this;
@@ -5116,7 +5116,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'rv'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setRv(java.lang.Boolean value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setRv(java.lang.Boolean value) {
       validate(fields()[64], value);
       this.rv = value;
       fieldSetFlags()[64] = true;
@@ -5136,7 +5136,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'rv' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearRv() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearRv() {
       rv = null;
       fieldSetFlags()[64] = false;
       return this;
@@ -5156,7 +5156,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'sojHeader'.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder setSojHeader(java.util.Map<java.lang.String,java.nio.ByteBuffer> value) {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder setSojHeader(java.util.Map<java.lang.String,java.nio.ByteBuffer> value) {
       validate(fields()[65], value);
       this.sojHeader = value;
       fieldSetFlags()[65] = true;
@@ -5176,7 +5176,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
       * Clears the value of the 'sojHeader' field.
       * @return This builder.
       */
-    public com.ebay.dap.tdq.common.avro.SojEvent.Builder clearSojHeader() {
+    public com.ebay.dap.tdq.common.model.avro.SojEvent.Builder clearSojHeader() {
       sojHeader = null;
       fieldSetFlags()[65] = false;
       return this;
@@ -5195,7 +5195,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
             throw e;
           }
         } else {
-          record.rheosHeader = fieldSetFlags()[0] ? this.rheosHeader : (com.ebay.dap.tdq.common.avro.RheosHeader) defaultValue(fields()[0]);
+          record.rheosHeader = fieldSetFlags()[0] ? this.rheosHeader : (com.ebay.dap.tdq.common.model.avro.RheosHeader) defaultValue(fields()[0]);
         }
         record.guid = fieldSetFlags()[1] ? this.guid : (java.lang.String) defaultValue(fields()[1]);
         record.eventTimestamp = fieldSetFlags()[2] ? this.eventTimestamp : (java.lang.Long) defaultValue(fields()[2]);
@@ -5850,7 +5850,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
     org.apache.avro.Schema.Field[] fieldOrder = in.readFieldOrderIfDiff();
     if (fieldOrder == null) {
       if (this.rheosHeader == null) {
-        this.rheosHeader = new com.ebay.dap.tdq.common.avro.RheosHeader();
+        this.rheosHeader = new com.ebay.dap.tdq.common.model.avro.RheosHeader();
       }
       this.rheosHeader.customDecode(in);
 
@@ -6349,7 +6349,7 @@ public class SojEvent extends org.apache.avro.specific.SpecificRecordBase implem
         switch (fieldOrder[i].pos()) {
         case 0:
           if (this.rheosHeader == null) {
-            this.rheosHeader = new com.ebay.dap.tdq.common.avro.RheosHeader();
+            this.rheosHeader = new com.ebay.dap.tdq.common.model.avro.RheosHeader();
           }
           this.rheosHeader.customDecode(in);
           break;

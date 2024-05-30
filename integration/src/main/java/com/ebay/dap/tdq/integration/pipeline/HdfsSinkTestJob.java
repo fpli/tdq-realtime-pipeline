@@ -1,6 +1,6 @@
 package com.ebay.dap.tdq.integration.pipeline;
 
-import com.ebay.dap.tdq.common.avro.RheosHeader;
+import com.ebay.dap.tdq.common.model.avro.RheosHeader;
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
 import com.ebay.dap.tdq.flink.connector.hdfs.AvroFieldDtHrBucketAssigner;
 import com.ebay.dap.tdq.flink.connector.hdfs.ParquetAvroWritersWithCompression;

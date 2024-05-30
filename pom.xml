@@ -34,7 +34,7 @@
         <logback.version>1.2.12</logback.version>
 
         <!--  Serialization  -->
-        <avro.version>1.10.2</avro.version>
+        <avro.version>1.11.2</avro.version>
         <jackson.version>2.12.2</jackson.version>
 
         <!--  Flink  -->

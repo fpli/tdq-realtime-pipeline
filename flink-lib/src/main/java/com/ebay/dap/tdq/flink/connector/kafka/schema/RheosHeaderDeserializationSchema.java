@@ -1,6 +1,6 @@
 package com.ebay.dap.tdq.flink.connector.kafka.schema;
 
-import com.ebay.dap.tdq.common.avro.RheosHeader;
+import com.ebay.dap.tdq.common.model.avro.RheosHeader;
 import com.ebay.dap.tdq.flink.connector.kafka.AvroKafkaDeserializer;
 import com.ebay.dap.tdq.flink.connector.kafka.KafkaDeserializer;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
