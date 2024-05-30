@@ -4,6 +4,7 @@ import com.ebay.dap.tdq.common.util.DateTimeUtils;
 import com.ebay.dap.tdq.rt.domain.PageMetric;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.flink.api.java.tuple.Tuple3;
 import org.apache.flink.streaming.api.functions.windowing.ProcessWindowFunction;
 import org.apache.flink.streaming.api.windowing.windows.TimeWindow;
 import org.apache.flink.util.Collector;
@@ -13,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Set;
 
 @Slf4j
-public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetric, PageMetric, Integer, TimeWindow> {
+public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetric, PageMetric, Tuple3<Integer, Integer, Integer>, TimeWindow> {
 
 
     private final Set<Integer> top50PageIds = Sets.newHashSet(
@@ -25,7 +26,7 @@ public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetri
 
 
     @Override
-    public void process(Integer integer, ProcessWindowFunction<PageMetric, PageMetric, Integer, TimeWindow>.Context context, Iterable<PageMetric> elements, Collector<PageMetric> out) throws Exception {
+    public void process(Tuple3<Integer, Integer, Integer> key, ProcessWindowFunction<PageMetric, PageMetric, Tuple3<Integer, Integer, Integer>, TimeWindow>.Context context, Iterable<PageMetric> elements, Collector<PageMetric> out) throws Exception {
         LocalDateTime eventTime = DateTimeUtils.tsToLocalDateTime(context.window().getStart());
 
         PageMetric next = elements.iterator().next();

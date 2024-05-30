@@ -23,81 +23,72 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Apache Flink dependencies -->
-        <!-- These dependencies are provided, because they should not be packaged into the JAR file. -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-java</artifactId>
+            <artifactId>flink-clients</artifactId>
+        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-streaming-scala_2.12</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-runtime-web</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
-        </dependency>
-        <!-- runtime-web dependency is need to start web UI from IDE -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-runtime-web_${scala.binary.version}</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-statebackend-rocksdb_${scala.binary.version}</artifactId>
+            <artifactId>flink-statebackend-rocksdb</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-metrics-dropwizard</artifactId>
         </dependency>
-
-        <!--  flink connectors  -->
-        <!--  flink kafka connector  -->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-kafka_${scala.binary.version}</artifactId>
+            <artifactId>flink-connector-kafka</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
+            <groupId>io.ebay.rheos</groupId>
+            <artifactId>flink-connector-kafka-ha</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-files</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-elasticsearch7</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-parquet</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-avro</artifactId>
         </dependency>
-
-        <!-- flink hadoop connector -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-parquet_${scala.binary.version}</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-avro</artifactId>
         </dependency>
-        <!-- hadoop dependencies -->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-        </dependency>
-        <!-- rheos dependencies-->
+
         <dependency>
             <groupId>io.ebay.rheos</groupId>
             <artifactId>rheos-client_JDK-1.8</artifactId>
         </dependency>
 
-        <!--  flink elasticsearch connector  -->
+        <!-- hadoop dependency -->
         <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-connector-elasticsearch7_${scala.binary.version}</artifactId>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
         </dependency>
 
-        <!--  flink test framework  -->
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-test-utils_${scala.binary.version}</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!--  Test Dependencies  -->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.flink</groupId>-->
+<!--            <artifactId>flink-test-utils</artifactId>-->
+<!--        </dependency>-->
+        <!--  Test Dependencies:end  -->
     </dependencies>
 
 </project>

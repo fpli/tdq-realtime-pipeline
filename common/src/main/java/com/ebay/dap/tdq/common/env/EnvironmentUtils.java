@@ -110,6 +110,17 @@ public class EnvironmentUtils {
         return Boolean.valueOf(booleanVal);
     }
 
+    public static Boolean getBooleanOrDefault(String key, boolean defaultValue) {
+        String booleanVal;
+        try {
+            booleanVal = get(key);
+        } catch (ConfigNotFoundException e) {
+            return defaultValue;
+        }
+
+        return Boolean.valueOf(booleanVal);
+    }
+
     public static Integer getInteger(String key) {
         String intVal = get(key);
         return Integer.valueOf(intVal);

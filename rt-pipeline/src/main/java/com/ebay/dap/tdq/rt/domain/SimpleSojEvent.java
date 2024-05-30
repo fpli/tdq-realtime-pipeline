@@ -13,6 +13,14 @@ public class SimpleSojEvent {
 
     private String rlogId;
 
+    private Integer siteId;
+
+    private Integer appId;
+
+    private String eventFamily;
+
+    private String eventAction;
+
     private Long eventTimestamp;
 
     private Long processTime;

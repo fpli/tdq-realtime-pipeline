@@ -38,12 +38,13 @@
         <jackson.version>2.12.2</jackson.version>
 
         <!--  Flink  -->
-        <flink.version>1.13.5</flink.version>
-        <scala.binary.version>2.12</scala.binary.version>
+        <flink.version>1.17.1</flink.version>
+<!--        <scala.binary.version>2.12</scala.binary.version>-->
         <hadoop.version>3.3.3</hadoop.version>
-        <kafka.clients.version>2.5.1</kafka.clients.version>
+<!--        <kafka.clients.version>2.5.1</kafka.clients.version>-->
         <parquet-avro.version>1.12.3</parquet-avro.version>
-        <rheos.client.version>2.0.13</rheos.client.version>
+        <rheos.client.version>2.0.18</rheos.client.version>
+        <rheos.ha-kafka-connector.version>1.17.2.0-SNAPSHOT</rheos.ha-kafka-connector.version>
         <rheos.job.uploader.plugin.version>1.0.1-SNAPSHOT</rheos.job.uploader.plugin.version>
 
         <!--  Tests  -->
@@ -61,6 +62,10 @@
         <sonar.plugin.version>3.7.0.1746</sonar.plugin.version>
         <versions.plugin.version>2.16.0</versions.plugin.version>
         <help.plugin.version>3.4.0</help.plugin.version>
+
+        <!--  Scope  -->
+        <flink.scope>compile</flink.scope>
+        <hadoop.scope>compile</hadoop.scope>
 
         <sonar.coverage.exclusions>
             src/main/java/org/apache/flink/streaming/runtime/operators/windowing/*.java,
@@ -129,10 +134,18 @@
             <!--  Hadoop  -->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-common</artifactId>
+                <artifactId>hadoop-client</artifactId>
                 <version>${hadoop.version}</version>
-                <scope>provided</scope>
+                <scope>${hadoop.scope}</scope>
                 <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>*</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>commons-logging</groupId>
+                        <artifactId>commons-logging</artifactId>
+                    </exclusion>
                     <exclusion>
                         <groupId>org.apache.httpcomponents</groupId>
                         <artifactId>httpclient</artifactId>
@@ -140,10 +153,6 @@
                     <exclusion>
                         <groupId>org.apache.avro</groupId>
                         <artifactId>avro</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.apache.zookeeper</groupId>
-                        <artifactId>zookeeper</artifactId>
                     </exclusion>
                     <exclusion>
                         <groupId>commons-beanutils</groupId>
@@ -157,91 +166,67 @@
                         <groupId>com.sun.jersey</groupId>
                         <artifactId>*</artifactId>
                     </exclusion>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-hdfs</artifactId>
-                <version>${hadoop.version}</version>
-                <scope>provided</scope>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>io.netty</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>com.sun.jersey</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
                 </exclusions>
             </dependency>
             <!--  Hadoop:end  -->
 
-            <!--  Flink  -->
-            <!--  flink streaming runtime  -->
+            <!--  Flink Dependencies -->
+            <!--  Flink Core  -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-java</artifactId>
+                <artifactId>flink-clients</artifactId>
                 <version>${flink.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
+                <scope>${flink.scope}</scope>
             </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.apache.flink</groupId>-->
+<!--                <artifactId>flink-streaming-scala_2.12</artifactId>-->
+<!--                <version>${flink.version}</version>-->
+<!--                <scope>${flink.scope}</scope>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+                <artifactId>flink-statebackend-rocksdb</artifactId>
                 <version>${flink.version}</version>
-                <type>jar</type>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-statebackend-rocksdb_${scala.binary.version}</artifactId>
-                <version>${flink.version}</version>
-                <scope>provided</scope>
+                <scope>${flink.scope}</scope>
             </dependency>
             <!-- runtime-web is needed to start Web UI from IDE -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-runtime-web_${scala.binary.version}</artifactId>
+                <artifactId>flink-runtime-web</artifactId>
                 <version>${flink.version}</version>
-                <scope>provided</scope>
+                <scope>${flink.scope}</scope>
             </dependency>
-            <!--  flink connectors  -->
-            <!--  flink kafka connector  -->
+            <!-- flink kafka connector -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-kafka_${scala.binary.version}</artifactId>
+                <artifactId>flink-connector-kafka</artifactId>
                 <version>${flink.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.apache.kafka</groupId>
-                        <artifactId>kafka-clients</artifactId>
-                    </exclusion>
-                </exclusions>
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <groupId>org.apache.kafka</groupId>-->
+<!--                        <artifactId>kafka-clients</artifactId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
             </dependency>
-            <!--  kafka clients  -->
+
+            <!-- ha kafka connector. provided by rheos -->
             <dependency>
-                <groupId>org.apache.kafka</groupId>
-                <artifactId>kafka-clients</artifactId>
-                <version>${kafka.clients.version}</version>
+                <groupId>io.ebay.rheos</groupId>
+                <artifactId>flink-connector-kafka-ha</artifactId>
+                <version>${rheos.ha-kafka-connector.version}</version>
             </dependency>
+
+            <!-- Flink Avro: This allows to easily read and write Avro data based on an Avro schema with Flink  -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-avro</artifactId>
                 <version>${flink.version}</version>
             </dependency>
-            <!--  parquet  -->
+            <!-- parquet -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-parquet_${scala.binary.version}</artifactId>
+                <artifactId>flink-parquet</artifactId>
                 <version>${flink.version}</version>
                 <exclusions>
                     <exclusion>
@@ -254,19 +239,37 @@
                 <groupId>org.apache.parquet</groupId>
                 <artifactId>parquet-avro</artifactId>
                 <version>${parquet-avro.version}</version>
+                <optional>true</optional>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.apache.hadoop</groupId>
+                        <artifactId>hadoop-client</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>it.unimi.dsi</groupId>
+                        <artifactId>fastutil</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
-            <!--  flink elasticsearch connector  -->
+            <!-- flink elasticsearch connector  -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-elasticsearch7_${scala.binary.version}</artifactId>
+                <artifactId>flink-connector-elasticsearch7</artifactId>
+                <version>3.0.1-1.17</version>
+            </dependency>
+            <!-- flink files connector  -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-files</artifactId>
                 <version>${flink.version}</version>
             </dependency>
+            <!-- flink metrics -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-metrics-dropwizard</artifactId>
                 <version>${flink.version}</version>
             </dependency>
-            <!--  Flink:end  -->
+            <!--  Flink Dependencies:end  -->
 
             <!--  Rheos  -->
             <dependency>
@@ -286,7 +289,27 @@
             </dependency>
             <!--  Rheos:end  -->
 
-            <!--  Test Dependencies  -->
+            <!-- Sherlock Dependencies -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-api-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
+            <!-- OpenTelemetry SDK -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-sdk-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
+            <!-- OpenTelemetry Logs -->
+            <dependency>
+                <groupId>io.opentelemetry</groupId>
+                <artifactId>opentelemetry-exporter-otlp-logs</artifactId>
+                <version>1.24.0-alpha</version>
+            </dependency>
+            <!-- Sherlock Dependencies:end -->
+
+            <!--  Test Dependencies, scope are all `test`  -->
             <!--  Mockito  -->
             <dependency>
                 <groupId>org.mockito</groupId>
@@ -349,16 +372,10 @@
             <!--  Flink Test Frameworks  -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
-                <artifactId>flink-test-utils_${scala.binary.version}</artifactId>
+                <artifactId>flink-test-utils</artifactId>
                 <version>${flink.version}</version>
                 <scope>test</scope>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>io.flinkspector</groupId>-->
-<!--                <artifactId>flinkspector-datastream</artifactId>-->
-<!--                <version>0.9.3</version>-->
-<!--                <scope>test</scope>-->
-<!--            </dependency>-->
             <!--  Test Dependencies:end  -->
         </dependencies>
     </dependencyManagement>
@@ -421,44 +438,14 @@
     </dependencies>
 
     <profiles>
-        <!-- This profile helps to make things run out of the box in IntelliJ -->
-        <!-- Its adds Flink's core classes to the runtime class path. -->
-        <!-- Otherwise they are missing in IntelliJ, because the dependency is 'provided' -->
         <profile>
-            <id>Flink-IDEA</id>
+            <id>sonar</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
-                <property>
-                    <name>idea.version</name>
-                </property>
+                <activeByDefault>false</activeByDefault>
             </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.flink</groupId>
-                    <artifactId>flink-java</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.flink</groupId>
-                    <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.flink</groupId>
-                    <artifactId>flink-runtime-web_${scala.binary.version}</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.flink</groupId>
-                    <artifactId>flink-statebackend-rocksdb_${scala.binary.version}</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.avro</groupId>
-                    <artifactId>avro</artifactId>
-                    <scope>compile</scope>
-                </dependency>
-            </dependencies>
+            <properties>
+                <sonar.coverage.exclusions>${sonar.coverage.exclusions}</sonar.coverage.exclusions>
+            </properties>
         </profile>
     </profiles>
 
@@ -517,7 +504,6 @@
                                             <exclude>module-info.class</exclude>
                                             <exclude>log4j.properties.example</exclude>
                                             <exclude>reference.conf</exclude>
-                                            <exclude>git.properties</exclude>
                                         </excludes>
                                     </filter>
                                 </filters>
@@ -717,13 +703,13 @@
         </plugins>
     </build>
 
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>${surefire.plugin.version}</version>
-            </plugin>
-        </plugins>
-    </reporting>
+<!--    <reporting>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--                <version>${surefire.plugin.version}</version>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </reporting>-->
 </project>

@@ -9,7 +9,8 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.connectors.kafka.FlinkKafkaProducer;
 
-import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_KAFKA_DEFAULT_TOPIC;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_KAFKA_TOPIC;
+
 
 public class KafkaProducerJob {
 
@@ -32,8 +33,8 @@ public class KafkaProducerJob {
                                                              .setParallelism(1);
 
         FlinkKafkaProducer<RheosHeader> flinkKafkaProducer = new FlinkKafkaProducer<>(
-                flinkEnv.getString(FLINK_APP_SINK_KAFKA_DEFAULT_TOPIC),
-                new AvroKafkaSerializationSchema<>(RheosHeader.class, flinkEnv.getString(FLINK_APP_SINK_KAFKA_DEFAULT_TOPIC), "eventId"),
+                flinkEnv.getString(FLINK_APP_SINK_KAFKA_TOPIC),
+                new AvroKafkaSerializationSchema<>(RheosHeader.class, flinkEnv.getString(FLINK_APP_SINK_KAFKA_TOPIC), "eventId"),
                 flinkEnv.getKafkaProducerProps(),
                 FlinkKafkaProducer.Semantic.AT_LEAST_ONCE
         );

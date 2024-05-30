@@ -11,7 +11,8 @@ import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink;
 
-import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_HDFS_PATH;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_HDFS_BASE_PATH;
+
 
 public class HdfsSinkTestJob {
 
@@ -34,7 +35,7 @@ public class HdfsSinkTestJob {
 
 
         final StreamingFileSink<RheosHeader> hdfsSink = StreamingFileSink
-                .forBulkFormat(new Path(flinkEnv.getString(FLINK_APP_SINK_HDFS_PATH)),
+                .forBulkFormat(new Path(flinkEnv.getString(FLINK_APP_SINK_HDFS_BASE_PATH)),
                         ParquetAvroWritersWithCompression.forSpecificRecord(RheosHeader.class))
                 .withBucketAssigner(new AvroFieldDtHrBucketAssigner<>("eventCreateTimestamp"))
                 .build();

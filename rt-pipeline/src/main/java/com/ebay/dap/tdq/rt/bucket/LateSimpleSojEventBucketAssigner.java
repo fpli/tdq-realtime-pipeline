@@ -1,4 +1,4 @@
-package com.ebay.dap.tdq.rt.sink;
+package com.ebay.dap.tdq.rt.bucket;
 
 import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
 import org.apache.flink.core.io.SimpleVersionedSerializer;

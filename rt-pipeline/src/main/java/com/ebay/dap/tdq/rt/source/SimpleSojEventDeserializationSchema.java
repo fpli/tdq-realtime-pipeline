@@ -1,4 +1,4 @@
-package com.ebay.dap.tdq.rt.function;
+package com.ebay.dap.tdq.rt.source;
 
 import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
 import io.ebay.rheos.kafka.client.StreamConnectorConfig;
@@ -13,7 +13,6 @@ import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +29,6 @@ public class SimpleSojEventDeserializationSchema implements KafkaRecordDeseriali
 
     @Override
     public void open(DeserializationSchema.InitializationContext context) throws Exception {
-        KafkaRecordDeserializationSchema.super.open(context);
-
         this.rheosEventDeserializer = new RheosEventDeserializer();
         Map<String, Object> config = new HashMap<>();
         config.put(StreamConnectorConfig.RHEOS_SERVICES_URLS, this.registryUrl);
@@ -51,7 +48,9 @@ public class SimpleSojEventDeserializationSchema implements KafkaRecordDeseriali
         simpleSojEvent.setEventTimestamp((Long) event.get("eventTimestamp"));
         simpleSojEvent.setGuid(event.get("guid") == null ? null : event.get("guid").toString());
         simpleSojEvent.setRlogId(event.get("rlogid") == null ? null : event.get("rlogid").toString());
-        simpleSojEvent.setProcessTime(Instant.now().toEpochMilli());
+        simpleSojEvent.setSiteId(event.get("siteId") == null ? -1 : Integer.parseInt(event.get("siteId").toString()));
+        simpleSojEvent.setAppId(event.get("appId") == null ? -1 : Integer.parseInt(event.get("appId").toString()));
+        simpleSojEvent.setProcessTime(System.currentTimeMillis());
 
         out.collect(simpleSojEvent);
     }
