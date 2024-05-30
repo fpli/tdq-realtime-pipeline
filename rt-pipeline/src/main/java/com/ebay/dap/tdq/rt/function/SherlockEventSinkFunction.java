@@ -27,15 +27,14 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     private String lateEventFlag;
 
     /**
-     *
-     * @param endpoint sherlock endpoint
+     * @param endpoint      sherlock endpoint
      * @param applicationId the application id, schema is created in this application
-     * @param namespace the namespace of the schema
-     * @param schema    the schema name
-     * @param label     use to segment event within same schema, like prod, pre-prod, etc.
+     * @param namespace     the namespace of the schema
+     * @param schema        the schema name
+     * @param label         use to segment event within same schema, like prod, pre-prod, etc.
      * @param lateEventFlag use to identify late event
      */
-    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label,String lateEventFlag) {
+    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label, String lateEventFlag) {
         this.endpoint = endpoint;
         this.applicationId = applicationId;
         this.namespace = namespace;
@@ -51,18 +50,18 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
         OtlpHttpLogRecordExporterBuilder builder = OtlpHttpLogRecordExporter.builder()
-                .setEndpoint(endpoint)
-                .setCompression("gzip")
-                .addHeader("Authorization", "Bearer " + applicationId);
+                                                                            .setEndpoint(endpoint)
+                                                                            .setCompression("gzip")
+                                                                            .addHeader("Authorization", "Bearer " + applicationId);
         OtlpHttpLogRecordExporter exporter = builder.build();
         BatchLogRecordProcessorBuilder batchLogProcessorBuilder = BatchLogRecordProcessor.builder(exporter);
         batchLogProcessorBuilder.setMaxExportBatchSize(100);
         logRecordProcessor = batchLogProcessorBuilder.build();
         SdkLoggerProviderBuilder sdkLoggerProviderBuilder = SdkLoggerProvider.builder();
         sdkLoggerProviderBuilder.setResource(Resource.create(Attributes.builder()
-                .put("_namespace_", namespace)
-                .put("_schema_", schema)
-                .build()));
+                                                                       .put("_namespace_", namespace)
+                                                                       .put("_schema_", schema)
+                                                                       .build()));
         provider = sdkLoggerProviderBuilder.addLogRecordProcessor(logRecordProcessor).build();
     }
 

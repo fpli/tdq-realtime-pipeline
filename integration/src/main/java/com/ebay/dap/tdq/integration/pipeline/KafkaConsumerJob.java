@@ -21,11 +21,11 @@ public class KafkaConsumerJob {
         StreamExecutionEnvironment executionEnvironment = flinkEnv.init();
 
         KafkaSource<RheosHeader> kafkaSource = KafkaSource.<RheosHeader>builder()
-                                                          .setBootstrapServers(flinkEnv.getKafkaSourceBrokers())
-                                                          .setGroupId(flinkEnv.getKafkaSourceGroupId())
-                                                          .setTopics(flinkEnv.getKafkaSourceTopics())
+                                                          .setBootstrapServers(flinkEnv.getSourceKafkaBrokers())
+                                                          .setGroupId(flinkEnv.getSourceKafkaGroupId())
+                                                          .setTopics(flinkEnv.getSourceKafkaTopics())
                                                           .setProperties(flinkEnv.getKafkaConsumerProps())
-                                                          .setStartingOffsets(flinkEnv.getKafkaSourceStartingOffsets())
+                                                          .setStartingOffsets(flinkEnv.getSourceKafkaStartingOffsets())
                                                           .setDeserializer(new RheosHeaderDeserializationSchema())
                                                           .build();
 

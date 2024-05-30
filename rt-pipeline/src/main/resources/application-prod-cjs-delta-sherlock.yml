@@ -1,28 +1,26 @@
 flink:
   app:
-    name: TDQ - RT Metric Collector - Prod
-    checkpoint:
-      data-dir: /tmp/flink/checkpoints/tdq-rt-metric-collector/
+    name: TDQ - CJS Metrics Collector - Prod
     parallelism:
       default: 100
-      source: 200
+      source: 400
     watermark:
       max-out-of-orderness-in-min: 10
       idle-source-timeout-in-min: 10
     source:
       kafka:
-        group-id: tdq-prod-rt-metric-collector-sherlock
+        group-id: tdq-cjs-metrics-collector-pre-prod
         env: prod
         stream: behavior.totalv3
         dc: rno
         topic:
           - behavior.totalv3.sojevent-nonbot-rno
-        from-timestamp: latest
-    sink:
-      pronto:
-        index-prefix: sandbox.rt.metric
-      hdfs:
-        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/
+        start-offset: latest
+#    sink:
+#      pronto:
+#        index-prefix: sandbox.rt.metric
+#      hdfs:
+#        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/
 
 rheos:
   registry-url: https://rheos-services.stratus.ebay.com

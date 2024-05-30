@@ -3,10 +3,8 @@ package com.ebay.dap.tdq.rt.pipeline;
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
 import com.ebay.dap.tdq.rt.domain.PageMetric;
 import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
-import com.ebay.dap.tdq.rt.function.LateEventToMetricsMapFunction;
 import com.ebay.dap.tdq.rt.function.MetricAggFunction;
 import com.ebay.dap.tdq.rt.function.MetricProcessWindowFunction;
-import com.ebay.dap.tdq.rt.function.SherlockEventSinkFunction;
 import com.ebay.dap.tdq.rt.source.SimpleSojEventDeserializationSchema;
 import com.ebay.dap.tdq.rt.key.SimpleSojEventKeySelector;
 import com.ebay.dap.tdq.rt.watermark.SimpleSojEventTimestampAssigner;
@@ -25,13 +23,8 @@ import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_PARALLELISM_SO
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN;
 import static com.ebay.dap.tdq.common.constant.Property.RHEOS_REGISTRY_URL;
-import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_APPLICATION_ID;
-import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_ENDPOINT;
-import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_LABEL;
-import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_NAMESPACE;
-import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_SCHEMA;
 
-public class PageMetricCollector {
+public class SojMetricsCollector {
 
     private static final int WINDOW_MINS = 30;
 
@@ -76,12 +69,13 @@ public class PageMetricCollector {
                                                                                .withIdleness(Duration.ofMinutes(idleTimeout));
 
 
-        SingleOutputStreamOperator<SimpleSojEvent> sourceStream = executionEnvironment.fromSource(kafkaSource, watermarkStrategy, sourceOpName)
-                                                                                      .uid(sourceOpUid)
-                                                                                      .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+        SingleOutputStreamOperator<SimpleSojEvent> sourceStream =
+                executionEnvironment.fromSource(kafkaSource, watermarkStrategy, sourceOpName)
+                                    .uid(sourceOpUid)
+                                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
 
-        OutputTag<SimpleSojEvent> lateEventOutputTag = new OutputTag<>("late_event", TypeInformation.of(SimpleSojEvent.class));
+        OutputTag<SimpleSojEvent> lateEventOutputTag = new OutputTag<>("late-simple-sojevent", TypeInformation.of(SimpleSojEvent.class));
 
 
         SingleOutputStreamOperator<PageMetric> windowStream =
@@ -130,37 +124,35 @@ public class PageMetricCollector {
 //                .withBucketAssigner(new LateSimpleSojEventBucketAssigner())
 //                .build();
 //
-        windowStream
-                .addSink(new SherlockEventSinkFunction(
-                        flinkEnv.getString(SHERLOCK_ENDPOINT),
-                        flinkEnv.getString(SHERLOCK_APPLICATION_ID),
-                        flinkEnv.getString(SHERLOCK_NAMESPACE),
-                        flinkEnv.getString(SHERLOCK_SCHEMA),
-                        flinkEnv.getString(SHERLOCK_LABEL),
-                        nonLateEventFlag
-                ))
-                .name(sherlockSinkOpName)
-                .uid(sherlockSinkOpUid)
-                .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
-
-        // late event also send to sherlock
-        windowStream.getSideOutput(lateEventOutputTag)
-                    //  recalculate the window time or use event time?
-                    .map(new LateEventToMetricsMapFunction(WINDOW_MINS, false))
-                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE))
-                    .name(lateMapOpName)
-                    .uid(lateMapOpUid)
-                    .addSink(new SherlockEventSinkFunction(
-                            flinkEnv.getString(SHERLOCK_ENDPOINT),
-                            flinkEnv.getString(SHERLOCK_APPLICATION_ID),
-                            flinkEnv.getString(SHERLOCK_NAMESPACE),
-                            flinkEnv.getString(SHERLOCK_SCHEMA),
-                            flinkEnv.getString(SHERLOCK_LABEL),
-                            lateEventFlag
-                    ))
-                    .name(lateSinkOpName)
-                    .uid(lateSinkOpUid)
-                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+//        windowStream.addSink(new SherlockEventSinkFunction(
+//                            flinkEnv.getString(SHERLOCK_ENDPOINT),
+//                            flinkEnv.getString(SHERLOCK_APPLICATION_ID),
+//                            flinkEnv.getString(SHERLOCK_NAMESPACE),
+//                            flinkEnv.getString(SHERLOCK_SCHEMA),
+//                            flinkEnv.getString(SHERLOCK_LABEL),
+//                            nonLateEventFlag))
+//                    .name(sherlockSinkOpName)
+//                    .uid(sherlockSinkOpUid)
+//                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+//
+//        // late event also send to sherlock
+//        windowStream.getSideOutput(lateEventOutputTag)
+//                    //  recalculate the window time or use event time?
+//                    .map(new LateEventToMetricsMapFunction(WINDOW_MINS, false))
+//                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE))
+//                    .name(lateMapOpName)
+//                    .uid(lateMapOpUid)
+//                    .addSink(new SherlockEventSinkFunction(
+//                            flinkEnv.getString(SHERLOCK_ENDPOINT),
+//                            flinkEnv.getString(SHERLOCK_APPLICATION_ID),
+//                            flinkEnv.getString(SHERLOCK_NAMESPACE),
+//                            flinkEnv.getString(SHERLOCK_SCHEMA),
+//                            flinkEnv.getString(SHERLOCK_LABEL),
+//                            lateEventFlag
+//                    ))
+//                    .name(lateSinkOpName)
+//                    .uid(lateSinkOpUid)
+//                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 
         // submit flink job
         flinkEnv.execute(executionEnvironment);

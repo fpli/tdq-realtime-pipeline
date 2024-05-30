@@ -88,3 +88,20 @@
       - rhs-mfrvkiaa-kfk-3.rheos-streaming-prod.vip.ebay.com:9092
       - rhs-mfrvkiaa-kfk-4.rheos-streaming-prod.vip.ebay.com:9092
       - rhs-mfrvkiaa-kfk-5.rheos-streaming-prod.vip.ebay.com:9092
+
+-
+  stream: behavior.cjs.signal_agg
+  auth-protocol: SASL_PLAINTEXT
+  brokers:
+    rno:
+      - rhs-hokwkiaa-kfk-1.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-hokwkiaa-kfk-2.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-hokwkiaa-kfk-3.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-hokwkiaa-kfk-4.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-hokwkiaa-kfk-5.rheos-streaming-prod.vip.ebay.com:9092
+    slc:
+      - rhs-ynkwkiaa-kfk-1.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-ynkwkiaa-kfk-2.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-ynkwkiaa-kfk-3.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-ynkwkiaa-kfk-4.rheos-streaming-prod.vip.ebay.com:9092
+      - rhs-ynkwkiaa-kfk-5.rheos-streaming-prod.vip.ebay.com:9092

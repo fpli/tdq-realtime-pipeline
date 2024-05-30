@@ -1,0 +1,21 @@
+flink:
+  app:
+    checkpoint:
+      data-dir: /tmp/flink/checkpoints/tdq-metrics-collector/
+      # 5 mins
+      interval-ms: 300000
+      # 15 mins
+      timeout-ms: 900000
+
+kafka:
+  consumer:
+    # 5000, default value is 500
+    max-poll-records: 5000
+    # 100MB, default value is 50MB
+    fetch-max-bytes: 104857600
+    # 4MB, default value is 64KB
+    receive-buffer: 4194304
+    # 25MB, default value is 1MB
+    max-partitions-fetch-bytes: 26214400
+    # when offset cannot be found, read from `earliest`
+    auto-offset-reset: earliest

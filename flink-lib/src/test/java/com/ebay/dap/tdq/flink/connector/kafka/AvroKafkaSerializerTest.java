@@ -31,7 +31,8 @@ class AvroKafkaSerializerTest {
     void init() {
         sojEventAvroKafkaSerializer = new AvroKafkaSerializer<>(SojEvent.class, "guid");
         sojEvent = new SojEvent();
-        sojEvent.setRheosHeader(new RheosHeader(0L,0L,0,"eventId","producerId"));
+        RheosHeader rheosHeader = new RheosHeader(0L, 0L, 0, "eventId", "producerId");
+        sojEvent.setRheosHeader(rheosHeader);
         sojEvent.setGuid("abc");
         sojEvent.setPageId(123);
         sojEvent.setClientData(new HashMap<>());
