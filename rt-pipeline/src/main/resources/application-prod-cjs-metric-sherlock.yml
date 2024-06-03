@@ -1,21 +1,24 @@
 flink:
   app:
-    name: TDQ - CJS Metrics Collector - Prod
+    name: TDQ CJS Metrics Collector - Prod
     parallelism:
-      default: 100
-      source: 400
+      source: 120
+      sink: 240
     watermark:
       max-out-of-orderness-in-min: 10
       idle-source-timeout-in-min: 10
     source:
       kafka:
         group-id: tdq-cjs-metrics-collector-pre-prod
+        stream: behavior.cjs.signal_agg
         env: prod
-        stream: behavior.totalv3
-        dc: rno
+        dc: slc
         topic:
-          - behavior.totalv3.sojevent-nonbot-rno
+          - behavior.cjs.signal.delta
         start-offset: latest
+#        ha:
+#          consumer: tdq-cjs-metrics-collector-ha-consumer
+#          rheos-service-url: https://rhs-kafka-discovery.vip.ebay.com
 #    sink:
 #      pronto:
 #        index-prefix: sandbox.rt.metric
