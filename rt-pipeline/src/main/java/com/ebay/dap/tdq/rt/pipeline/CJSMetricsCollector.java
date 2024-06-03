@@ -5,6 +5,7 @@ import com.ebay.dap.tdq.rt.domain.CJSMetric;
 import com.ebay.dap.tdq.rt.domain.SimpleSignalDelta;
 import com.ebay.dap.tdq.rt.function.CJSMetricAggFunction;
 import com.ebay.dap.tdq.rt.function.CJSMetricProcessWindowFunction;
+import com.ebay.dap.tdq.rt.function.impl.SherlockEventSinkFunctionCJSMetric;
 import com.ebay.dap.tdq.rt.key.SimpleSignalDeltaKeySelector;
 import com.ebay.dap.tdq.rt.source.SimpleSignalDeltaDeserializationSchema;
 import com.ebay.dap.tdq.rt.watermark.SimpleSignalDeltaTimestampAssigner;
@@ -20,8 +21,7 @@ import org.apache.flink.util.OutputTag;
 
 import java.time.Duration;
 
-import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN;
-import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN;
+import static com.ebay.dap.tdq.common.constant.Property.*;
 
 public class CJSMetricsCollector {
 
@@ -129,16 +129,18 @@ public class CJSMetricsCollector {
 //                .withBucketAssigner(new LateSimpleSojEventBucketAssigner())
 //                .build();
 //
-//        windowStream.addSink(new SherlockEventSinkFunction(
-//                            flinkEnv.getString(SHERLOCK_ENDPOINT),
-//                            flinkEnv.getString(SHERLOCK_APPLICATION_ID),
-//                            flinkEnv.getString(SHERLOCK_NAMESPACE),
-//                            flinkEnv.getString(SHERLOCK_SCHEMA),
-//                            flinkEnv.getString(SHERLOCK_LABEL),
-//                            nonLateEventFlag))
-//                    .name(sherlockSinkOpName)
-//                    .uid(sherlockSinkOpUid)
-//                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+
+
+        windowStream.addSink(new SherlockEventSinkFunctionCJSMetric(
+                            flinkEnv.getString(SHERLOCK_ENDPOINT),
+                            flinkEnv.getString(SHERLOCK_APPLICATION_ID),
+                            flinkEnv.getString(SHERLOCK_NAMESPACE),
+                            flinkEnv.getString(SHERLOCK_SCHEMA),
+                            100
+                            ))
+                    .name(sherlockSinkOpName)
+                    .uid(sherlockSinkOpUid)
+                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
 //
 //        // late event also send to sherlock
 //        windowStream.getSideOutput(lateEventOutputTag)
