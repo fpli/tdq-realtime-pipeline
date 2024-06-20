@@ -17,16 +17,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class CorrelationContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -4209548916546497787L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"CorrelationContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\"This category of cols are used for event correlation in stateful processor\\n*  It won't output in singal delta but for stateful processor internal usage\",\"fields\":[{\"name\":\"ciid\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"trackableId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"pageViewId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"siid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<CorrelationContext> ENCODER =
-      new BinaryMessageEncoder<CorrelationContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<CorrelationContext> DECODER =
-      new BinaryMessageDecoder<CorrelationContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -50,7 +52,7 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<CorrelationContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<CorrelationContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -73,10 +75,10 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
     return DECODER.decode(b);
   }
 
-   private java.lang.Long ciid;
-   private java.lang.String trackableId;
-   private java.lang.String pageViewId;
-   private java.lang.String siid;
+  private java.lang.Long ciid;
+  private java.lang.String trackableId;
+  private java.lang.String pageViewId;
+  private java.lang.String siid;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -99,9 +101,14 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
     this.siid = siid;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return ciid;
@@ -113,6 +120,7 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -240,7 +248,7 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -272,7 +280,7 @@ public class CorrelationContext extends org.apache.avro.specific.SpecificRecordB
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.CorrelationContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.ciid)) {
         this.ciid = data().deepCopy(fields()[0].schema(), other.ciid);
         fieldSetFlags()[0] = true;

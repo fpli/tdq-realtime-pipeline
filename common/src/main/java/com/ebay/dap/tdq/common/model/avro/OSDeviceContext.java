@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 7792136583004274047L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"OSDeviceContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"osName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"manufacturer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"Android related fields\",\"default\":null},{\"name\":\"androidId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"gadid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"screenDpi\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"idfa\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"IOS related fields\",\"default\":null},{\"name\":\"screenScale\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"browserName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Browser related fields\"},{\"name\":\"browserVersion\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"gpcEnabled\",\"type\":\"boolean\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<OSDeviceContext> ENCODER =
-      new BinaryMessageEncoder<OSDeviceContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<OSDeviceContext> DECODER =
-      new BinaryMessageDecoder<OSDeviceContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<OSDeviceContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<OSDeviceContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -71,20 +73,20 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
     return DECODER.decode(b);
   }
 
-   private java.lang.String osName;
-   private java.lang.String osVersion;
+  private java.lang.String osName;
+  private java.lang.String osVersion;
   /** Android related fields */
-   private java.lang.String manufacturer;
-   private java.lang.String androidId;
-   private java.lang.String gadid;
-   private java.lang.String screenDpi;
+  private java.lang.String manufacturer;
+  private java.lang.String androidId;
+  private java.lang.String gadid;
+  private java.lang.String screenDpi;
   /** IOS related fields */
-   private java.lang.String idfa;
-   private java.lang.String screenScale;
+  private java.lang.String idfa;
+  private java.lang.String screenScale;
   /** Browser related fields */
-   private java.lang.String browserName;
-   private java.lang.String browserVersion;
-   private boolean gpcEnabled;
+  private java.lang.String browserName;
+  private java.lang.String browserVersion;
+  private boolean gpcEnabled;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -121,9 +123,14 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
     this.gpcEnabled = gpcEnabled;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return osName;
@@ -142,6 +149,7 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -408,7 +416,7 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -468,7 +476,7 @@ public class OSDeviceContext extends org.apache.avro.specific.SpecificRecordBase
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.OSDeviceContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.osName)) {
         this.osName = data().deepCopy(fields()[0].schema(), other.osName);
         fieldSetFlags()[0] = true;

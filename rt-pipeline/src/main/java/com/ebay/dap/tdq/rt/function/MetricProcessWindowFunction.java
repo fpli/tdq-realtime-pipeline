@@ -27,7 +27,7 @@ public class MetricProcessWindowFunction extends ProcessWindowFunction<PageMetri
 
     @Override
     public void process(Tuple3<Integer, Integer, Integer> key, ProcessWindowFunction<PageMetric, PageMetric, Tuple3<Integer, Integer, Integer>, TimeWindow>.Context context, Iterable<PageMetric> elements, Collector<PageMetric> out) throws Exception {
-        LocalDateTime eventTime = DateTimeUtils.tsToLocalDateTime(context.window().getStart());
+        LocalDateTime eventTime = DateTimeUtils.epochMilliToLocalDateTime(context.window().getStart());
 
         PageMetric next = elements.iterator().next();
         next.setDt(eventTime.format(DateTimeFormatter.ISO_DATE));

@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -1051659920577398346L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DataMetaContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"eventSchemaVersion\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<DataMetaContext> ENCODER =
-      new BinaryMessageEncoder<DataMetaContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<DataMetaContext> DECODER =
-      new BinaryMessageDecoder<DataMetaContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<DataMetaContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<DataMetaContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -71,7 +73,7 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
     return DECODER.decode(b);
   }
 
-   private java.lang.String eventSchemaVersion;
+  private java.lang.String eventSchemaVersion;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -88,9 +90,14 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
     this.eventSchemaVersion = eventSchemaVersion;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return eventSchemaVersion;
@@ -99,6 +106,7 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -169,7 +177,7 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -189,7 +197,7 @@ public class DataMetaContext extends org.apache.avro.specific.SpecificRecordBase
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.DataMetaContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.eventSchemaVersion)) {
         this.eventSchemaVersion = data().deepCopy(fields()[0].schema(), other.eventSchemaVersion);
         fieldSetFlags()[0] = true;

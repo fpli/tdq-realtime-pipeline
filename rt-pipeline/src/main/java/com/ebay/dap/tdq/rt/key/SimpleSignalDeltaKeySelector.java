@@ -2,13 +2,13 @@ package com.ebay.dap.tdq.rt.key;
 
 import com.ebay.dap.tdq.rt.domain.SimpleSignalDelta;
 import org.apache.flink.api.java.functions.KeySelector;
-import org.apache.flink.api.java.tuple.Tuple3;
+import org.apache.flink.api.java.tuple.Tuple4;
 
-public class SimpleSignalDeltaKeySelector implements KeySelector<SimpleSignalDelta, Tuple3<String, String, String>> {
+public class SimpleSignalDeltaKeySelector implements KeySelector<SimpleSignalDelta, Tuple4<String, String, Integer, Integer>> {
 
     @Override
-    public Tuple3<String, String, String> getKey(SimpleSignalDelta signalDelta) throws Exception {
-        return Tuple3.of(signalDelta.getName(), signalDelta.getEventSource(), signalDelta.getEventType());
+    public Tuple4<String, String, Integer, Integer> getKey(SimpleSignalDelta signalDelta) throws Exception {
+        return Tuple4.of(signalDelta.getSignalName(), signalDelta.getEventSource(), signalDelta.getPageId(), signalDelta.getSiteId());
     }
 
 }

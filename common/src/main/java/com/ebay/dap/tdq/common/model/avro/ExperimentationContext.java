@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ExperimentationContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 834372711345975011L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ExperimentationContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"es\",\"type\":\"int\",\"doc\":\"ep site id - using com.ebay.globalenv.SiteEnum\",\"default\":901},{\"name\":\"ec\",\"type\":\"int\",\"doc\":\"ep channel id - using com.ebay.ep.core.cos.COSUtil\",\"default\":99},{\"name\":\"xt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of experienced treatments\",\"default\":[]},{\"name\":\"ot\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of optin treatments\",\"default\":[]},{\"name\":\"os\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},\"doc\":\"qualification info for optin treatments\",\"default\":[]},{\"name\":\"eprlogid\",\"type\":[{\"type\":\"string\",\"avro.java.string\":\"String\"},\"null\"],\"doc\":\"rlogid of the host that perform qualification\",\"default\":\"\"},{\"name\":\"epcalenv\",\"type\":[{\"type\":\"string\",\"avro.java.string\":\"String\"},\"null\"],\"doc\":\"the CAL environmant of eprlogid\",\"default\":\"\"},{\"name\":\"qt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of qualified treatments\",\"default\":[]},{\"name\":\"qc\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of contextual qualified treatments\",\"default\":[]},{\"name\":\"uit\",\"type\":[\"long\",\"null\"],\"doc\":\"User identification timestamp\",\"default\":0},{\"name\":\"mdbreftime\",\"type\":[\"long\",\"null\"],\"doc\":\"timestamp of last experiment metadata refresh from database\",\"default\":0},{\"name\":\"anyId\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AnyId\",\"fields\":[{\"name\":\"val\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"AnyId value\",\"default\":\"\"},{\"name\":\"xt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of experienced treatmentids for this AnyId value\",\"default\":[]}]}},\"doc\":\"Information for AnyId type EP\",\"default\":[]}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<ExperimentationContext> ENCODER =
-      new BinaryMessageEncoder<ExperimentationContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<ExperimentationContext> DECODER =
-      new BinaryMessageDecoder<ExperimentationContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<ExperimentationContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<ExperimentationContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -72,29 +74,29 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
   }
 
   /** ep site id - using com.ebay.globalenv.SiteEnum */
-   private int es;
+  private int es;
   /** ep channel id - using com.ebay.ep.core.cos.COSUtil */
-   private int ec;
+  private int ec;
   /** set of experienced treatments */
-   private java.util.List<java.lang.Long> xt;
+  private java.util.List<java.lang.Long> xt;
   /** set of optin treatments */
-   private java.util.List<java.lang.Long> ot;
+  private java.util.List<java.lang.Long> ot;
   /** qualification info for optin treatments */
-   private java.util.List<java.lang.String> os;
+  private java.util.List<java.lang.String> os;
   /** rlogid of the host that perform qualification */
-   private java.lang.String eprlogid;
+  private java.lang.String eprlogid;
   /** the CAL environmant of eprlogid */
-   private java.lang.String epcalenv;
+  private java.lang.String epcalenv;
   /** set of qualified treatments */
-   private java.util.List<java.lang.Long> qt;
+  private java.util.List<java.lang.Long> qt;
   /** set of contextual qualified treatments */
-   private java.util.List<java.lang.Long> qc;
+  private java.util.List<java.lang.Long> qc;
   /** User identification timestamp */
-   private java.lang.Long uit;
+  private java.lang.Long uit;
   /** timestamp of last experiment metadata refresh from database */
-   private java.lang.Long mdbreftime;
+  private java.lang.Long mdbreftime;
   /** Information for AnyId type EP */
-   private java.util.List<com.ebay.dap.tdq.common.model.avro.AnyId> anyId;
+  private java.util.List<com.ebay.dap.tdq.common.model.avro.AnyId> anyId;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -133,9 +135,14 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
     this.anyId = anyId;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return es;
@@ -155,6 +162,7 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -458,7 +466,7 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -522,7 +530,7 @@ public class ExperimentationContext extends org.apache.avro.specific.SpecificRec
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.ExperimentationContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.es)) {
         this.es = data().deepCopy(fields()[0].schema(), other.es);
         fieldSetFlags()[0] = true;

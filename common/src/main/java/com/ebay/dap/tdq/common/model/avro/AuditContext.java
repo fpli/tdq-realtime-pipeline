@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class AuditContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -2386447258809817456L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AuditContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"ip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"stepLabel\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"received\",\"type\":\"long\"},{\"name\":\"emitted\",\"type\":\"long\"},{\"name\":\"rlogId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<AuditContext> ENCODER =
-      new BinaryMessageEncoder<AuditContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<AuditContext> DECODER =
-      new BinaryMessageDecoder<AuditContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<AuditContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<AuditContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -71,11 +73,11 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
     return DECODER.decode(b);
   }
 
-   private java.lang.String ip;
-   private java.lang.String stepLabel;
-   private long received;
-   private long emitted;
-   private java.lang.String rlogId;
+  private java.lang.String ip;
+  private java.lang.String stepLabel;
+  private long received;
+  private long emitted;
+  private java.lang.String rlogId;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -100,9 +102,14 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
     this.rlogId = rlogId;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return ip;
@@ -115,6 +122,7 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -261,7 +269,7 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -297,7 +305,7 @@ public class AuditContext extends org.apache.avro.specific.SpecificRecordBase im
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.AuditContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.ip)) {
         this.ip = data().deepCopy(fields()[0].schema(), other.ip);
         fieldSetFlags()[0] = true;

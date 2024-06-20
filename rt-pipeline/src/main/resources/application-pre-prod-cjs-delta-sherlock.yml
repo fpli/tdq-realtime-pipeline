@@ -3,9 +3,10 @@ flink:
     name: TDQ CJS Metrics Collector - Pre-Prod
     parallelism:
       source: 120
-      sink: 240
+      process: 200
+      sink: 100
     watermark:
-      max-out-of-orderness-in-min: 10
+      max-out-of-orderness-in-min: 30
       idle-source-timeout-in-min: 10
     source:
       kafka:
@@ -19,11 +20,10 @@ flink:
 #        ha:
 #          consumer: tdq-cjs-metrics-collector-ha-consumer
 #          rheos-service-url: https://rhs-kafka-discovery.vip.ebay.com
-#    sink:
-#      pronto:
-#        index-prefix: sandbox.rt.metric
-#      hdfs:
-#        path: hdfs://hercules/sys/edw/working/ubi/ubi_w/tdq/sandbox/sink-test/
+    sink:
+      hdfs:
+#        cluster: apollo
+        base-path: hdfs://apollo-router/sys/edw/working/ubi/ubi_w/tdq/sandbox/cjs-signal-delta-late-test/
 
 rheos:
   registry-url: https://rheos-services.stratus.ebay.com
@@ -37,9 +37,8 @@ rheos:
 #  username: 94259ed8d74742c585a7b86faf3d0001
 #  password: 7s3AG1ZqOwjz9X59UbPNtcJcb1a0OvMYqDSvGigS2ArjctmBy9YkYIGHxLWcCdky
 #
-#sherlock:
-#  application-id: urn:ebay-marketplace-consumerid:6275bd7f-9a18-45e6-b929-f8a73bbce12a
-#  endpoint: http://ingress.sherlock-service.tess.io/api/signals/v3/events
-#  namespace: sojourner-app
-#  schema: tdqmetrics
-#  label: prod
+sherlock:
+  application-id: urn:ebay-marketplace-consumerid:e141be0c-bb21-48c3-9106-61f482413a9b
+  endpoint: http://ingress.sherlock-service.tess.io/api/signals/v3/events
+  namespace: tdq
+  schema: cjsmetric

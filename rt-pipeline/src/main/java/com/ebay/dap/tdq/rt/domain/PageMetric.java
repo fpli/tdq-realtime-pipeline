@@ -3,6 +3,7 @@ package com.ebay.dap.tdq.rt.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Deprecated
 @Data
 @NoArgsConstructor
 public class PageMetric {

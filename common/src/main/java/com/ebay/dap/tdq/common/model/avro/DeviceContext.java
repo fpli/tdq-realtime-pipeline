@@ -16,16 +16,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -2261761580539099020L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DeviceContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\"Device collection information, describe the infomation of customer's terminal\",\"fields\":[{\"name\":\"appId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"appVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"viewportWidth\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"viewportHeight\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"windowWidth\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"windowHeight\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"networkCarrier\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"networkConnectionType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"theme\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"remoteIp\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"forwardFor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"clientHints\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"default\":{}},{\"name\":\"deviceAdvertisingOptOut\",\"type\":[\"null\",\"boolean\"],\"default\":null},{\"name\":\"userAgent\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deviceDetectionProperties\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"DeviceDetection\",\"fields\":[{\"name\":\"formFactor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"experience\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"model\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}],\"default\":null},{\"name\":\"osDeviceContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"OSDeviceContext\",\"fields\":[{\"name\":\"osName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"manufacturer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"Android related fields\",\"default\":null},{\"name\":\"androidId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"gadid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"screenDpi\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"idfa\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"IOS related fields\",\"default\":null},{\"name\":\"screenScale\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"browserName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Browser related fields\"},{\"name\":\"browserVersion\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"gpcEnabled\",\"type\":\"boolean\"}]}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<DeviceContext> ENCODER =
-      new BinaryMessageEncoder<DeviceContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<DeviceContext> DECODER =
-      new BinaryMessageDecoder<DeviceContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -49,7 +51,7 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<DeviceContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<DeviceContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -72,22 +74,22 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
     return DECODER.decode(b);
   }
 
-   private java.lang.Integer appId;
-   private java.lang.String appVersion;
-   private java.lang.Long viewportWidth;
-   private java.lang.Long viewportHeight;
-   private java.lang.Integer windowWidth;
-   private java.lang.Integer windowHeight;
-   private java.lang.String networkCarrier;
-   private java.lang.String networkConnectionType;
-   private java.lang.String theme;
-   private java.lang.String remoteIp;
-   private java.lang.String forwardFor;
-   private java.util.Map<java.lang.String,java.lang.String> clientHints;
-   private java.lang.Boolean deviceAdvertisingOptOut;
-   private java.lang.String userAgent;
-   private com.ebay.dap.tdq.common.model.avro.DeviceDetection deviceDetectionProperties;
-   private com.ebay.dap.tdq.common.model.avro.OSDeviceContext osDeviceContext;
+  private java.lang.Integer appId;
+  private java.lang.String appVersion;
+  private java.lang.Long viewportWidth;
+  private java.lang.Long viewportHeight;
+  private java.lang.Integer windowWidth;
+  private java.lang.Integer windowHeight;
+  private java.lang.String networkCarrier;
+  private java.lang.String networkConnectionType;
+  private java.lang.String theme;
+  private java.lang.String remoteIp;
+  private java.lang.String forwardFor;
+  private java.util.Map<java.lang.String,java.lang.String> clientHints;
+  private java.lang.Boolean deviceAdvertisingOptOut;
+  private java.lang.String userAgent;
+  private com.ebay.dap.tdq.common.model.avro.DeviceDetection deviceDetectionProperties;
+  private com.ebay.dap.tdq.common.model.avro.OSDeviceContext osDeviceContext;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -134,9 +136,14 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
     this.osDeviceContext = osDeviceContext;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return appId;
@@ -160,6 +167,7 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -517,7 +525,7 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -603,7 +611,7 @@ public class DeviceContext extends org.apache.avro.specific.SpecificRecordBase i
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.DeviceContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.appId)) {
         this.appId = data().deepCopy(fields()[0].schema(), other.appId);
         fieldSetFlags()[0] = true;

@@ -16,16 +16,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class UserIdentityContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -8099681080448738410L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"UserIdentityContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\"This category of cols describe the customer identity info in ebay\",\"fields\":[{\"name\":\"identityId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"userId\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"userName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"guid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<UserIdentityContext> ENCODER =
-      new BinaryMessageEncoder<UserIdentityContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<UserIdentityContext> DECODER =
-      new BinaryMessageDecoder<UserIdentityContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -49,7 +51,7 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<UserIdentityContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<UserIdentityContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -72,10 +74,10 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
     return DECODER.decode(b);
   }
 
-   private java.lang.String identityId;
-   private java.lang.Long userId;
-   private java.lang.String userName;
-   private java.lang.String guid;
+  private java.lang.String identityId;
+  private java.lang.Long userId;
+  private java.lang.String userName;
+  private java.lang.String guid;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -98,9 +100,14 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
     this.guid = guid;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return identityId;
@@ -112,6 +119,7 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -239,7 +247,7 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -271,7 +279,7 @@ public class UserIdentityContext extends org.apache.avro.specific.SpecificRecord
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.UserIdentityContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.identityId)) {
         this.identityId = data().deepCopy(fields()[0].schema(), other.identityId);
         fieldSetFlags()[0] = true;

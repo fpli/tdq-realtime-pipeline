@@ -18,16 +18,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 5382642576243901688L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DebuggingContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\"This category of cols may be used internally. It won't output to downstream in stateful processor.\\n* If some events throw a failure. Log some info to help debugging.\\n* And send the failed event to monitor topic for quality control and alert\",\"fields\":[{\"name\":\"schemaTransFailures\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"ingestionFailures\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"errorCode\",\"type\":[\"null\",\"long\"]},{\"name\":\"poolName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"collectionServer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"trackingAgentVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"others\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<DebuggingContext> ENCODER =
-      new BinaryMessageEncoder<DebuggingContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<DebuggingContext> DECODER =
-      new BinaryMessageDecoder<DebuggingContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -51,7 +53,7 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<DebuggingContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<DebuggingContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -74,13 +76,13 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
     return DECODER.decode(b);
   }
 
-   private java.util.Map<java.lang.String,java.lang.String> schemaTransFailures;
-   private java.util.Map<java.lang.String,java.lang.String> ingestionFailures;
-   private java.lang.Long errorCode;
-   private java.lang.String poolName;
-   private java.lang.String collectionServer;
-   private java.lang.String trackingAgentVersion;
-   private java.util.Map<java.lang.String,java.lang.String> others;
+  private java.util.Map<java.lang.String,java.lang.String> schemaTransFailures;
+  private java.util.Map<java.lang.String,java.lang.String> ingestionFailures;
+  private java.lang.Long errorCode;
+  private java.lang.String poolName;
+  private java.lang.String collectionServer;
+  private java.lang.String trackingAgentVersion;
+  private java.util.Map<java.lang.String,java.lang.String> others;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -109,9 +111,14 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
     this.others = others;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return schemaTransFailures;
@@ -126,6 +133,7 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -310,7 +318,7 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -354,7 +362,7 @@ public class DebuggingContext extends org.apache.avro.specific.SpecificRecordBas
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.DebuggingContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.schemaTransFailures)) {
         this.schemaTransFailures = data().deepCopy(fields()[0].schema(), other.schemaTransFailures);
         fieldSetFlags()[0] = true;

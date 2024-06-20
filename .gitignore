@@ -20,3 +20,5 @@ application-local-*.yaml
 
 .java-version
 .app-version
+
+Test.java

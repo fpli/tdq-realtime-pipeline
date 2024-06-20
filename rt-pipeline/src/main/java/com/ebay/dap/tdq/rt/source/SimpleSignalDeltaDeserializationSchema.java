@@ -13,7 +13,6 @@ import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
 import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.errors.SerializationException;
 
 import java.io.IOException;
 
@@ -32,16 +31,17 @@ public class SimpleSignalDeltaDeserializationSchema implements KafkaRecordDeseri
 
     @Override
     public void deserialize(ConsumerRecord<byte[], byte[]> record, Collector<SimpleSignalDelta> out) throws IOException {
-        try {
-            Decoder decoder = DecoderFactory.get().binaryDecoder(record.value(), null);
-            Signal signalDelta = reader.read(null, decoder);
 
-            SimpleSignalDelta simpleSignalDelta = convertToSimpleSignalDelta(signalDelta);
+        Decoder decoder = DecoderFactory.get().binaryDecoder(record.value(), null);
+        Signal signalDelta = reader.read(null, decoder);
 
-            out.collect(simpleSignalDelta);
-        } catch (IOException e) {
-            throw new SerializationException("Error when deserializing SojEvent.", e);
-        }
+        SimpleSignalDelta simpleSignalDelta = convertToSimpleSignalDelta(signalDelta);
+
+        simpleSignalDelta.setKafkaPartition(record.partition());
+        simpleSignalDelta.setKafkaOffset(record.offset());
+        simpleSignalDelta.setKafkaTimestamp(record.timestamp());
+
+        out.collect(simpleSignalDelta);
     }
 
     @Override
@@ -55,17 +55,26 @@ public class SimpleSignalDeltaDeserializationSchema implements KafkaRecordDeseri
         // set timestamp
         simpleSignalDelta.setTimestamp(signalDelta.getSignalInfo().getDeltaTimestamp());
 
-        // set name
-        simpleSignalDelta.setName(signalDelta.getSignalInfo().getName());
+        // parse signal name
+        simpleSignalDelta.setSignalName(signalDelta.getSignalInfo().getName());
+
+        // parse pageId
+        Integer pageId = signalDelta.getSignalInfo().getContext().getPageInteractionContext().getPageId();
+        simpleSignalDelta.setPageId(pageId == null ? -1 : pageId);
+
+        // parse siteId
+        simpleSignalDelta.setSiteId(signalDelta.getSignalInfo().getContext().getPageInteractionContext().getSiteId());
 
         Field eventSource = signalDelta.getSignalInfo().getFields().get("unifiedEvent.eventSource");
-        simpleSignalDelta.setEventSource(eventSource.getValue());
+        simpleSignalDelta.setEventSource(eventSource == null ? "" : eventSource.getValue());
 
-        Field eventType = signalDelta.getSignalInfo().getFields().get("unifiedEvent.eventType");
-        simpleSignalDelta.setEventType(eventType.getValue());
+        Field eventPrimaryId = signalDelta.getSignalInfo().getFields().get("eventPrimaryId");
+        simpleSignalDelta.setEventPrimaryId(eventPrimaryId == null ? "" : eventPrimaryId.getValue());
 
-//        Field eactn = signalDelta.getSignalInfo().getFields().get("eactn");
-//        simpleSignalDelta.setEventAction(eactn.getValue());
+        Field unifiedEventId = signalDelta.getSignalInfo().getFields().get("unifiedEventId");
+        simpleSignalDelta.setUnifiedEventId(unifiedEventId == null ? "" : unifiedEventId.getValue());
+
+        simpleSignalDelta.setProcessTime(System.currentTimeMillis());
 
         return simpleSignalDelta;
     }

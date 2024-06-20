@@ -17,7 +17,7 @@ public class WatermarkDtHrBucketAssigner<T> implements BucketAssigner<T, String>
         }
 
         long wm = context.currentWatermark();
-        LocalDateTime time = DateTimeUtils.tsToLocalDateTime(wm);
+        LocalDateTime time = DateTimeUtils.epochMilliToLocalDateTime(wm);
 
         return "dt=" + time.toLocalDate().toString() + "/hr=" + time.getHour();
     }

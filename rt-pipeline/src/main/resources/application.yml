@@ -1,7 +1,7 @@
 flink:
   app:
     checkpoint:
-      data-dir: /tmp/flink/checkpoints/tdq-metrics-collector/
+      data-dir: /tmp/flink/checkpoints/tdq-rt-pipeline/
       # 5 mins
       interval-ms: 300000
       # 15 mins

@@ -1,6 +1,6 @@
-package com.ebay.dap.tdq.rt.function;
+package com.ebay.dap.tdq.rt.sink;
 
-import com.ebay.dap.tdq.rt.domain.PageMetric;
+import com.ebay.dap.tdq.rt.domain.Metric;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.common.AttributesBuilder;
 import io.opentelemetry.api.logs.LogRecordBuilder;
@@ -16,35 +16,28 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 
 import java.time.Instant;
+import java.util.function.BiConsumer;
 
-public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
-
+public abstract class SherlockEventSinkFunctionBase<T extends Metric> extends RichSinkFunction<T> {
     private String endpoint;
     private String applicationId;
     private String namespace;
     private String schema;
-    private String label;
-    private String lateEventFlag;
 
-    /**
-     * @param endpoint      sherlock endpoint
-     * @param applicationId the application id, schema is created in this application
-     * @param namespace     the namespace of the schema
-     * @param schema        the schema name
-     * @param label         use to segment event within same schema, like prod, pre-prod, etc.
-     * @param lateEventFlag use to identify late event
-     */
-    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label, String lateEventFlag) {
+    private int maxBatchSize;
+
+    private LogRecordProcessor logRecordProcessor;
+    private SdkLoggerProvider provider;
+
+    private BiConsumer<T, AttributesBuilder> biConsumer;
+
+    public SherlockEventSinkFunctionBase(String endpoint, String applicationId, String namespace, String schema, int maxBatchSize) {
         this.endpoint = endpoint;
         this.applicationId = applicationId;
         this.namespace = namespace;
         this.schema = schema;
-        this.label = label;
-        this.lateEventFlag = lateEventFlag;
+        this.maxBatchSize = maxBatchSize;
     }
-
-    private LogRecordProcessor logRecordProcessor;
-    private SdkLoggerProvider provider;
 
     @Override
     public void open(Configuration parameters) throws Exception {
@@ -55,7 +48,7 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
                                                                             .addHeader("Authorization", "Bearer " + applicationId);
         OtlpHttpLogRecordExporter exporter = builder.build();
         BatchLogRecordProcessorBuilder batchLogProcessorBuilder = BatchLogRecordProcessor.builder(exporter);
-        batchLogProcessorBuilder.setMaxExportBatchSize(100);
+        batchLogProcessorBuilder.setMaxExportBatchSize(maxBatchSize);
         logRecordProcessor = batchLogProcessorBuilder.build();
         SdkLoggerProviderBuilder sdkLoggerProviderBuilder = SdkLoggerProvider.builder();
         sdkLoggerProviderBuilder.setResource(Resource.create(Attributes.builder()
@@ -66,18 +59,14 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     }
 
     @Override
-    public void invoke(PageMetric value, Context context) throws Exception {
+    public void invoke(T value, Context context) throws Exception {
         super.invoke(value, context);
         LogRecordBuilder logRecordBuilder = provider.loggerBuilder("").build().logRecordBuilder();
         logRecordBuilder.setEpoch(Instant.ofEpochMilli(value.getMetricTime()));
         logRecordBuilder.setBody("");
         AttributesBuilder attributesBuilder = Attributes.builder();
         // attribute name is the schema field name
-        attributesBuilder.put("metricTime", value.getMetricTime());
-        attributesBuilder.put("pageId", value.getPageId());
-        attributesBuilder.put("eventCount", value.getEventCount());
-        attributesBuilder.put("label", label);
-        attributesBuilder.put("lateEventFlag", lateEventFlag);
+        getBiConsumer().accept(value, attributesBuilder);
         logRecordBuilder.setAllAttributes(attributesBuilder.build());
         logRecordBuilder.emit();
     }
@@ -85,8 +74,14 @@ public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
     @Override
     public void close() throws Exception {
         super.close();
-        logRecordProcessor.close();
+        // Shut down the exporter
+        if (logRecordProcessor != null) {
+            logRecordProcessor.forceFlush();
+            logRecordProcessor.close();
+        }
         provider.close();
     }
+
+    public abstract BiConsumer<T, AttributesBuilder> getBiConsumer();
 
 }

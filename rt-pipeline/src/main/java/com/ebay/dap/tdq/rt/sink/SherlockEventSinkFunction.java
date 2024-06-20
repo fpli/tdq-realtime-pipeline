@@ -1,7 +1,6 @@
-package com.ebay.dap.tdq.rt.function;
+package com.ebay.dap.tdq.rt.sink;
 
-import com.ebay.dap.tdq.rt.domain.CJSMetric;
-import com.ebay.dap.tdq.rt.domain.Metric;
+import com.ebay.dap.tdq.rt.domain.PageMetric;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.common.AttributesBuilder;
 import io.opentelemetry.api.logs.LogRecordBuilder;
@@ -17,57 +16,69 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 
 import java.time.Instant;
-import java.util.function.BiConsumer;
 
-public abstract class SherlockEventSinkFunctionBase <T extends Metric> extends RichSinkFunction<T> {
+@Deprecated
+public class SherlockEventSinkFunction extends RichSinkFunction<PageMetric> {
+
     private String endpoint;
     private String applicationId;
     private String namespace;
     private String schema;
+    private String label;
+    private String lateEventFlag;
 
-    private int maxBatchSize;
-
-    private LogRecordProcessor logRecordProcessor;
-    private SdkLoggerProvider provider;
-
-    private BiConsumer<T, AttributesBuilder> biConsumer;
-
-    public SherlockEventSinkFunctionBase(String endpoint, String applicationId, String namespace, String schema, int maxBatchSize) {
+    /**
+     * @param endpoint      sherlock endpoint
+     * @param applicationId the application id, schema is created in this application
+     * @param namespace     the namespace of the schema
+     * @param schema        the schema name
+     * @param label         use to segment event within same schema, like prod, pre-prod, etc.
+     * @param lateEventFlag use to identify late event
+     */
+    public SherlockEventSinkFunction(String endpoint, String applicationId, String namespace, String schema, String label, String lateEventFlag) {
         this.endpoint = endpoint;
         this.applicationId = applicationId;
         this.namespace = namespace;
         this.schema = schema;
-        this.maxBatchSize = maxBatchSize;
+        this.label = label;
+        this.lateEventFlag = lateEventFlag;
     }
+
+    private LogRecordProcessor logRecordProcessor;
+    private SdkLoggerProvider provider;
 
     @Override
     public void open(Configuration parameters) throws Exception {
         super.open(parameters);
         OtlpHttpLogRecordExporterBuilder builder = OtlpHttpLogRecordExporter.builder()
-                .setEndpoint(endpoint)
-                .setCompression("gzip")
-                .addHeader("Authorization", "Bearer " + applicationId);
+                                                                            .setEndpoint(endpoint)
+                                                                            .setCompression("gzip")
+                                                                            .addHeader("Authorization", "Bearer " + applicationId);
         OtlpHttpLogRecordExporter exporter = builder.build();
         BatchLogRecordProcessorBuilder batchLogProcessorBuilder = BatchLogRecordProcessor.builder(exporter);
-        batchLogProcessorBuilder.setMaxExportBatchSize(maxBatchSize);
+        batchLogProcessorBuilder.setMaxExportBatchSize(100);
         logRecordProcessor = batchLogProcessorBuilder.build();
         SdkLoggerProviderBuilder sdkLoggerProviderBuilder = SdkLoggerProvider.builder();
         sdkLoggerProviderBuilder.setResource(Resource.create(Attributes.builder()
-                .put("_namespace_", namespace)
-                .put("_schema_", schema)
-                .build()));
+                                                                       .put("_namespace_", namespace)
+                                                                       .put("_schema_", schema)
+                                                                       .build()));
         provider = sdkLoggerProviderBuilder.addLogRecordProcessor(logRecordProcessor).build();
     }
 
     @Override
-    public void invoke(T value, Context context) throws Exception {
+    public void invoke(PageMetric value, Context context) throws Exception {
         super.invoke(value, context);
         LogRecordBuilder logRecordBuilder = provider.loggerBuilder("").build().logRecordBuilder();
         logRecordBuilder.setEpoch(Instant.ofEpochMilli(value.getMetricTime()));
         logRecordBuilder.setBody("");
         AttributesBuilder attributesBuilder = Attributes.builder();
         // attribute name is the schema field name
-        getBiConsumer().accept(value, attributesBuilder);
+        attributesBuilder.put("metricTime", value.getMetricTime());
+        attributesBuilder.put("pageId", value.getPageId());
+        attributesBuilder.put("eventCount", value.getEventCount());
+        attributesBuilder.put("label", label);
+        attributesBuilder.put("lateEventFlag", lateEventFlag);
         logRecordBuilder.setAllAttributes(attributesBuilder.build());
         logRecordBuilder.emit();
     }
@@ -75,14 +86,8 @@ public abstract class SherlockEventSinkFunctionBase <T extends Metric> extends R
     @Override
     public void close() throws Exception {
         super.close();
-        // Shut down the exporter
-        if (logRecordProcessor != null) {
-            logRecordProcessor.forceFlush();
-            logRecordProcessor.close();
-        }
+        logRecordProcessor.close();
         provider.close();
     }
-
-    public abstract BiConsumer<T, AttributesBuilder> getBiConsumer();
 
 }

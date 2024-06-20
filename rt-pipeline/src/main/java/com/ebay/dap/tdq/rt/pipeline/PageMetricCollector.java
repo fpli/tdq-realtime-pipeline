@@ -6,7 +6,7 @@ import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
 import com.ebay.dap.tdq.rt.function.LateEventToMetricsMapFunction;
 import com.ebay.dap.tdq.rt.function.MetricAggFunction;
 import com.ebay.dap.tdq.rt.function.MetricProcessWindowFunction;
-import com.ebay.dap.tdq.rt.function.SherlockEventSinkFunction;
+import com.ebay.dap.tdq.rt.sink.SherlockEventSinkFunction;
 import com.ebay.dap.tdq.rt.source.SimpleSojEventDeserializationSchema;
 import com.ebay.dap.tdq.rt.key.SimpleSojEventKeySelector;
 import com.ebay.dap.tdq.rt.watermark.SimpleSojEventTimestampAssigner;
@@ -31,6 +31,7 @@ import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_LABEL;
 import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_NAMESPACE;
 import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_SCHEMA;
 
+@Deprecated
 public class PageMetricCollector {
 
     private static final int WINDOW_MINS = 30;

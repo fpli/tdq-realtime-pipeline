@@ -1,31 +1,44 @@
 package com.ebay.dap.tdq.rt.pipeline;
 
 import com.ebay.dap.tdq.flink.common.FlinkEnv;
+import com.ebay.dap.tdq.flink.connector.hdfs.ParquetAvroWritersWithCompression;
+import com.ebay.dap.tdq.rt.bucket.SimpleSignalDeltaBucketAssigner;
 import com.ebay.dap.tdq.rt.domain.CJSMetric;
 import com.ebay.dap.tdq.rt.domain.SimpleSignalDelta;
 import com.ebay.dap.tdq.rt.function.CJSMetricAggFunction;
 import com.ebay.dap.tdq.rt.function.CJSMetricProcessWindowFunction;
-import com.ebay.dap.tdq.rt.function.impl.SherlockEventSinkFunctionCJSMetric;
 import com.ebay.dap.tdq.rt.key.SimpleSignalDeltaKeySelector;
+import com.ebay.dap.tdq.rt.sink.SherlockEventSinkFunctionCJSMetric;
 import com.ebay.dap.tdq.rt.source.SimpleSignalDeltaDeserializationSchema;
 import com.ebay.dap.tdq.rt.watermark.SimpleSignalDeltaTimestampAssigner;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
+import org.apache.flink.connector.file.sink.FileSink;
 import org.apache.flink.connector.kafka.source.KafkaSource;
+import org.apache.flink.core.fs.Path;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.apache.flink.streaming.api.functions.sink.PrintSink;
 import org.apache.flink.streaming.api.windowing.assigners.TumblingEventTimeWindows;
+import org.apache.flink.streaming.api.windowing.assigners.TumblingProcessingTimeWindows;
 import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.OutputTag;
 
 import java.time.Duration;
 
-import static com.ebay.dap.tdq.common.constant.Property.*;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_HDFS_BASE_PATH;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN;
+import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_APPLICATION_ID;
+import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_ENDPOINT;
+import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_NAMESPACE;
+import static com.ebay.dap.tdq.common.constant.Property.SHERLOCK_SCHEMA;
 
 public class CJSMetricsCollector {
 
     public static void main(String[] args) throws Exception {
+
+        FlinkEnv flinkEnv = new FlinkEnv(args);
+        StreamExecutionEnvironment executionEnvironment = flinkEnv.init();
 
         // DO NOT change uid once they are used in prod, otherwise flink might not able to resume from savepoint
         final String sourceOpUid = "kafka_source";
@@ -45,11 +58,11 @@ public class CJSMetricsCollector {
         final String lateEventFlag = "late";
         final String nonLateEventFlag = "nonLate";
 
-        final int WINDOW_MINS = 30;
+        final int WINDOW_MINS = 5;
+        final int MAX_OUT_OF_ORDERNESS = flinkEnv.getInteger(FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN);
+        final int IDLE_TIMEOUT = flinkEnv.getInteger(FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN);
 
-        FlinkEnv flinkEnv = new FlinkEnv(args);
-
-        StreamExecutionEnvironment executionEnvironment = flinkEnv.init();
+        final String HDFS_BASE_PATH = flinkEnv.getString(FLINK_APP_SINK_HDFS_BASE_PATH);
 
         KafkaSource<SimpleSignalDelta> kafkaSource = KafkaSource.<SimpleSignalDelta>builder()
                                                                 .setBootstrapServers(flinkEnv.getSourceKafkaBrokers())
@@ -61,12 +74,11 @@ public class CJSMetricsCollector {
                                                                 .build();
 
 
-        Integer maxOutOfOrderness = flinkEnv.getInteger(FLINK_APP_WATERMARK_MAX_OUT_OF_ORDERNESS_IN_MIN);
-        Integer idleTimeout = flinkEnv.getInteger(FLINK_APP_WATERMARK_IDLE_SOURCE_TIMEOUT_IN_MIN);
 
-        WatermarkStrategy<SimpleSignalDelta> watermarkStrategy = WatermarkStrategy.<SimpleSignalDelta>forBoundedOutOfOrderness(Duration.ofMinutes(maxOutOfOrderness))
+
+        WatermarkStrategy<SimpleSignalDelta> watermarkStrategy = WatermarkStrategy.<SimpleSignalDelta>forBoundedOutOfOrderness(Duration.ofMinutes(MAX_OUT_OF_ORDERNESS))
                                                                                   .withTimestampAssigner(new SimpleSignalDeltaTimestampAssigner())
-                                                                                  .withIdleness(Duration.ofMinutes(idleTimeout));
+                                                                                  .withIdleness(Duration.ofMinutes(IDLE_TIMEOUT));
 
 
         SingleOutputStreamOperator<SimpleSignalDelta> sourceStream =
@@ -80,17 +92,19 @@ public class CJSMetricsCollector {
 
         SingleOutputStreamOperator<CJSMetric> windowStream =
                 sourceStream.keyBy(new SimpleSignalDeltaKeySelector())
-                            .window(TumblingEventTimeWindows.of(Time.minutes(WINDOW_MINS)))
+                            // FIXME: use event time window
+                            .window(TumblingProcessingTimeWindows.of(Time.minutes(WINDOW_MINS)))
                             .sideOutputLateData(lateEventOutputTag)
                             .aggregate(new CJSMetricAggFunction(), new CJSMetricProcessWindowFunction())
                             .name(windowOpName)
                             .uid(windowOpUid)
-                            .setParallelism(flinkEnv.getSinkParallelism());
+                            .setParallelism(flinkEnv.getProcessParallelism());
 
-        windowStream.sinkTo(new PrintSink<>())
-                    .name("Print Sink")
-                    .uid("sink-print")
-                    .setParallelism(flinkEnv.getSinkParallelism());
+
+//        windowStream.addSink(new PrintSinkFunction<>("Print-Sink", false))
+//                    .name("Print Sink")
+//                    .uid("sink-print")
+//                    .setParallelism(flinkEnv.getSinkParallelism());
 
 //        ProntoEnv prontoEnv = flinkEnv.getProntoEnv();
 //        List<HttpHost> httpHosts = Collections.singletonList(new HttpHost(
@@ -122,13 +136,6 @@ public class CJSMetricsCollector {
 //                .name(sinkOpName)
 //                .uid(sinkOpUid)
 //                .setParallelism(1);
-//
-//        StreamingFileSink<SimpleSojEvent> hdfsSink = StreamingFileSink
-//                .forBulkFormat(new Path(flinkEnv.getString(FLINK_APP_SINK_HDFS_PATH)),
-//                        ParquetAvroWritersWithCompression.forReflectRecord(SimpleSojEvent.class))
-//                .withBucketAssigner(new LateSimpleSojEventBucketAssigner())
-//                .build();
-//
 
 
         windowStream.addSink(new SherlockEventSinkFunctionCJSMetric(
@@ -137,10 +144,24 @@ public class CJSMetricsCollector {
                             flinkEnv.getString(SHERLOCK_NAMESPACE),
                             flinkEnv.getString(SHERLOCK_SCHEMA),
                             100
-                            ))
+                    ))
                     .name(sherlockSinkOpName)
                     .uid(sherlockSinkOpUid)
-                    .setParallelism(flinkEnv.getInteger(FLINK_APP_PARALLELISM_SOURCE));
+                    .setParallelism(flinkEnv.getSinkParallelism());
+
+
+        // build hdfs sink for late SimpleSignalDelta
+        final FileSink<SimpleSignalDelta> lateEventHdfsSink =
+                FileSink.forBulkFormat(new Path(HDFS_BASE_PATH), ParquetAvroWritersWithCompression.forReflectRecord(SimpleSignalDelta.class))
+                        .withBucketAssigner(new SimpleSignalDeltaBucketAssigner(true))
+                        .build();
+
+        windowStream.getSideOutput(lateEventOutputTag)
+                    .sinkTo(lateEventHdfsSink)
+                    .name("Late Event HDFS Sink")
+                    .uid("late-event-hdfs-sink")
+                    .setParallelism(100);
+
 //
 //        // late event also send to sherlock
 //        windowStream.getSideOutput(lateEventOutputTag)

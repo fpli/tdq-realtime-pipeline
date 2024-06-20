@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 1236285590137414165L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"DeviceDetection\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"formFactor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"experience\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"model\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<DeviceDetection> ENCODER =
-      new BinaryMessageEncoder<DeviceDetection>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<DeviceDetection> DECODER =
-      new BinaryMessageDecoder<DeviceDetection>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<DeviceDetection> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<DeviceDetection>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -71,9 +73,9 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
     return DECODER.decode(b);
   }
 
-   private java.lang.String formFactor;
-   private java.lang.String experience;
-   private java.lang.String model;
+  private java.lang.String formFactor;
+  private java.lang.String experience;
+  private java.lang.String model;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -94,9 +96,14 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
     this.model = model;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return formFactor;
@@ -107,6 +114,7 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -215,7 +223,7 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -243,7 +251,7 @@ public class DeviceDetection extends org.apache.avro.specific.SpecificRecordBase
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.DeviceDetection other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.formFactor)) {
         this.formFactor = data().deepCopy(fields()[0].schema(), other.formFactor);
         fieldSetFlags()[0] = true;

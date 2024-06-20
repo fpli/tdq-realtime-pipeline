@@ -44,6 +44,7 @@ import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_CHECKPOINT_MIN
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_CHECKPOINT_TIMEOUT_MS;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_CHECKPOINT_TOLERATE_FAILURE_COUNT;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_NAME;
+import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_PARALLELISM_PROCESS;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_PARALLELISM_SINK;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_PARALLELISM_SOURCE;
 import static com.ebay.dap.tdq.common.constant.Property.FLINK_APP_SINK_KAFKA_DC;
@@ -316,6 +317,10 @@ public class FlinkEnv {
     // env shortcuts
     public Integer getSourceParallelism() {
         return this.getInteger(FLINK_APP_PARALLELISM_SOURCE);
+    }
+
+    public Integer getProcessParallelism() {
+        return this.getInteger(FLINK_APP_PARALLELISM_PROCESS);
     }
 
     public Integer getSinkParallelism() {

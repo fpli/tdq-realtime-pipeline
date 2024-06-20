@@ -17,16 +17,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class PageInteractionContext extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -5612812616318967210L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"PageInteractionContext\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"doc\":\"This category of cols include the fields which tracking system definition\\n* and describe a ebay page and its elements\",\"fields\":[{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"siteId\",\"type\":\"int\"},{\"name\":\"countryId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"userLang\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"url\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"referrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"siteSpeed\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"default\":{}},{\"name\":\"moduleId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"linkId\",\"type\":[\"null\",\"int\"],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<PageInteractionContext> ENCODER =
-      new BinaryMessageEncoder<PageInteractionContext>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<PageInteractionContext> DECODER =
-      new BinaryMessageDecoder<PageInteractionContext>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -50,7 +52,7 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<PageInteractionContext> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<PageInteractionContext>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -73,15 +75,15 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
     return DECODER.decode(b);
   }
 
-   private java.lang.Integer pageId;
-   private int siteId;
-   private java.lang.Integer countryId;
-   private java.lang.String userLang;
-   private java.lang.String url;
-   private java.lang.String referrer;
-   private java.util.Map<java.lang.String,java.lang.String> siteSpeed;
-   private java.lang.Integer moduleId;
-   private java.lang.Integer linkId;
+  private java.lang.Integer pageId;
+  private int siteId;
+  private java.lang.Integer countryId;
+  private java.lang.String userLang;
+  private java.lang.String url;
+  private java.lang.String referrer;
+  private java.util.Map<java.lang.String,java.lang.String> siteSpeed;
+  private java.lang.Integer moduleId;
+  private java.lang.Integer linkId;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -114,9 +116,14 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
     this.linkId = linkId;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return pageId;
@@ -133,6 +140,7 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -355,7 +363,7 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -407,7 +415,7 @@ public class PageInteractionContext extends org.apache.avro.specific.SpecificRec
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.PageInteractionContext other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.pageId)) {
         this.pageId = data().deepCopy(fields()[0].schema(), other.pageId);
         fieldSetFlags()[0] = true;

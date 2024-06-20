@@ -15,16 +15,18 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Context extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 3819782674211068970L;
+
+
   public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Context\",\"namespace\":\"com.ebay.dap.tdq.common.model.avro\",\"fields\":[{\"name\":\"auditContext\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AuditContext\",\"fields\":[{\"name\":\"ip\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"stepLabel\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"received\",\"type\":\"long\"},{\"name\":\"emitted\",\"type\":\"long\"},{\"name\":\"rlogId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}},\"default\":[]},{\"name\":\"identityContext\",\"type\":{\"type\":\"record\",\"name\":\"UserIdentityContext\",\"doc\":\"This category of cols describe the customer identity info in ebay\",\"fields\":[{\"name\":\"identityId\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"userId\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"userName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"guid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}},{\"name\":\"deviceContext\",\"type\":{\"type\":\"record\",\"name\":\"DeviceContext\",\"doc\":\"Device collection information, describe the infomation of customer's terminal\",\"fields\":[{\"name\":\"appId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"appVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"viewportWidth\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"viewportHeight\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"windowWidth\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"windowHeight\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"networkCarrier\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"networkConnectionType\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"theme\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"remoteIp\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"forwardFor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"clientHints\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"default\":{}},{\"name\":\"deviceAdvertisingOptOut\",\"type\":[\"null\",\"boolean\"],\"default\":null},{\"name\":\"userAgent\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deviceDetectionProperties\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"DeviceDetection\",\"fields\":[{\"name\":\"formFactor\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"experience\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"model\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}],\"default\":null},{\"name\":\"osDeviceContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"OSDeviceContext\",\"fields\":[{\"name\":\"osName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"osVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"manufacturer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"Android related fields\",\"default\":null},{\"name\":\"androidId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"gadid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"screenDpi\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"idfa\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"doc\":\"IOS related fields\",\"default\":null},{\"name\":\"screenScale\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"browserName\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"Browser related fields\"},{\"name\":\"browserVersion\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"gpcEnabled\",\"type\":\"boolean\"}]}],\"default\":null}]}},{\"name\":\"experimentationContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"ExperimentationContext\",\"fields\":[{\"name\":\"es\",\"type\":\"int\",\"doc\":\"ep site id - using com.ebay.globalenv.SiteEnum\",\"default\":901},{\"name\":\"ec\",\"type\":\"int\",\"doc\":\"ep channel id - using com.ebay.ep.core.cos.COSUtil\",\"default\":99},{\"name\":\"xt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of experienced treatments\",\"default\":[]},{\"name\":\"ot\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of optin treatments\",\"default\":[]},{\"name\":\"os\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},\"doc\":\"qualification info for optin treatments\",\"default\":[]},{\"name\":\"eprlogid\",\"type\":[{\"type\":\"string\",\"avro.java.string\":\"String\"},\"null\"],\"doc\":\"rlogid of the host that perform qualification\",\"default\":\"\"},{\"name\":\"epcalenv\",\"type\":[{\"type\":\"string\",\"avro.java.string\":\"String\"},\"null\"],\"doc\":\"the CAL environmant of eprlogid\",\"default\":\"\"},{\"name\":\"qt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of qualified treatments\",\"default\":[]},{\"name\":\"qc\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of contextual qualified treatments\",\"default\":[]},{\"name\":\"uit\",\"type\":[\"long\",\"null\"],\"doc\":\"User identification timestamp\",\"default\":0},{\"name\":\"mdbreftime\",\"type\":[\"long\",\"null\"],\"doc\":\"timestamp of last experiment metadata refresh from database\",\"default\":0},{\"name\":\"anyId\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AnyId\",\"fields\":[{\"name\":\"val\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"doc\":\"AnyId value\",\"default\":\"\"},{\"name\":\"xt\",\"type\":{\"type\":\"array\",\"items\":\"long\"},\"doc\":\"set of experienced treatmentids for this AnyId value\",\"default\":[]}]}},\"doc\":\"Information for AnyId type EP\",\"default\":[]}]}],\"default\":null},{\"name\":\"pageInteractionContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"PageInteractionContext\",\"doc\":\"This category of cols include the fields which tracking system definition\\n* and describe a ebay page and its elements\",\"fields\":[{\"name\":\"pageId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"siteId\",\"type\":\"int\"},{\"name\":\"countryId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"userLang\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"url\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"referrer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"siteSpeed\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"},\"default\":{}},{\"name\":\"moduleId\",\"type\":[\"null\",\"int\"],\"default\":null},{\"name\":\"linkId\",\"type\":[\"null\",\"int\"],\"default\":null}]}],\"default\":null},{\"name\":\"dataMetaContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"DataMetaContext\",\"fields\":[{\"name\":\"eventSchemaVersion\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}],\"default\":null},{\"name\":\"debuggingContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"DebuggingContext\",\"doc\":\"This category of cols may be used internally. It won't output to downstream in stateful processor.\\n* If some events throw a failure. Log some info to help debugging.\\n* And send the failed event to monitor topic for quality control and alert\",\"fields\":[{\"name\":\"schemaTransFailures\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"ingestionFailures\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}},{\"name\":\"errorCode\",\"type\":[\"null\",\"long\"]},{\"name\":\"poolName\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"collectionServer\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"trackingAgentVersion\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}]},{\"name\":\"others\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"string\",\"avro.java.string\":\"String\"},\"avro.java.string\":\"String\"}}]}],\"default\":null},{\"name\":\"correlationContext\",\"type\":[\"null\",{\"type\":\"record\",\"name\":\"CorrelationContext\",\"doc\":\"This category of cols are used for event correlation in stateful processor\\n*  It won't output in singal delta but for stateful processor internal usage\",\"fields\":[{\"name\":\"ciid\",\"type\":[\"null\",\"long\"],\"default\":null},{\"name\":\"tracka","bleId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"pageViewId\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null},{\"name\":\"siid\",\"type\":[\"null\",{\"type\":\"string\",\"avro.java.string\":\"String\"}],\"default\":null}]}],\"default\":null}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
-  private static SpecificData MODEL$ = new SpecificData();
+  private static final SpecificData MODEL$ = new SpecificData();
 
   private static final BinaryMessageEncoder<Context> ENCODER =
-      new BinaryMessageEncoder<Context>(MODEL$, SCHEMA$);
+      new BinaryMessageEncoder<>(MODEL$, SCHEMA$);
 
   private static final BinaryMessageDecoder<Context> DECODER =
-      new BinaryMessageDecoder<Context>(MODEL$, SCHEMA$);
+      new BinaryMessageDecoder<>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageEncoder instance used by this class.
@@ -48,7 +50,7 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
    * @return a BinaryMessageDecoder instance for this class backed by the given SchemaStore
    */
   public static BinaryMessageDecoder<Context> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<Context>(MODEL$, SCHEMA$, resolver);
+    return new BinaryMessageDecoder<>(MODEL$, SCHEMA$, resolver);
   }
 
   /**
@@ -71,14 +73,14 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
     return DECODER.decode(b);
   }
 
-   private java.util.List<com.ebay.dap.tdq.common.model.avro.AuditContext> auditContext;
-   private com.ebay.dap.tdq.common.model.avro.UserIdentityContext identityContext;
-   private com.ebay.dap.tdq.common.model.avro.DeviceContext deviceContext;
-   private com.ebay.dap.tdq.common.model.avro.ExperimentationContext experimentationContext;
-   private com.ebay.dap.tdq.common.model.avro.PageInteractionContext pageInteractionContext;
-   private com.ebay.dap.tdq.common.model.avro.DataMetaContext dataMetaContext;
-   private com.ebay.dap.tdq.common.model.avro.DebuggingContext debuggingContext;
-   private com.ebay.dap.tdq.common.model.avro.CorrelationContext correlationContext;
+  private java.util.List<com.ebay.dap.tdq.common.model.avro.AuditContext> auditContext;
+  private com.ebay.dap.tdq.common.model.avro.UserIdentityContext identityContext;
+  private com.ebay.dap.tdq.common.model.avro.DeviceContext deviceContext;
+  private com.ebay.dap.tdq.common.model.avro.ExperimentationContext experimentationContext;
+  private com.ebay.dap.tdq.common.model.avro.PageInteractionContext pageInteractionContext;
+  private com.ebay.dap.tdq.common.model.avro.DataMetaContext dataMetaContext;
+  private com.ebay.dap.tdq.common.model.avro.DebuggingContext debuggingContext;
+  private com.ebay.dap.tdq.common.model.avro.CorrelationContext correlationContext;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -109,9 +111,14 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
     this.correlationContext = correlationContext;
   }
 
+  @Override
   public org.apache.avro.specific.SpecificData getSpecificData() { return MODEL$; }
+
+  @Override
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
+
   // Used by DatumWriter.  Applications should not call.
+  @Override
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return auditContext;
@@ -127,6 +134,7 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
   }
 
   // Used by DatumReader.  Applications should not call.
+  @Override
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
@@ -337,7 +345,7 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
 
     /** Creates a new Builder */
     private Builder() {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
     }
 
     /**
@@ -406,7 +414,7 @@ public class Context extends org.apache.avro.specific.SpecificRecordBase impleme
      * @param other The existing instance to copy.
      */
     private Builder(com.ebay.dap.tdq.common.model.avro.Context other) {
-      super(SCHEMA$);
+      super(SCHEMA$, MODEL$);
       if (isValidValue(fields()[0], other.auditContext)) {
         this.auditContext = data().deepCopy(fields()[0].schema(), other.auditContext);
         fieldSetFlags()[0] = true;
