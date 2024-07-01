@@ -42,17 +42,33 @@ public class SimpleSojEventDeserializationSchema implements KafkaRecordDeseriali
 
         GenericRecord event = deserializerHelper.deserializeData(rheosEvent.getSchemaId(), rheosEvent.toBytes());
 
-        SimpleSojEvent simpleSojEvent = new SimpleSojEvent();
+        SimpleSojEvent simpleSojEvent = convertToSimpleSojEvent(event);
 
-        simpleSojEvent.setPageId((Integer) event.get("pageId"));
-        simpleSojEvent.setEventTimestamp((Long) event.get("eventTimestamp"));
-        simpleSojEvent.setGuid(event.get("guid") == null ? null : event.get("guid").toString());
-        simpleSojEvent.setRlogId(event.get("rlogid") == null ? null : event.get("rlogid").toString());
-        simpleSojEvent.setSiteId(event.get("siteId") == null ? -1 : Integer.parseInt(event.get("siteId").toString()));
-        simpleSojEvent.setAppId(event.get("appId") == null ? -1 : Integer.parseInt(event.get("appId").toString()));
-        simpleSojEvent.setProcessTime(System.currentTimeMillis());
+        // add extra kafka metadata
+        simpleSojEvent.setKafkaPartition(record.partition());
+        simpleSojEvent.setKafkaOffset(record.offset());
+        simpleSojEvent.setKafkaTimestamp(record.timestamp());
 
         out.collect(simpleSojEvent);
+    }
+
+    private SimpleSojEvent convertToSimpleSojEvent(GenericRecord record) {
+
+        SimpleSojEvent simpleSojEvent = new SimpleSojEvent();
+
+        simpleSojEvent.setEventTimestamp((Long) record.get("eventTimestamp"));
+        simpleSojEvent.setGuid(record.get("guid") == null ? "" : record.get("guid").toString());
+        simpleSojEvent.setPageId((Integer) record.get("pageId"));
+        simpleSojEvent.setSiteId(record.get("siteId") == null ? -1 : (Integer) record.get("siteId"));
+        simpleSojEvent.setAppId(record.get("appId") == null ? -1 : (Integer) record.get("appId"));
+        simpleSojEvent.setBot(0); // non-bot only
+
+        Map<String, String> applicationPayload = (Map<String, String>) record.get("applicationPayload");
+        simpleSojEvent.setEventPrimaryId(applicationPayload.get("eventPrimaryId"));
+
+        simpleSojEvent.setProcessTime(System.currentTimeMillis());
+
+        return simpleSojEvent;
     }
 
     @Override

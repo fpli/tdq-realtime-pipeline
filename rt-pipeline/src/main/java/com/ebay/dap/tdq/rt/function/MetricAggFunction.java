@@ -4,6 +4,7 @@ import com.ebay.dap.tdq.rt.domain.PageMetric;
 import com.ebay.dap.tdq.rt.domain.SimpleSojEvent;
 import org.apache.flink.api.common.functions.AggregateFunction;
 
+@Deprecated
 public class MetricAggFunction implements AggregateFunction<SimpleSojEvent, PageMetric, PageMetric> {
 
     @Override

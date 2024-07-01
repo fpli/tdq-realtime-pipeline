@@ -38,7 +38,6 @@ public class RheosEventToSimpleSojEventMapFunction extends RichMapFunction<Rheos
         simpleSojEvent.setPageId((Integer) event.get("pageId"));
         simpleSojEvent.setEventTimestamp((Long) event.get("eventTimestamp"));
         simpleSojEvent.setGuid((String) event.get("guid"));
-        simpleSojEvent.setRlogId((String) event.get("rlogid"));
 
         return simpleSojEvent;
     }

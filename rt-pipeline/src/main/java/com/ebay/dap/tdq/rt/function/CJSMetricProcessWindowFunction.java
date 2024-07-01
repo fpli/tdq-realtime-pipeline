@@ -18,7 +18,7 @@ public class CJSMetricProcessWindowFunction extends ProcessWindowFunction<CJSMet
 
         long windowStart = context.window().getStart();
 
-        LocalDateTime eventTime = DateTimeUtils.epochMilliToLocalDateTime(windowStart);
+        LocalDateTime windowStartDt = DateTimeUtils.epochMilliToLocalDateTime(windowStart);
 
         CJSMetric cjsMetric = elements.iterator().next();
         cjsMetric.setSignalName(key.f0);
@@ -28,7 +28,7 @@ public class CJSMetricProcessWindowFunction extends ProcessWindowFunction<CJSMet
 
         // use window start time as metric time
         cjsMetric.setMetricTime(windowStart);
-        cjsMetric.setMetricTimeStr(eventTime.toString());
+        cjsMetric.setMetricTimeStr(windowStartDt.toString());
 
         out.collect(cjsMetric);
     }

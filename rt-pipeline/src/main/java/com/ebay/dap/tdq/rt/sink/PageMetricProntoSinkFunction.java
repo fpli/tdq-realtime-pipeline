@@ -1,4 +1,4 @@
-package com.ebay.dap.tdq.rt.function;
+package com.ebay.dap.tdq.rt.sink;
 
 import com.ebay.dap.tdq.rt.domain.PageMetric;
 import com.fasterxml.jackson.core.JsonProcessingException;
