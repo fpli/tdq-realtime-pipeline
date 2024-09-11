@@ -11,6 +11,7 @@ import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
+import org.apache.flink.metrics.Counter;
 import org.apache.flink.util.Collector;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
@@ -22,11 +23,16 @@ public class SimpleSignalDeltaDeserializationSchema implements KafkaRecordDeseri
 
 
     private transient DatumReader<Signal> reader;
+    private Counter eventCounter;
 
     @Override
     public void open(DeserializationSchema.InitializationContext context) throws Exception {
         log.info("Initialize SojEvent DatumReader.");
         reader = new SpecificDatumReader<>(Signal.class);
+
+        eventCounter = context.getMetricGroup()
+                              .addGroup("tdq_rt")
+                              .counter("read_delta_cnt");
     }
 
     @Override
@@ -41,6 +47,7 @@ public class SimpleSignalDeltaDeserializationSchema implements KafkaRecordDeseri
         simpleSignalDelta.setKafkaOffset(record.offset());
         simpleSignalDelta.setKafkaTimestamp(record.timestamp());
 
+        eventCounter.inc();
         out.collect(simpleSignalDelta);
     }
 

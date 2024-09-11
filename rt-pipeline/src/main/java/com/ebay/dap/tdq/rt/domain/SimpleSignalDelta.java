@@ -4,7 +4,7 @@ package com.ebay.dap.tdq.rt.domain;
 import lombok.Data;
 
 @Data
-public class SimpleSignalDelta {
+public class SimpleSignalDelta extends KafkaMessage {
 
     private String signalName;
 
@@ -21,12 +21,5 @@ public class SimpleSignalDelta {
     private Long timestamp;
 
     private Long processTime;
-
-    // fields for debugging
-    private int kafkaPartition;
-
-    private long kafkaOffset;
-
-    private long kafkaTimestamp;
 
 }

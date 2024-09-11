@@ -64,21 +64,21 @@ public class CJSMetricsCollector {
 
         final String HDFS_BASE_PATH = flinkEnv.getString(FLINK_APP_SINK_HDFS_BASE_PATH);
 
-        KafkaSource<SimpleSignalDelta> kafkaSource = KafkaSource.<SimpleSignalDelta>builder()
-                                                                .setBootstrapServers(flinkEnv.getSourceKafkaBrokers())
-                                                                .setGroupId(flinkEnv.getSourceKafkaGroupId())
-                                                                .setTopics(flinkEnv.getSourceKafkaTopics())
-                                                                .setProperties(flinkEnv.getKafkaConsumerProps())
-                                                                .setStartingOffsets(flinkEnv.getSourceKafkaStartingOffsets())
-                                                                .setDeserializer(new SimpleSignalDeltaDeserializationSchema())
-                                                                .build();
+        KafkaSource<SimpleSignalDelta> kafkaSource =
+                KafkaSource.<SimpleSignalDelta>builder()
+                           .setBootstrapServers(flinkEnv.getSourceKafkaBrokers())
+                           .setGroupId(flinkEnv.getSourceKafkaGroupId())
+                           .setTopics(flinkEnv.getSourceKafkaTopics())
+                           .setProperties(flinkEnv.getKafkaConsumerProps())
+                           .setStartingOffsets(flinkEnv.getSourceKafkaStartingOffsets())
+                           .setDeserializer(new SimpleSignalDeltaDeserializationSchema())
+                           .build();
 
 
-
-
-        WatermarkStrategy<SimpleSignalDelta> watermarkStrategy = WatermarkStrategy.<SimpleSignalDelta>forBoundedOutOfOrderness(Duration.ofMinutes(MAX_OUT_OF_ORDERNESS))
-                                                                                  .withTimestampAssigner(new SimpleSignalDeltaTimestampAssigner())
-                                                                                  .withIdleness(Duration.ofMinutes(IDLE_TIMEOUT));
+        WatermarkStrategy<SimpleSignalDelta> watermarkStrategy =
+                WatermarkStrategy.<SimpleSignalDelta>forBoundedOutOfOrderness(Duration.ofMinutes(MAX_OUT_OF_ORDERNESS))
+                                 .withTimestampAssigner(new SimpleSignalDeltaTimestampAssigner())
+                                 .withIdleness(Duration.ofMinutes(IDLE_TIMEOUT));
 
 
         SingleOutputStreamOperator<SimpleSignalDelta> sourceStream =
@@ -87,7 +87,8 @@ public class CJSMetricsCollector {
                                     .setParallelism(flinkEnv.getSourceParallelism());
 
 
-        OutputTag<SimpleSignalDelta> lateEventOutputTag = new OutputTag<>("late-simple-signal-delta", TypeInformation.of(SimpleSignalDelta.class));
+        OutputTag<SimpleSignalDelta> lateEventOutputTag = new OutputTag<>("late-simple-signal-delta",
+                                                                          TypeInformation.of(SimpleSignalDelta.class));
 
 
         SingleOutputStreamOperator<CJSMetric> windowStream =
